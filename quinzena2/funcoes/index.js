@@ -37,7 +37,7 @@ const par = (num) => { return num % 2 == 0 }
 console.log(par(8))
 //d
 const stringMinuscula = (texto) => { return texto.toUpperCase() + " " + texto.length; }
-console.log(stringMinuscula("MR.NOBODY"))
+console.log(stringMinuscula("mr.nobody"))
 //3-
 const soma2 = (num, num2) => { return num + num2 }
 const sub = (num, num2) => { return num - num2 }
