@@ -36,13 +36,13 @@ console.log(greaterThan(2, 5))
 const par = (num) => { return num % 2 == 0 }
 console.log(par(8))
 //d
-const stringMinuscula = (texto) => { return texto.toLowerCase() + " " + texto.length; }
+const stringMinuscula = (texto) => { return texto.toUpperCase() + " " + texto.length; }
 console.log(stringMinuscula("MR.NOBODY"))
 //3-
-const soma2 = (num, num2) => { return +num+num2 }
-const sub = (num, num2) => { return num-num2}
-const div = (num, num2) => { return "Divisão: "+num/num2+"\n" }
-const mult = (num, num2) => { return "Multiplicação: "+num*num2+"\n" }
+const soma2 = (num, num2) => { return num + num2 }
+const sub = (num, num2) => { return num - num2 }
+const div = (num, num2) => { return "Divisão: " + num / num2 }
+const mult = (num, num2) => { return "Multiplicação: " + num * num2 + "\n" }
 const valor1 = Number(prompt("Digite o primeiro valor"))
 const valor2 = Number(prompt("Digite o segundo valor"))
-console.log("Números inseridos: "+valor1+" e "+valor2+"\n"+"Soma:",soma2(valor1, valor2),"\n"+"Subtração:", sub(valor1, valor2),"\n"+mult(valor1, valor2)+ div(valor1, valor2))
+console.log("Números inseridos: " + valor1 + " e " + valor2 + "\n" + "Soma:", soma2(valor1, valor2), "\n" + "Subtração:", sub(valor1, valor2), "\n" + mult(valor1, valor2) + div(valor1, valor2))
