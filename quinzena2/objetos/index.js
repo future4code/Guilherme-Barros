@@ -74,11 +74,11 @@ const pessoa = {
 const apresentacao=(objeto)=>console.log(`Eu sou ${objeto.nome}, mas pode me chamar de: ${objeto.apelidos[0]}, ${ objeto.apelidos[1]} ou ${objeto.apelidos[2]}`)
 apresentacao(pessoa)
 //b)
-const outraPessoa={
+const maisApelidos={
 	...pessoa,
 	apelidos: ["Mandizinha", "MandiMandi", "Amandão"]
 }
-apresentacao(outraPessoa)
+apresentacao(maisApelidos)
 //2-a)
 const people={
 	nome:'Guilherme',
