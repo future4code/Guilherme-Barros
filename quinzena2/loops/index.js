@@ -4,7 +4,7 @@ for(let i = 0; i < 5; i++) {
 }
 console.log(valor)
 O código está declarando uma variável valor como 0, criando um for para incrementar seu valor 
-enquanto o valor de i for menor que 5. O console mostrará 4
+enquanto o valor de i for menor que 5. O console mostrará 10
 2-const lista = [10, 11, 12, 15, 18, 19, 21, 23, 25, 27, 30]
 for (let numero of lista) {
   if (numero > 18) {
