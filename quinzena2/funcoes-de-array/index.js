@@ -38,23 +38,23 @@ console.log(novoArrayC)
 a)Será impresso apelidos diferentes de Chijo*/
 //1-
 const pets = [
-	{ nome: "Lupin", raca: "Salsicha"},
-	{ nome: "Polly", raca: "Lhasa Apso"},
-	{ nome: "Madame", raca: "Poodle"},
-	{ nome: "Quentinho", raca: "Salsicha"},
-	{ nome: "Fluffy", raca: "Poodle"},
-	{ nome: "Caramelo", raca: "Vira-lata"},
-     ]
+	{ nome: "Lupin", raca: "Salsicha" },
+	{ nome: "Polly", raca: "Lhasa Apso" },
+	{ nome: "Madame", raca: "Poodle" },
+	{ nome: "Quentinho", raca: "Salsicha" },
+	{ nome: "Fluffy", raca: "Poodle" },
+	{ nome: "Caramelo", raca: "Vira-lata" },
+]
 //a)
-const mapeiaNomes=pets.map(nomes=>nomes.nome)    
+const mapeiaNomes = pets.map(nomes => nomes.nome)
 console.log(mapeiaNomes)
 //b)
-const filterSalsichas=pets.filter(salsichas=>salsichas.raca=="Salsicha")
+const filterSalsichas = pets.filter(salsichas => salsichas.raca == "Salsicha")
 console.log(filterSalsichas)
 //c)
-const filtraPoodles=pets.filter(poodles=>poodles.raca=="Poodle")
-filtraPoodles.map(nomes=>nomes.nome)
-console.log("Você ganhou um cupom de desconto de 10% para tosar o/a", filtraPoodles,"!")
+const filtraPoodles = pets.filter(poodles => poodles.raca == "Poodle")
+filtraPoodles.map(nomes => nomes.nome)
+console.log("Você ganhou um cupom de desconto de 10% para tosar o/a", filtraPoodles, "!")
 //2-
 const produtos = [
 	{ nome: "Alface Lavada", categoria: "Hortifruti", preco: 2.5 },
@@ -67,41 +67,41 @@ const produtos = [
 	{ nome: "Vinho Tinto", categoria: "Bebidas", preco: 55 },
 	{ nome: "Berinjela kg", categoria: "Hortifruti", preco: 8.99 },
 	{ nome: "Sabão em Pó Ypê", categoria: "Limpeza", preco: 10.80 }
-     ]
+]
 //a)
-let retornaNomes=produtos.map(nomes=>nomes.nome)
+let retornaNomes = produtos.map(nomes => nomes.nome)
 console.log(retornaNomes)
 //b)
-retornaNomes=produtos.map((preco)=>{
-	const nomes=preco.nome
-	const precoDesc=preco.preco*5/100
-	return ({nome:nomes , preco:precoDesc})
+retornaNomes = produtos.map((preco) => {
+	const nomes = preco.nome
+	const precoDesc = (preco.preco * 0.95).toFixed(2)
+	return ({ nome: nomes, preco: precoDesc })
 })
 console.log(retornaNomes)
 //c)
-const retornaBebidas=produtos.filter(bebidas=>bebidas.categoria)
+const retornaBebidas = produtos.filter(bebidas => bebidas.categoria)
 //d)
-const retornaYpes=produtos.filter((ypes)=>{
-	const nomes=ypes.nome
-	const cat=ypes.categoria
-	const precos=ypes.preco
-	if(nomes.includes("Ypê")){
-		return ({nome:nomes ,categoria: cat, preco:precos})
+const retornaYpes = produtos.filter((ypes) => {
+	const nomes = ypes.nome
+	const cat = ypes.categoria
+	const precos = ypes.preco
+	if (nomes.includes("Ypê")) {
+		return ({ nome: nomes, categoria: cat, preco: precos })
 	}
 })
 console.log(retornaYpes)
 //e)
-let mapeiaNomePreco=produtos.map((dados)=>{
-	const nomes=dados.nome
-	const precos=dados.preco
-	return ({nome:nomes , preco:precos})
-}).filter((ypes,index)=>{
-	const nomes=ypes.nome
-	const precos=ypes.preco
-	if(ypes.nome.includes("Ypê")){
-		ypes[index]=`COMPRE ${nomes} POR ${precos}`
+let mapeiaNomePreco = produtos.map((dados) => {
+	const nomes = dados.nome
+	const precos = dados.preco
+	return ({ nome: nomes, preco: precos })
+}).filter((ypes, index) => {
+	const nomes = ypes.nome
+	const precos = ypes.preco
+	if (ypes.nome.includes("Ypê")) {
+		ypes[index] = `COMPRE ${nomes} POR ${precos}`
 		return ypes[index]
 	}
-	
+
 })
 console.log(mapeiaNomePreco)
