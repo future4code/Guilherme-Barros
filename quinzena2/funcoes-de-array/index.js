@@ -69,15 +69,15 @@ const produtos = [
 	{ nome: "Sabão em Pó Ypê", categoria: "Limpeza", preco: 10.80 }
 ]
 //a)
-let retornaNomes = produtos.map(nomes => nomes.nome)
+const retornaNomes = produtos.map(nomes => nomes.nome)
 console.log(retornaNomes)
 //b)
-retornaNomes = produtos.map((preco) => {
+const aplicandoDesconto = produtos.map((preco) => {
 	const nomes = preco.nome
 	const precoDesc = (preco.preco * 0.95).toFixed(2)
 	return { nomes, precoDesc }
 })
-console.log(retornaNomes)
+console.log(aplicandoDesconto)
 //c)
 const retornaBebidas = produtos.filter(bebidas => bebidas.categoria)
 //d)
