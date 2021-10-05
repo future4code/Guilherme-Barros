@@ -18,7 +18,8 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
-  
+  const maiorNumero = Math.max(...array)
+  return maiorNumero
 }
 
 // EXERCÍCIO 05
