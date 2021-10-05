@@ -1,7 +1,7 @@
-1-
-2-
-3-
-4-
-5-
-6-
-7-
+1-Ter atenção no enunciado: Prestar atenção no que o enunciado pede e entrega para resolver o problema.
+2-Retirar Informações Relevantes: Saber abstrair do problema Informações que podem serão implementadas nas soluções, parte do problema é parte da solução
+3-Pensar entradas e saídas: Pensar no que o programa vai pedir e no que ele deseja que seja mostrado
+4-Fazer um esquema visual: Muitas vezes colocar em um fluxograma de passo a passo para se ter uma visão geral do que o programa deve fazer ajuda em visualizar em como esse programa será feito
+5-Criar código feio: Criar inicialmente um código base pensando apenas no funcionamento do programa.
+6-Testar Força-bruta:Testar esse código feio
+7-Refatorar: Refinar o código mantendo as funcionalidades.
