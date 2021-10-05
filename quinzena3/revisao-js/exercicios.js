@@ -164,7 +164,8 @@ return dobro
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
-
+  const dobroString=array.map(item=>item*2).map(item=>item.toString())
+  return dobroString
 }
 
 // EXERCÍCIO 17C
