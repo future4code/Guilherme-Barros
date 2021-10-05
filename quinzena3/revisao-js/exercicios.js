@@ -56,7 +56,7 @@ function checaTriangulo(a, b, c) {
   let classificacao;
   a == b && b == c ? classificacao = 'Equilátero' : a == b || a == c || c == b ? classificacao = 'Isósceles' : classificacao = 'Escaleno'
   return classificacao
-  
+
 }
 
 // EXERCÍCIO 09
@@ -70,45 +70,45 @@ function comparaDoisNumeros(num1, num2) {
   let maiorNumero
   let maiorDivisivelPorMenor
   let diferenca
-  const obj=new Object()
+  const obj = new Object()
   if (num1 > num2 && num1 % num2 == 0) {
     maiorNumero = num1
     maiorDivisivelPorMenor = true
     diferenca = num1 - num2
-    obj.maiorNumero=maiorNumero
-    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
-    obj.diferenca=diferenca
-     /* "maiorNumero": maiorNumero,
-      "maiorDivisivelporMenor": maiorDivisivelporMenor,
-      "diferenca": diferenca*/
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
+    /* "maiorNumero": maiorNumero,
+     "maiorDivisivelporMenor": maiorDivisivelporMenor,
+     "diferenca": diferenca*/
   } else if (num2 > num1 && num2 % num1 == 0) {
     maiorNumero = num2
     maiorDivisivelPorMenor = true
     diferenca = num2 - num1
-    obj.maiorNumero=maiorNumero
-    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
-    obj.diferenca=diferenca
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
   } else if (num1 > num2 && num1 % num2 != 0) {
     maiorNumero = num1
     maiorDivisivelPorMenor = false
     diferenca = num1 - num2
-    obj.maiorNumero=maiorNumero
-    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
-    obj.diferenca=diferenca
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
   } else if (num2 > num1 && num2 % num1 != 0) {
     maiorNumero = num2
     maiorDivisivelPorMenor = false
     diferenca = num2 - num1
-    obj.maiorNumero=maiorNumero
-    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
-    obj.diferenca=diferenca
-  }else{
-    maiorNumero=num1
-    maiorDivisivelPorMenor=true
-    diferenca=num1-num2
-    obj.maiorNumero=maiorNumero
-    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
-    obj.diferenca=diferenca
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
+  } else {
+    maiorNumero = num1
+    maiorDivisivelPorMenor = true
+    diferenca = num1 - num2
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
   }
   return obj
 
@@ -120,13 +120,28 @@ function segundoMaiorEMenor(array) {
 }
 
 // EXERCÍCIO 11
-function ordenaArray(array) {
+function ordenaArray(array) {  
+  for (let i = 0; i < array.length; i++) { 
+        for (let j = 0; j < (array.length - i - 1); j++) { 
+                 if(array[j] > array[j+1]) {
+                         let tmp = array[j]; 
+              array[j] = array[j+1]; 
+              array[j+1] = tmp; 
+          }
+      }        
+  }
 
+  return res
 }
 
 // EXERCÍCIO 12
 function filmeFavorito() {
-
+const filme=new Object();
+filme.nome='O Diabo Veste Prada'
+filme.ano=2006
+filme.diretor='David Frankel'
+filme.atores=['Meryl Streep','Anne Hathaway','Emily Blunt','Stanley Tucci']
+return filme
 }
 
 // EXERCÍCIO 13
@@ -146,31 +161,39 @@ function anonimizaPessoa(pessoa) {
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
-  const adultos=arrayDePessoas.filter(item=>item.idade>=18)
+  const adultos = arrayDePessoas.filter(item => item.idade >= 18)
   return adultos
 }
 
 // EXERCÍCIO 16B
 function menoresDe18(arrayDePessoas) {
-  const criancas=arrayDePessoas.filter(item=>item.idade<18)
+  const criancas = arrayDePessoas.filter(item => item.idade < 18)
   return criancas
 }
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
-const dobro=array.map(item=>item*2)
-return dobro
+  const dobro = array.map(item => item * 2)
+  return dobro
 }
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
-  const dobroString=array.map(item=>item*2).map(item=>item.toString())
+  const dobroString = array.map(item => item * 2).map(item => item.toString())
   return dobroString
 }
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
+  const par = array.filter(item => item % 2 == 0)
+  const impar = array.filter(item => item % 2 != 0)
+  let paridade
+  for (let i = 0; i < array.length; i++) {
+    array[i]%par==0 ? paridade = 'par' : paridade = 'ímpar'
+  }
 
+  const frase = array.map((item) => `${item} é ${paridade}`)
+  return frase
 }
 
 // EXERCÍCIO 18A
