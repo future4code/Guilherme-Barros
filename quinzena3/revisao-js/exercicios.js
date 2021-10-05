@@ -185,7 +185,7 @@ return obj
 
 // EXERCÍCIO 15
 function anonimizaPessoa(pessoa) {
-
+  return {...pessoa,nome:"ANÔNIMO"}
 }
 
 // EXERCÍCIO 16A
