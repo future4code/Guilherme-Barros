@@ -45,7 +45,15 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
-
+  const pares = []
+   let par = 0
+   let i = 0
+   while(i < n){
+      i++
+      pares.push(par)
+      par += 2
+   }
+   return pares
 }
 
 // EXERCÍCIO 08
