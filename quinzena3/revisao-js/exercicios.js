@@ -158,7 +158,8 @@ function menoresDe18(arrayDePessoas) {
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
-
+const dobro=array.map(item=>item*2)
+return dobro
 }
 
 // EXERCÍCIO 17B
