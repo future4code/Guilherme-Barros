@@ -67,7 +67,50 @@ function comparaDoisNumeros(num1, num2) {
   //   maiorDivisivelPorMenor: Y,
   //   diferenca: Z
   // }
-  
+  let maiorNumero
+  let maiorDivisivelPorMenor
+  let diferenca
+  const obj=new Object()
+  if (num1 > num2 && num1 % num2 == 0) {
+    maiorNumero = num1
+    maiorDivisivelPorMenor = true
+    diferenca = num1 - num2
+    obj.maiorNumero=maiorNumero
+    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
+    obj.diferenca=diferenca
+     /* "maiorNumero": maiorNumero,
+      "maiorDivisivelporMenor": maiorDivisivelporMenor,
+      "diferenca": diferenca*/
+  } else if (num2 > num1 && num2 % num1 == 0) {
+    maiorNumero = num2
+    maiorDivisivelPorMenor = true
+    diferenca = num2 - num1
+    obj.maiorNumero=maiorNumero
+    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
+    obj.diferenca=diferenca
+  } else if (num1 > num2 && num1 % num2 != 0) {
+    maiorNumero = num1
+    maiorDivisivelPorMenor = false
+    diferenca = num1 - num2
+    obj.maiorNumero=maiorNumero
+    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
+    obj.diferenca=diferenca
+  } else if (num2 > num1 && num2 % num1 != 0) {
+    maiorNumero = num2
+    maiorDivisivelPorMenor = false
+    diferenca = num2 - num1
+    obj.maiorNumero=maiorNumero
+    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
+    obj.diferenca=diferenca
+  }else{
+    maiorNumero=num1
+    maiorDivisivelPorMenor=true
+    diferenca=num1-num2
+    obj.maiorNumero=maiorNumero
+    obj.maiorDivisivelPorMenor=maiorDivisivelPorMenor
+    obj.diferenca=diferenca
+  }
+  return obj
 
 }
 
