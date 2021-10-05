@@ -233,7 +233,8 @@ return autorizadas
 
 // EXERCÍCIO 18B
 function retornaPessoasNaoAutorizadas(pessoas) {
-
+  const naoAutorizadas=pessoas.filter(item=>item.idade<=14 || item.idade>60 ||item.altura<1.5)/*.filter(item=>item.idade<14 || item.idade>60)*/
+  return naoAutorizadas
 }
 
 // EXERCÍCIO 19A
