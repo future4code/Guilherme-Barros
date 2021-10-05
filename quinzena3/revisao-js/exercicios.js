@@ -157,7 +157,13 @@ return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${f
 
 // EXERCÍCIO 14
 function criaRetangulo(lado1, lado2) {
+  const obj=new Object()
+obj.largura=lado1;
+obj.altura=lado2
+obj.perimetro=2 * (lado1+lado2)
+obj.area=lado1*lado2
 
+return obj
 }
 
 // EXERCÍCIO 15
