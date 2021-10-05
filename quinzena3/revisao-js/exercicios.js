@@ -43,7 +43,17 @@ function checaTriangulo(a, b, c) {
   // return 'Escaleno'
   // return 'Equilátero'
   // return 'Isósceles'
- 
+  const booleano1 = true
+  const booleano2 = false
+  const booleano3 = !booleano2
+  const booleano4 = !booleano3
+  const respostas = [booleano1 && booleano2 && !booleano4,
+  (booleano1 && booleano2) || !booleano3,
+  (booleano2 || booleano3) && (booleano4 || booleano1),
+  !(booleano2 && booleano3) || !(booleano1 && booleano3),
+  !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)]
+
+  return respostas
 }
 
 // EXERCÍCIO 09
