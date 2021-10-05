@@ -116,13 +116,22 @@ function comparaDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
-
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+        if (array[j] > array[j + 1]) {
+            let aux = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = aux;
+          }
+        }
+    }
+ return [array[array.length - 2], array[1]]
 }
 
 // EXERCÍCIO 11
 function ordenaArray(array) {  
   for (let i = 0; i < array.length; i++) { 
-        for (let j = 0; j < (array.length - i - 1); j++) { 
+        for (let j = 0; j < array.length; j++) { 
                  if(array[j] > array[j+1]) {
                          let tmp = array[j]; 
               array[j] = array[j+1]; 
@@ -131,7 +140,7 @@ function ordenaArray(array) {
       }        
   }
 
-  return res
+  return array
 }
 
 // EXERCÍCIO 12
@@ -210,6 +219,14 @@ function verificaParidade(array) {
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {
+ /* const pessoas = [
+    { nome: "Paula", idade: 12, altura: 1.8},
+    { nome: "João", idade: 20, altura: 1.3},
+    { nome: "Pedro", idade: 15, altura: 1.9},
+    { nome: "Luciano", idade: 22, altura: 1.8},
+    { nome: "Artur", idade: 10, altura: 1.2},
+    { nome: "Soter", idade: 70, altura: 1.9}
+  ]*/
 
 }
 
