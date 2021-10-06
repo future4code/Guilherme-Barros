@@ -46,14 +46,14 @@ function retornaExpressoesBooleanas() {
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
   const pares = []
-   let par = 0
-   let i = 0
-   while(i < n){
-      i++
-      pares.push(par)
-      par += 2
-   }
-   return pares
+  let par = 0
+  let i = 0
+  while (i < n) {
+    i++
+    pares.push(par)
+    par += 2
+  }
+  return pares
 }
 
 // EXERCÍCIO 08
@@ -126,26 +126,26 @@ function comparaDoisNumeros(num1, num2) {
 function segundoMaiorEMenor(array) {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length; j++) {
-        if (array[j] > array[j + 1]) {
-            let aux = array[j];
-            array[j] = array[j + 1];
-            array[j + 1] = aux;
-          }
-        }
+      if (array[j] > array[j + 1]) {
+        let aux = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = aux;
+      }
     }
- return [array[array.length - 2], array[1]]
+  }
+  return [array[array.length - 2], array[1]]
 }
 
 // EXERCÍCIO 11
-function ordenaArray(array) {  
-  for (let i = 0; i < array.length; i++) { 
-        for (let j = 0; j < array.length; j++) { 
-                 if(array[j] > array[j+1]) {
-                         let tmp = array[j]; 
-              array[j] = array[j+1]; 
-              array[j+1] = tmp; 
-          }
-      }        
+function ordenaArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[j] > array[j + 1]) {
+        let tmp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = tmp;
+      }
+    }
   }
 
   return array
@@ -153,39 +153,39 @@ function ordenaArray(array) {
 
 // EXERCÍCIO 12
 function filmeFavorito() {
-const filme=new Object();
-filme.nome='O Diabo Veste Prada'
-filme.ano=2006
-filme.diretor='David Frankel'
-filme.atores=['Meryl Streep','Anne Hathaway','Emily Blunt','Stanley Tucci']
-return filme
+  const filme = new Object();
+  filme.nome = 'O Diabo Veste Prada'
+  filme.ano = 2006
+  filme.diretor = 'David Frankel'
+  filme.atores = ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
+  return filme
 }
 
 // EXERCÍCIO 13
 function imprimeChamada() {
   // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
-  const filme=new Object();
-filme.nome='O Diabo Veste Prada'
-filme.ano=2006
-filme.diretor='David Frankel'
-filme.atores=['Meryl Streep',' Anne Hathaway',' Emily Blunt',' Stanley Tucci']
-return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores}.`
+  const filme = new Object();
+  filme.nome = 'O Diabo Veste Prada'
+  filme.ano = 2006
+  filme.diretor = 'David Frankel'
+  filme.atores = ['Meryl Streep', ' Anne Hathaway', ' Emily Blunt', ' Stanley Tucci']
+  return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores}.`
 }
 
 // EXERCÍCIO 14
 function criaRetangulo(lado1, lado2) {
-  const obj=new Object()
-obj.largura=lado1;
-obj.altura=lado2
-obj.perimetro=2 * (lado1+lado2)
-obj.area=lado1*lado2
+  const obj = new Object()
+  obj.largura = lado1;
+  obj.altura = lado2
+  obj.perimetro = 2 * (lado1 + lado2)
+  obj.area = lado1 * lado2
 
-return obj
+  return obj
 }
 
 // EXERCÍCIO 15
 function anonimizaPessoa(pessoa) {
-  return {...pessoa,nome:"ANÔNIMO"}
+  return { ...pessoa, nome: "ANÔNIMO" }
 }
 
 // EXERCÍCIO 16A
@@ -214,26 +214,26 @@ function multiplicaArrayPor2S(array) {
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
-  const par = array.filter(item => item % 2 == 0)
-  const impar = array.filter(item => item % 2 != 0)
-  let paridade
-  for (let i = 0; i < array.length; i++) {
-    array[i]%par==0 ? paridade = 'par' : paridade = 'ímpar'
-  }
-
-  const frase = array.map((item) => `${item} é ${paridade}`)
-  return frase
+  const paridade = array.map(item => {
+    if (item % 2 == 0) {
+      return `${item} é par`
+    }
+    else {
+      return `${item} é ímpar`
+    }
+  })
+        return paridade
 }
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {
-const autorizadas=pessoas.filter(item=>item.altura>=1.5).filter(item=>item.idade>14 && item.idade<60)
-return autorizadas
+  const autorizadas = pessoas.filter(item => item.altura >= 1.5).filter(item => item.idade > 14 && item.idade < 60)
+  return autorizadas
 }
 
 // EXERCÍCIO 18B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  const naoAutorizadas=pessoas.filter(item=>item.idade<=14 || item.idade>60 ||item.altura<1.5)/*.filter(item=>item.idade<14 || item.idade>60)*/
+  const naoAutorizadas = pessoas.filter(item => item.idade <= 14 || item.idade > 60 || item.altura < 1.5)
   return naoAutorizadas
 }
 
