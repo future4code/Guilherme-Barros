@@ -226,7 +226,7 @@ function ordenaPorData(consultasData) {
   function parseBRDateFormat(dateString) {
     return new Date(dateString.split("/").reverse().join("-"));
 }
-   let ordenarPorDataDaConsulta=function(consultas){
+   let ordenarPorDataDaConsulta=consultas=>{
      return [...consultas].sort((consultaA, consultaB) => {
         const toDate = ({dataDaConsulta}) => parseBRDateFormat(dataDaConsulta);
         const [dateA, dateB] = [consultaA, consultaB].map(toDate);
