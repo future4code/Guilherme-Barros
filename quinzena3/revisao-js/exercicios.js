@@ -86,9 +86,6 @@ function comparaDoisNumeros(num1, num2) {
     obj.maiorNumero = maiorNumero
     obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
     obj.diferenca = diferenca
-    /* "maiorNumero": maiorNumero,
-     "maiorDivisivelporMenor": maiorDivisivelporMenor,
-     "diferenca": diferenca*/
   } else if (num2 > num1 && num2 % num1 == 0) {
     maiorNumero = num2
     maiorDivisivelPorMenor = true
@@ -260,10 +257,28 @@ function ordenaPorNome(consultasNome) {
 
 // EXERCÍCIO 19B
 function ordenaPorData(consultasData) {
-
+  function parseBRDateFormat(dateString) {
+    return new Date(dateString.split("/").reverse().join("-"));
+}
+   let ordenarPorDataDaConsulta=function(consultas){
+     return [...consultas].sort((consultaA, consultaB) => {
+        const toDate = ({dataDaConsulta}) => parseBRDateFormat(dataDaConsulta);
+        const [dateA, dateB] = [consultaA, consultaB].map(toDate);
+        return dateA.getTime() - dateB.getTime()
+    });
+  }
+return ordenarPorDataDaConsulta(consultasData)
 }
 
 // EXERCÍCIO 20
 function calculaSaldo(contas) {
-
+  /*const precos = contas.map((item, index) => {
+    let soma = 0;
+    let itens = item.compras;
+    for (let i=0;i<itens.length;i++) {
+      soma += itens[i];
+    }
+    return soma;
+  });
+  return precos;*/
 }
