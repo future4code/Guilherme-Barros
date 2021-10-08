@@ -69,53 +69,19 @@ function checaTriangulo(a, b, c) {
 
 // EXERCÍCIO 09
 function comparaDoisNumeros(num1, num2) {
-  // Formato do objeto a ser retornado:
-  // {
-  //   maiorNumero: X,
-  //   maiorDivisivelPorMenor: Y,
-  //   diferenca: Z
-  // }
+
   let maiorNumero
   let maiorDivisivelPorMenor
-  let diferenca
-  const obj = new Object()
-  if (num1 > num2 && num1 % num2 == 0) {
-    maiorNumero = num1
-    maiorDivisivelPorMenor = true
-    diferenca = num1 - num2
-    obj.maiorNumero = maiorNumero
-    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
-    obj.diferenca = diferenca
-  } else if (num2 > num1 && num2 % num1 == 0) {
-    maiorNumero = num2
-    maiorDivisivelPorMenor = true
-    diferenca = num2 - num1
-    obj.maiorNumero = maiorNumero
-    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
-    obj.diferenca = diferenca
-  } else if (num1 > num2 && num1 % num2 != 0) {
-    maiorNumero = num1
-    maiorDivisivelPorMenor = false
-    diferenca = num1 - num2
-    obj.maiorNumero = maiorNumero
-    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
-    obj.diferenca = diferenca
-  } else if (num2 > num1 && num2 % num1 != 0) {
-    maiorNumero = num2
-    maiorDivisivelPorMenor = false
-    diferenca = num2 - num1
-    obj.maiorNumero = maiorNumero
-    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
-    obj.diferenca = diferenca
-  } else {
-    maiorNumero = num1
-    maiorDivisivelPorMenor = true
-    diferenca = num1 - num2
-    obj.maiorNumero = maiorNumero
-    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
-    obj.diferenca = diferenca
+  num1>num2?maiorNumero=num1:maiorNumero=num2
+  num1%num2==0 || num2%num1==0?maiorDivisivelPorMenor=true:maiorDivisivelPorMenor=false
+  const diferenca=Math.abs(num2-num1)
+  const object={
+    'maiorNumero':maiorNumero,
+    'maiorDivisivelPorMenor':maiorDivisivelPorMenor,
+    'diferenca':diferenca
   }
-  return obj
+  return object
+  
 
 }
 
