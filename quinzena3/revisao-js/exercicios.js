@@ -216,7 +216,6 @@ function ordenaPorNome(consultasNome) {
     novoArray[consultasNome.length - 1] = ultimoPaciente
     consultasNome.splice(consultasNome.indexOf(ultimoPaciente), 1)
     ultimoPaciente = {nome: ""}
-    console.log(consultasNome.length)
   }
   return novoArray
 }
