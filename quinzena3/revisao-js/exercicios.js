@@ -238,13 +238,12 @@ return ordenarPorDataDaConsulta(consultasData)
 
 // EXERCÍCIO 20
 function calculaSaldo(contas) {
-  /*const precos = contas.map((item, index) => {
-    let soma = 0;
-    let itens = item.compras;
-    for (let i=0;i<itens.length;i++) {
-      soma += itens[i];
-    }
-    return soma;
-  });
-  return precos;*/
+  const sum = (x, y) => x + y
+const atualizarSaldo = contas => {
+  return contas.map(conta => ({
+    ...conta,
+    saldoTotal: conta.saldoTotal - conta.compras.reduce(sum, 0)
+  }))
+}
+return atualizarSaldo(contas)
 }
