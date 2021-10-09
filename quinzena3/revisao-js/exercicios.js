@@ -101,17 +101,20 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length; j++) {
-      if (array[j] > array[j + 1]) {
-        let tmp = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = tmp;
+  const arrayOrdenado=[]
+  
+  for (item of array) {
+    let contador=0
+    for (itemComparado of array) {
+      if (item>itemComparado) {
+        contador++
       }
     }
+    arrayOrdenado[contador]=item
   }
-
-  return array
+  
+  
+  return arrayOrdenado
 }
 
 // EXERCÍCIO 12
