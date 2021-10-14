@@ -2,52 +2,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="//db.onlinewebfonts.com/c/73fedd912ba11f583a359ce4c2e742ed?family=Ninja+Naruto" rel="stylesheet" type="text/css"/>
     <title>Adicionar Produto</title>
 </head>
-<body>
-    <div>
+<body background="img/thumb.png">
+    <div class="fundo">
+    <header>
+    <div class="titulo">
         <p>Otakulandia</p>
     </div>
     
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
+    <div class="menu">
+        <a href="index.html" id="inicio">Página Inicial</a>
+        <a href="ctrl-estoque.html" id="estoque">Controle de Estoque</a>
+        <a href="add-produto.html" id="produto">Adicionar Produto</a>
+        <a href="funcionarios.html" id="funcionario">Funcionários</a>
+        <a href="venda.html" id="venda">Vendas</a>
+        <a href="historico.html" id="historico">Histórico</a>
     </div>
-
+</header>
     
-    <h2>Adicionar Produto</h2>
+    <h2 style="text-align: center;">Adicionar Produto</h2>
     <form action="">
         <div>
-            <label for="link-foto">Link para foto: </label>
-            <input type="url" id="link-foto" name="link-foto">
-        </div>
+            <label for="link-foto">Link para foto: </label><br>
+            <input type="url" id="link-foto" name="link-foto" ><br>
+        </div><br>
         
         <div>
-            <label for="descricao">Descrição do produto: </label>
+            <label for="descricao">Descrição do produto: </label><br>
             <!-- Adicione o id apropriado para o input abaixo -->
-            <input type="text" id="descricao" name="descrição">
-        </div>
+            <input type="text" id="descricao" name="descrição"><br>
+        </div><br>
         
         <div>
-            <label for="preco">Preço (em R$): </label>
+            <label for="preco">Preço (em R$): </label><br>
             <!-- Adicione o id apropriado e o type para receber números abaixo -->
-            <input type="number" id="preco" name="preço">
-        </div>
+            <input type="number" id="preco" name="preço"><br>
+        </div><br>
         
         <div>
             <!-- Preencha as propriedades necessárias para os elementos abaixo -->
-            <label>Quantidade disponível: </label>
+            <label>Quantidade disponível: </label><br>
             <input type="number" id="qtd" name="quantidade">
         </div>
 
-        <div class="form-add">
+        <div class="form-add"><br>
             <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
             <button type="submit">Adicionar</button>
         </div>
 
     </form>
+</div>
+    <footer>
+        <div>
+            <p>Siga-nos nas redes sociais!</p>
+    
+            <div>
+                <img id="facebook" src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
+                <img id="instagram" src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
+                <img id="twitter" src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
