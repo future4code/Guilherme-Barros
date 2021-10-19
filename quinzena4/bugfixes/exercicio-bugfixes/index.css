@@ -107,6 +107,12 @@ table {
     margin-right: auto;
    
 }
+input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid;
+}
 td > img{
     max-width: 50px;
 }
