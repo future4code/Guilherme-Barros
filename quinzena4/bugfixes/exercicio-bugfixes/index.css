@@ -35,7 +35,6 @@ div>p:first-child {
 }
 
 
-
 .botao-amarelo {
     background-color: #ffaf43;
     width: 250px;
@@ -68,11 +67,14 @@ div>p:first-child {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 250px;
+    display: block;
+    padding-top: 150px;
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    padding-top: 5px;
+    padding-bottom: 150px;
+
 }
 
 #container-para-comprar {
@@ -86,11 +88,17 @@ div>p:first-child {
 }
 #container-para-comprar .botao-amarelo{
     position: absolute;
-    bottom: -380px;
+    bottom: -550px;
     right: 410px;
 }
 
-
+#container-para-comprar a{
+    display: block;
+    margin-top: 10px;
+}
+.lista-home {
+    list-style-type: decimal-leading-zero;
+}
 /**
   *
   *  ESTILOS COMPRAR 
@@ -106,13 +114,11 @@ table {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    
+    text-align: center;
    
 }
 input{
-    border-top: none;
-    border-left: none;
-    border-right: none;
+     border: none;
     border-bottom: 2px solid;
 }
 td > img{
@@ -124,6 +130,8 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container-do-search {
@@ -142,11 +150,25 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin-left:auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 150px;
 }
+
 
 #back-button:hover {
     background-color: #635a3d
 }
 td button:hover{
    background-color:  rgb(183 163 74);
+}
+#container-de-descricao>ol {
+    padding: 15px 10px;
+}
+.icone:hover{
+    opacity: 0.5;
+}
+.icone:active{
+    opacity: 1;
 }
