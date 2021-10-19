@@ -69,6 +69,7 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    padding-top: 250px;
 }
 
 #container-de-descricao>ol {
@@ -86,9 +87,10 @@ div img {
 }
 #container-para-comprar .botao-amarelo{
     position: absolute;
-    bottom: -150px;
+    bottom: -380px;
     right: 410px;
 }
+
 
 /**
   *
