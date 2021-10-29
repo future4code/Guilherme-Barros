@@ -79,7 +79,7 @@ width: 100%;
 		grid-template-columns: 1fr;
 	}
 }
-@media screen and (min-device-width: 75px) and (max-device-height:150px){
+@media only screen and (min-width: 360px) and (max-width: 767px) { 
 	.container{
 		grid-template-columns: 1fr;
 	}
