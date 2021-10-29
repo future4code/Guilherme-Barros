@@ -91,7 +91,7 @@
       }
       
       #water {
-      grid-column-start:span 3
+      grid-column-start:span 3;
 	grid-column-end: 6;
       }
 /*10*/
@@ -211,7 +211,7 @@
 /*20*/
 #garden {
 	display: grid;
-      grid-template-columns:50%
+      grid-template-columns:50%;
 	grid-template-rows: 20% 20% 20% 20% 20%;
       }
       
@@ -222,7 +222,7 @@
 /*21*/
 #garden {
 	display: grid;
-      grid-template-columns:repeat(8,12.5%)
+      grid-template-columns:repeat(8,12.5%);
 	grid-template-rows: 20% 20% 20% 20% 20%;
       }
       
@@ -239,7 +239,7 @@
 /*23*/
 #garden {
 	display: grid;
-      grid-template-columns:1fr 5fr
+      grid-template-columns:1fr 5fr;
 	grid-template-rows: 20% 20% 20% 20% 20%;
       }
 /*24*/
