@@ -3,6 +3,8 @@ import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import CardPequeno from './components/CardPequeno/CardPequeno';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+import EmailIcon  from './email.png'
+import LocationIcon from './location.png'
 
 function App() {
   return (
@@ -21,10 +23,10 @@ function App() {
         />
 
         <CardPequeno 
-            imagem="email.png"
+            imagem={EmailIcon}
            mail="guilhermeemail220@gmail.com"
        
-            imagem="location.png"
+            imagem2={LocationIcon}
             address="Rua Pierre Varney"/>
       </div>
 

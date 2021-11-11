@@ -24,7 +24,7 @@ export default function CardPequeno(props) {
 		    </LittleCard>
 		    <LittleCard>
 			<div>
-		<img src={ props.imagem } />
+		<img src={ props.imagem2 } />
 		
 		    <StrongLabel>Endereço:</StrongLabel>
 		    <label>{ props.address }</label>
