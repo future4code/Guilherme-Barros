@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {IconeComContador} from '../IconeComContador/IconeComContador'
+import { IconeComContador } from '../IconeComContador/IconeComContador'
 
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
-import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import { SecaoComentario } from '../SecaoComentario/SecaoComentario'
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -42,24 +42,29 @@ const PostPhoto = styled.img`
 
 class Post extends React.Component {
   state = {
-    curtido: false,
-    numeroCurtidas: 0,
-    comentando: false,
-    numeroComentarios: 0
+    
+    
+      curtido: false,
+      numeroCurtidas: 0,
+      comentando: false,
+      numeroComentarios: 0
+    
+   
+
   }
 
-  
+
 
   onClickCurtida = () => {
-    if(!this.state.curtido){
-    this.setState({curtido:true})
-    const numeroCurtidas = this.state.numeroCurtidas;
-    const novoValorCurtidas = numeroCurtidas + 1;
-    this.setState({numeroCurtidas: novoValorCurtidas})
-    }else{
-      this.setState({curtido:false})
-      const novoValorCurtidas =0;
-      this.setState({numeroCurtidas: novoValorCurtidas})
+    if (!this.state.curtido) {
+      this.setState({ curtido: true })
+      const numeroCurtidas = this.state.numeroCurtidas;
+      const novoValorCurtidas = numeroCurtidas + 1;
+      this.setState({ numeroCurtidas: novoValorCurtidas })
+    } else {
+      this.setState({ curtido: false })
+      const novoValorCurtidas = 0;
+      this.setState({ numeroCurtidas: novoValorCurtidas })
     }
   }
 
@@ -78,44 +83,48 @@ class Post extends React.Component {
   }
 
   render() {
+
     let iconeCurtida
 
-    if(this.state.curtido) {
+    if (this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
     }
 
-    let componenteComentario
+    let ComponenteComentario
 
-    if(this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
-     
+    if (this.state.comentando) {
+      ComponenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} />
+
     }
 
-    return <PostContainer>
-      <PostHeader>
-        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-        <p>{this.props.nomeUsuario}</p>
-      </PostHeader>
+   
+    return (
+      <PostContainer>
+          <PostHeader>
+            <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'} />
+            <p>{this.props.nomeUsuario}</p>
+          </PostHeader>
 
-      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
+          <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'} />
 
-      <PostFooter>
-        <IconeComContador
-          icone={iconeCurtida}
-          onClickIcone={this.onClickCurtida}
-          valorContador={this.state.numeroCurtidas}
-        />
+          <PostFooter>
+            <IconeComContador
+              icone={iconeCurtida}
+              onClickIcone={this.onClickCurtida}
+              valorContador={this.state.numeroCurtidas}
+            />
 
-        <IconeComContador
-          icone={iconeComentario}
-          onClickIcone={this.onClickComentario}
-          valorContador={this.state.numeroComentarios}
-        />
-      </PostFooter>
-      {componenteComentario}
-    </PostContainer>
+            <IconeComContador
+              icone={iconeComentario}
+              onClickIcone={this.onClickComentario}
+              valorContador={this.state.numeroComentarios}
+            />
+          </PostFooter>
+          {ComponenteComentario}
+        </PostContainer>
+        )
   }
 }
 
