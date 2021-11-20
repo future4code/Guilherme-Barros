@@ -41,19 +41,12 @@ const PostPhoto = styled.img`
 `
 
 class Post extends React.Component {
-  state = {
-    
-    
+  state = { 
       curtido: false,
       numeroCurtidas: 0,
       comentando: false,
       numeroComentarios: 0
-    
-   
-
   }
-
-
 
   onClickCurtida = () => {
     if (!this.state.curtido) {
@@ -67,7 +60,6 @@ class Post extends React.Component {
       this.setState({ numeroCurtidas: novoValorCurtidas })
     }
   }
-
 
   onClickComentario = () => {
     this.setState({
