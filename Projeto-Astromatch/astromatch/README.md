@@ -1,7 +1,20 @@
 ### AstroMatch
 
+Site de relacionamento baseado no Tinder.
+
+### Tecnologias
+- HTML5
+- JavaScript
+- CSS com Styled-Components
+- ReactJS
+- Hooks (useEffect e useState)
+- Integração com API
+
 ### O que funciona
-- Todas as requisições funcionando.
+- Realiza a requisição de todos os perfis da API disponibilizada;
+- Realiza o POST do perfil escolhido (match);
+- Visualizar lista de matches;
+- Limpa lista de matches.
 
 ### Link Surge 
 (https://astro-match-guilherme.surge.sh/)
