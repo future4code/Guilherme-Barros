@@ -14,7 +14,7 @@ Site de relacionamento baseado no Tinder.
 - Realiza a requisição de todos os perfis da API disponibilizada;
 - Realiza o POST do perfil escolhido (match);
 - Visualizar lista de matches;
-- Limpa lista de matches.
+- Limpa lista de matches e swipes (perfis mostrados).
 
 ### Link Surge 
 (https://astro-match-guilherme.surge.sh/)
