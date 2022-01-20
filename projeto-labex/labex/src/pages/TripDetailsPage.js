@@ -1,12 +1,11 @@
-import './App.css';
+import { Text } from '@chakra-ui/react';
+
 
 function TripDetailsPage() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-       
-      </header>
+    <div >
+      <Text>Colônia Lunar</Text>
+      <Text>Detalhes da Viagem</Text>
     </div>
   );
 }
