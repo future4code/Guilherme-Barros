@@ -1,7 +1,9 @@
 import { Box, Text, Flex, Spacer } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 function Header() {
   const history = useHistory();
+  useProtectedPage();
   const goToLoginPage = () => {
     history.push("/login");
   };
@@ -12,6 +14,11 @@ function Header() {
   const goToHomePage=()=>{
     history.push('/')
   }
+  const goToListAdminPage=()=>{
+   
+    history.push('/admin/trips/list')
+  }
+  
   return (
     <Flex bg="black" w="100%" p={4} color="white">
       <Text fontSize="5xl" p="0.1em" ml="20px" onClick={goToHomePage} cursor='pointer'>
@@ -40,10 +47,25 @@ function Header() {
             ml="20px"
             mr="20px"
             mt="0.7em"
+            onClick={goToListAdminPage}
+          >
+            Home
+          </Text>
+          <Text fontSize="2xl" p="0.2em" ml="20px" mt="0.7em">
+            |
+          </Text>
+          <Text
+            fontSize="2xl"
+            cursor="pointer"
+            p="0.2em"
+            ml="20px"
+            mr="20px"
+            mt="0.7em"
             onClick={goToListTripsPage}
           >
             Viagens
           </Text>
+          
         </Flex>
       </Box>
     </Flex>

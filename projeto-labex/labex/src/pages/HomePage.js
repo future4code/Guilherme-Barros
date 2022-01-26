@@ -3,11 +3,28 @@ import { Box, Text, Flex, Spacer } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
 import Highlights from "../component/Highlights";
+import { url } from "../constants";
+import useRequestData from "../hooks/useRequestData";
 function HomePage() {
+  const [tripsData, isLoading, errorRequest] = useRequestData(
+    `${url}/trips`,
+    {}
+  );
   const history = useHistory();
   const goToListTripsPage = () => {
     history.push("/trips");
   };
+  const high =
+    tripsData &&
+    tripsData.trips &&
+    tripsData.trips.map((trip) => {
+      return (
+        <>
+          <Highlights key={trip.id} name={trip.name} data={trip.date} />
+          <Spacer p="0.3em" />
+        </>
+      );
+    });
   return (
     <>
       <Flex color="white">
@@ -43,12 +60,7 @@ function HomePage() {
             mt="2rem"
           >
             DESTAQUES
-            <Spacer mb="0.5rem" />
-            <Highlights />
-            <Spacer mb="3rem" />
-            <Highlights />
-            <Spacer mb="3rem" />
-            <Highlights />
+            {high}
           </Box>
         </Flex>
       </Flex>

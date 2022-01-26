@@ -1,76 +1,68 @@
-import {
-  Box,
-  Text,
-  Flex,
-  Spacer,
-  Input,
-  Select,
-  Textarea,
-  Button,
-} from "@chakra-ui/react";
-import Highlights from "../component/Highlights";
+import { Flex, Select, Center, Grid } from "@chakra-ui/react";
+import { useState } from "react";
+import Trip from "../component/Trip";
+import { url } from "../constants";
+import useRequestData from "../hooks/useRequestData";
 
 function ListTripsPage() {
+  const [tripsData, isLoading, errorRequest] = useRequestData(
+    `${url}/trips`,
+    {
+      auth: localStorage.getItem("token")
+  }
+  );
+  
+  const lista =
+    tripsData &&
+    tripsData.trips &&
+    tripsData.trips.map((trip) => {
+      return (
+        <Trip
+          description={trip.description}
+          key={trip.id}
+          name={trip.name}
+          data={trip.date}
+          id={trip.id}
+        />
+      );
+    });
+
   return (
-    <div >
+    <div>
       <Flex>
-        
-       <Text ml='1rem'>Valor Máximo:</Text>
-      <Input
+        <Select
           type="text"
           size="md"
           m="1rem"
           w="20rem"
-          p="1em"
           borderColor="purple"
           focusBorderColor="purple.400"
-        />
-        
-        <Text>Destino:</Text>
-      <Input
-          type="text"
-          size="md"
-          m="1rem"
-          w="20rem"
-          p="1em"
-          borderColor="purple"
-          focusBorderColor="purple.400"
-        />
-        <Text>Valor Mínimo:</Text>
-      <Input
-          type="text"
-          size="md"
-          m="1rem"
-          w="20rem"
-          p="1em"
-          borderColor="purple"
-          focusBorderColor="purple.400"
-        />
-        <Text>Ordenar:</Text>
-      <Select
-          type="text"
-          size="md"
-          m="1rem"
-          w="20rem"
-     
-          borderColor="purple"
-          focusBorderColor="purple.400"
+          placeholder="Destino"
         >
-          <option value="Brasil">Brasil</option>
-          <option value="Estados Unidos">Estados Unidos</option>
-          <option value="Canadá">Canadá</option> 
+          <option>Marte</option>
+          <option>Lua</option>
+          <option>Saturno</option>
+          <option>Vênus</option>
         </Select>
-        </Flex>
-        <Flex w='auto' p='1em'>
-        <Highlights/>
-        <Spacer  ml='1em'/>
-        <Highlights/>
-        </Flex>
-        <Flex  p='1em' >
-        <Highlights/>
-        <Spacer  ml='1em'/>
-        <Highlights />
-        </Flex>
+
+        <Select
+          type="text"
+          size="md"
+          m="1rem"
+          w="20rem"
+          borderColor="purple"
+          focusBorderColor="purple.400"
+          placeholder="Ordenar por"
+        >
+          <option value="Destino">Destino</option>
+          <option value="Duracao">Duração (dias)</option>
+        </Select>
+      </Flex>
+      <Center>
+        <Grid templateColumns="1fr 1fr 1fr" gap={6} m="1rem">
+          {lista}
+        </Grid>
+      </Center>
     </div>
   );
 }

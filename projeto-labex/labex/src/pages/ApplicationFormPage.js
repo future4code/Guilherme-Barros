@@ -8,16 +8,40 @@ import {
   Textarea,
   Button,
 } from "@chakra-ui/react";
+import { useHistory, useParams } from "react-router-dom";
+import { url } from "../constants";
+import useRequestData from "../hooks/useRequestData";
+import { httpClient} from "../constants";
 
 function ApplicationFormPage() {
+  const params = useParams();
+  const history = useHistory();
+
+  const [trip, isLoadingTrip, errorTrip] = useRequestData(
+    `${url}/trip/${params.trip}`,
+    {
+      auth: localStorage.getItem("token")
+  }
+  );
+ const createTrip=()=>{
+  {/** httpClient.post(`trips/${tripId}/apply`)
+   .then(({data})=>{
+      setTrip(data.trip)
+   }).catch((err)=>{
+      console.log(err)
+   })*/} 
+ }
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <>
-    <Flex justify='center' direction='column' align='center' minH='100vh'>
-      <Text color="purple" fontWeight="600" fontSize="5xl" m='1em'>
-        Incrição para Colônia Lunar
-      </Text>
-      
-    
+      <Flex justify="center" direction="column" align="center" minH="100vh">
+        <Text color="purple" fontWeight="600" fontSize="5xl" m="1em">
+          {trip && trip.name && trip.name}
+        </Text>
+
         <Input
           type="text"
           placeholder="Nome"
@@ -27,6 +51,8 @@ function ApplicationFormPage() {
           p="1em"
           borderColor="purple"
           focusBorderColor="purple.400"
+          autoFocus
+          autoComplete="nome"
         />
         <Input
           type="number"
@@ -71,8 +97,12 @@ function ApplicationFormPage() {
           focusBorderColor="purple.400"
         />
         <Flex>
-        <Button colorScheme='purple' m='2rem'>Voltar</Button>
-        <Button type="submit" colorScheme='purple' m='2rem' >Enviar</Button>
+          <Button colorScheme="purple" m="2rem" onClick={goBack}>
+            Voltar
+          </Button>
+          <Button type="submit" colorScheme="purple" m="2rem" onClick={createTrip}>
+            Enviar
+          </Button>
         </Flex>
       </Flex>
     </>
