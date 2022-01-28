@@ -9,37 +9,36 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useHistory, useParams } from "react-router-dom";
-import { url } from "../constants";
-import useRequestData from "../hooks/useRequestData";
 import { httpClient} from "../constants";
+import useForm from "../hooks/useForm";
+
 
 function ApplicationFormPage() {
   const params = useParams();
   const history = useHistory();
-
-  const [trip, isLoadingTrip, errorTrip] = useRequestData(
-    `${url}/trip/${params.trip}`,
-    {
-      auth: localStorage.getItem("token")
-  }
-  );
- const createTrip=()=>{
-  {/** httpClient.post(`trips/${tripId}/apply`)
+  const {form,onChange, cleanFields}=useForm({name:'',age:'',profession:'',country:'',applicationText:''})
+ 
+ const applyToTrip=(e)=>{
+   e.preventDefault();
+   httpClient.post(`/trips/${params.trip}/apply`,form)
    .then(({data})=>{
-      setTrip(data.trip)
+     alert("Inscrito para a viagem")
+     
    }).catch((err)=>{
       console.log(err)
-   })*/} 
+   })
+   cleanFields()
  }
+
   const goBack = () => {
     history.goBack();
   };
 
   return (
-    <>
+    <form onSubmit={applyToTrip}>
       <Flex justify="center" direction="column" align="center" minH="100vh">
         <Text color="purple" fontWeight="600" fontSize="5xl" m="1em">
-          {trip && trip.name && trip.name}
+          Inscrição para a Viagem selecionada
         </Text>
 
         <Input
@@ -49,10 +48,14 @@ function ApplicationFormPage() {
           m="1rem"
           w="30rem"
           p="1em"
+          name="name"
           borderColor="purple"
           focusBorderColor="purple.400"
           autoFocus
           autoComplete="nome"
+          onChange={onChange}
+          value={form.name}
+          required
         />
         <Input
           type="number"
@@ -62,7 +65,11 @@ function ApplicationFormPage() {
           w="30rem"
           p="1em"
           borderColor="purple"
+          name="age"
           focusBorderColor="purple.400"
+          onChange={onChange}
+          value={form.age}
+          required
         />
         <Input
           type="text"
@@ -71,8 +78,12 @@ function ApplicationFormPage() {
           m="1rem"
           w="30rem"
           p="1em"
+          name="profession"
+          value={form.profession}
           borderColor="purple"
+          onChange={onChange}
           focusBorderColor="purple.400"
+          required
         />
         <Select
           type="text"
@@ -81,7 +92,11 @@ function ApplicationFormPage() {
           m="1rem"
           w="30rem"
           borderColor="purple"
+          name="country"
+          value={form.country}
+          onChange={onChange}
           focusBorderColor="purple.400"
+          required
         >
           <option value="Brasil">Brasil</option>
           <option value="Estados Unidos">Estados Unidos</option>
@@ -94,18 +109,22 @@ function ApplicationFormPage() {
           m="1rem"
           w="30rem"
           borderColor="purple"
+          name="applicationText"
+          value={form.applicationText}
+          onChange={onChange}
           focusBorderColor="purple.400"
+          required
         />
         <Flex>
           <Button colorScheme="purple" m="2rem" onClick={goBack}>
             Voltar
           </Button>
-          <Button type="submit" colorScheme="purple" m="2rem" onClick={createTrip}>
+          <Button type="submit" colorScheme="purple" m="2rem">
             Enviar
           </Button>
         </Flex>
       </Flex>
-    </>
+    </form>
   );
 }
 

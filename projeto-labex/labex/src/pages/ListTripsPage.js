@@ -1,5 +1,4 @@
 import { Flex, Select, Center, Grid } from "@chakra-ui/react";
-import { useState } from "react";
 import Trip from "../component/Trip";
 import { url } from "../constants";
 import useRequestData from "../hooks/useRequestData";
@@ -11,7 +10,6 @@ function ListTripsPage() {
       auth: localStorage.getItem("token")
   }
   );
-  
   const lista =
     tripsData &&
     tripsData.trips &&
@@ -25,7 +23,9 @@ function ListTripsPage() {
           id={trip.id}
         />
       );
+      console.log(tripsData);
     });
+
 
   return (
     <div>
@@ -39,10 +39,15 @@ function ListTripsPage() {
           focusBorderColor="purple.400"
           placeholder="Destino"
         >
-          <option>Marte</option>
-          <option>Lua</option>
-          <option>Saturno</option>
-          <option>Vênus</option>
+          <option value="Saturno">Saturno</option>
+          <option value="Netuno">Netuno</option>
+          <option value="Urano">Urano</option>
+          <option value="Terra">Terra</option>
+          <option value="Marte">Marte</option>
+          <option value="Júpiter">Júpiter</option>
+          <option value="Vênus">Vênus</option>
+          <option value="Mercúrio">Mercúrio</option>
+          <option value="Plutão">Plutão</option>
         </Select>
 
         <Select
@@ -61,6 +66,7 @@ function ListTripsPage() {
       <Center>
         <Grid templateColumns="1fr 1fr 1fr" gap={6} m="1rem">
           {lista}
+         
         </Grid>
       </Center>
     </div>

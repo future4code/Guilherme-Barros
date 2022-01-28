@@ -9,30 +9,20 @@ import {
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import "../App.css";
-import { useState } from "react";
 import { httpClient } from "../constants";
+import useForm from "../hooks/useForm";
 function LoginPage() {
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {form,onChange, cleanFields}=useForm({email:'',password:''})
   const goBack = () => {
     history.push("/");
   };
-
-  const onChangeEmail = ({ target }) => {
-    setEmail(target.value);
-  };
-  const onChangePassword = ({ target }) => {
-    setPassword(target.value);
-  };
+  
   const onSubmitLogin = (e) => {
     e.preventDefault();
 
     httpClient
-      .post("/login", {
-        email,
-        password,
-      })
+      .post("/login", form)
       .then(({ data }) => {
         localStorage.setItem("token", data.token);
         history.push("/admin/trips/list");
@@ -41,8 +31,10 @@ function LoginPage() {
       .catch((err) => {
         console.log(err);
       });
+      cleanFields()
   };
   return (
+    <form onSubmit={onSubmitLogin}>
     <Flex
       justify="center"
       direction="column"
@@ -50,6 +42,7 @@ function LoginPage() {
       minH="100vh"
       onSubmit={onSubmitLogin}
     >
+      
       <Text fontSize="4xl" color="purple.600" fontWeight="700" mb="2rem">
         Login
       </Text>
@@ -61,12 +54,15 @@ function LoginPage() {
         m="1rem"
         w="30rem"
         p="1em"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+      name="email"
         borderColor="purple"
         focusBorderColor="purple.400"
         autoFocus
         autoComplete="email"
-        value={email}
-        onChange={onChangeEmail}
+        value={form.email}
+        onChange={onChange}
+        required
       />
 
       <Input
@@ -78,8 +74,12 @@ function LoginPage() {
         p="1em"
         borderColor="purple"
         focusBorderColor="purple.400"
-        value={password}
-        onChange={onChangePassword}
+        value={form.password}
+        name="password"
+        onChange={onChange}
+       required
+       pattern="^.{6,}"
+       title="Senha deve possuir ao menos 6 caracteres"
       />
       <Flex justify="center" align="center">
         <Button
@@ -93,14 +93,16 @@ function LoginPage() {
         </Button>
         <Button
           type="submit"
-          onClick={onSubmitLogin}
           colorScheme="purple"
           m="2rem"
         >
           Entrar
         </Button>
+      
       </Flex>
+      
     </Flex>
+    </form>
   );
 }
 

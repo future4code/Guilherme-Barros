@@ -1,15 +1,28 @@
 import { Button, Flex, Input, Select, Text, Textarea } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { httpClient } from "../constants";
+import useForm from "../hooks/useForm";
 import { useProtectedPage } from "../hooks/useProtectedPage";
 
 function CreateTripPage() {
   const history = useHistory();
+  const {form,onChange, cleanFields}=useForm({name:'',planet:'',date:'',durationInDays:0,description:''})
   const goBack = () => {
     history.goBack();
   };
+  const createTrip=(e)=>{
+    e.preventDefault()
+    httpClient.post(`/trips`,form)
+     .then(({data})=>{
+        alert('Viagem criada!')
+     }).catch((err)=>{
+        console.log(err)
+     })
+     cleanFields()
+   }
   useProtectedPage();
   return (
-    <>
+    <form onSubmit={createTrip}>
       <Flex justify="center" direction="column" align="center" minH="100vh">
         <Text fontSize="5xl" fontWeight="700" color="purple.600">Criar Viagem</Text>
         <Input
@@ -19,6 +32,9 @@ function CreateTripPage() {
           m="1rem"
           w="30rem"
           p="1em"
+          name="name"
+          value={form.name}
+          onChange={onChange}
           borderColor="purple"
           focusBorderColor="purple.400"
           autoFocus
@@ -31,8 +47,10 @@ function CreateTripPage() {
           m="1rem"
           w="30rem"
           borderColor="purple"
+          name="planet"
+          value={form.planet}
+          onChange={onChange}
           focusBorderColor="purple.400"
-          autoFocus
           autoComplete="nome"
           required
         >
@@ -54,6 +72,9 @@ function CreateTripPage() {
           m="1rem"
           w="30rem"
           p="1em"
+          name="date"
+          value={form.date}
+          onChange={onChange}
           borderColor="purple"
           focusBorderColor="purple.400"
           autoFocus
@@ -67,6 +88,10 @@ function CreateTripPage() {
           w="30rem"
           p="1em"
           borderColor="purple"
+          name="durationInDays"
+          value={form.durationInDays}
+          onChange={onChange}
+          borderColor="purple"
           focusBorderColor="purple.400"
           autoFocus
           autoComplete="nome"
@@ -77,6 +102,10 @@ function CreateTripPage() {
           size="md"
           m="1rem"
           w="30rem"
+          borderColor="purple"
+          name="description"
+          value={form.description}
+          onChange={onChange}
           borderColor="purple"
           focusBorderColor="purple.400"
           required
@@ -90,7 +119,7 @@ function CreateTripPage() {
           </Button>
         </Flex>
       </Flex>
-    </>
+    </form>
   );
 }
 

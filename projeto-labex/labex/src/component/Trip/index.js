@@ -28,7 +28,7 @@ function Trip(props) {
 	
         <Text fontSize='1.5rem'>
 
-        Description:{props.description}
+        Descrição:{props.description}
         </Text>
         <Center  pt="1em">
           <Button colorScheme="purple" onClick={()=>goToApplicationFormPage(props.id)}>Inscreva-se</Button>

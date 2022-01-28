@@ -1,5 +1,10 @@
 import { Box, Text, Spacer, Button, Center, Grid } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 function Highlights(props) {
+  const history=useHistory()
+  const goToListTripsPage = () => {
+    history.push("/trips");
+  };
   return (
     <Grid gap={5} >
    
@@ -20,7 +25,7 @@ function Highlights(props) {
         <Spacer />
 
         <Center pt="0.5em">
-          <Button colorScheme="purple">Saiba Mais</Button>
+          <Button colorScheme="purple" onClick={goToListTripsPage}>Saiba Mais</Button>
         </Center>
       </Box>
       
