@@ -6,25 +6,35 @@ import { useProtectedPage } from "../hooks/useProtectedPage";
 
 function CreateTripPage() {
   const history = useHistory();
-  const {form,onChange, cleanFields}=useForm({name:'',planet:'',date:'',durationInDays:0,description:''})
+  const { form, onChange, cleanFields } = useForm({
+    name: "",
+    planet: "",
+    date: "",
+    durationInDays: 0,
+    description: "",
+  });
   const goBack = () => {
     history.goBack();
   };
-  const createTrip=(e)=>{
-    e.preventDefault()
-    httpClient.post(`/trips`,form)
-     .then(({data})=>{
-        alert('Viagem criada!')
-     }).catch((err)=>{
-        console.log(err)
-     })
-     cleanFields()
-   }
+  const createTrip = (e) => {
+    e.preventDefault();
+    httpClient
+      .post(`/trips`, form)
+      .then(({ data }) => {
+        alert("Viagem criada!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    cleanFields();
+  };
   useProtectedPage();
   return (
     <form onSubmit={createTrip}>
       <Flex justify="center" direction="column" align="center" minH="100vh">
-        <Text fontSize="5xl" fontWeight="700" color="purple.600">Criar Viagem</Text>
+        <Text fontSize="5xl" fontWeight="700" color="purple.600">
+          Criar Viagem
+        </Text>
         <Input
           type="text"
           placeholder="Nome"
@@ -35,8 +45,8 @@ function CreateTripPage() {
           name="name"
           value={form.name}
           onChange={onChange}
-          borderColor="purple"
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           autoFocus
           autoComplete="nome"
         />
@@ -46,11 +56,11 @@ function CreateTripPage() {
           size="md"
           m="1rem"
           w="30rem"
-          borderColor="purple"
           name="planet"
           value={form.planet}
           onChange={onChange}
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           autoComplete="nome"
           required
         >
@@ -75,8 +85,8 @@ function CreateTripPage() {
           name="date"
           value={form.date}
           onChange={onChange}
-          borderColor="purple"
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           autoFocus
           autoComplete="nome"
         />
@@ -87,12 +97,11 @@ function CreateTripPage() {
           m="1rem"
           w="30rem"
           p="1em"
-          borderColor="purple"
           name="durationInDays"
           value={form.durationInDays}
           onChange={onChange}
-          borderColor="purple"
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           autoFocus
           autoComplete="nome"
           required
@@ -102,12 +111,11 @@ function CreateTripPage() {
           size="md"
           m="1rem"
           w="30rem"
-          borderColor="purple"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           name="description"
           value={form.description}
           onChange={onChange}
-          borderColor="purple"
-          focusBorderColor="purple.400"
           required
         />
         <Flex>

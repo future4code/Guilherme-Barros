@@ -21,7 +21,7 @@ function Header() {
   
   return (
     <Flex bg="black" w="100%" p={4} color="white">
-      <Text fontSize="5xl" p="0.1em" ml="20px" onClick={goToHomePage} cursor='pointer'>
+      <Text fontSize="5xl" p="0.1em" ml="20px" onClick={goToHomePage} cursor='pointer'  _hover={{color:'purple.500'}}>
         LabeX
       </Text>
       <Spacer />
@@ -32,8 +32,10 @@ function Header() {
             fontSize="2xl"
             p="0.2em"
             ml="20px"
+            mr="20px"
             mt="0.7em"
             onClick={goToLoginPage}
+            _hover={{color:'purple.500'}}
           >
             Login
           </Text>
@@ -44,10 +46,11 @@ function Header() {
             fontSize="2xl"
             cursor="pointer"
             p="0.2em"
-            ml="20px"
+            ml="40px"
             mr="20px"
             mt="0.7em"
             onClick={goToListAdminPage}
+            _hover={{color:'purple.500'}}
           >
             Home
           </Text>
@@ -58,10 +61,11 @@ function Header() {
             fontSize="2xl"
             cursor="pointer"
             p="0.2em"
-            ml="20px"
+            ml="40px"
             mr="20px"
             mt="0.7em"
             onClick={goToListTripsPage}
+            _hover={{color:'purple.500'}}
           >
             Viagens
           </Text>

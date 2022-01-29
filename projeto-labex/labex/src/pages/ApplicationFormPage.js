@@ -1,39 +1,50 @@
 import {
   Text,
   Flex,
-  Spacer,
-  FormControl,
   Input,
   Select,
   Textarea,
   Button,
 } from "@chakra-ui/react";
 import { useHistory, useParams } from "react-router-dom";
-import { httpClient} from "../constants";
+import { countriesUrl, headers, httpClient } from "../constants";
 import useForm from "../hooks/useForm";
-
+import useRequestData from "../hooks/useRequestData";
 
 function ApplicationFormPage() {
   const params = useParams();
   const history = useHistory();
-  const {form,onChange, cleanFields}=useForm({name:'',age:'',profession:'',country:'',applicationText:''})
- 
- const applyToTrip=(e)=>{
-   e.preventDefault();
-   httpClient.post(`/trips/${params.trip}/apply`,form)
-   .then(({data})=>{
-     alert("Inscrito para a viagem")
-     
-   }).catch((err)=>{
-      console.log(err)
-   })
-   cleanFields()
- }
+  const [countries, isLoadingCountries, errorCountries] = useRequestData(`${countriesUrl}/${params.tripId}`, headers);
+  const { form, onChange, cleanFields } = useForm({
+    name: "",
+    age: "",
+    profession: "",
+    country: "",
+    applicationText: "",
+  });
+
+  const applyToTrip = (e) => {
+    e.preventDefault();
+    httpClient
+      .post(`/trips/${params.trip}/apply`, form)
+      .then(({ data }) => {
+        alert("Inscrito para a viagem");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    cleanFields();
+  };
 
   const goBack = () => {
     history.goBack();
   };
+const paises=countries && countries.map((pais,index)=>{
+  return (<>
+ <option key={index} value={pais.nome.abreviado}>{pais.nome.abreviado}</option>
 
+  </>)
+})
   return (
     <form onSubmit={applyToTrip}>
       <Flex justify="center" direction="column" align="center" minH="100vh">
@@ -49,8 +60,8 @@ function ApplicationFormPage() {
           w="30rem"
           p="1em"
           name="name"
-          borderColor="purple"
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           autoFocus
           autoComplete="nome"
           onChange={onChange}
@@ -64,9 +75,9 @@ function ApplicationFormPage() {
           m="1rem"
           w="30rem"
           p="1em"
-          borderColor="purple"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           name="age"
-          focusBorderColor="purple.400"
           onChange={onChange}
           value={form.age}
           required
@@ -80,9 +91,9 @@ function ApplicationFormPage() {
           p="1em"
           name="profession"
           value={form.profession}
-          borderColor="purple"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           onChange={onChange}
-          focusBorderColor="purple.400"
           required
         />
         <Select
@@ -91,16 +102,14 @@ function ApplicationFormPage() {
           size="md"
           m="1rem"
           w="30rem"
-          borderColor="purple"
           name="country"
           value={form.country}
           onChange={onChange}
-          focusBorderColor="purple.400"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           required
         >
-          <option value="Brasil">Brasil</option>
-          <option value="Estados Unidos">Estados Unidos</option>
-          <option value="Canadá">Canadá</option>
+         {paises}
         </Select>
         <Textarea
           type="text"
@@ -108,11 +117,11 @@ function ApplicationFormPage() {
           size="md"
           m="1rem"
           w="30rem"
-          borderColor="purple"
+          borderColor="purple.400"
+          focusBorderColor="purple.500"
           name="applicationText"
           value={form.applicationText}
           onChange={onChange}
-          focusBorderColor="purple.400"
           required
         />
         <Flex>

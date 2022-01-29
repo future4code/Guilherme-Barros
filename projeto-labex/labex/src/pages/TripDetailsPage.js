@@ -30,7 +30,6 @@ function TripDetailsPage() {
         setIsLoading(false);
         setTripDetails(data.trip);
        setCandidates(data.trip.candidates)
-        console.log(data.trip);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -82,11 +81,11 @@ function TripDetailsPage() {
       minH="80vh"
       key={tripDetails.id}
     >
-      <Text fontSize="4xl" fontWeight="700" color="purple.600">
+      <Text fontSize="4xl" fontWeight="700" color="purple.600" mt={5}>
         {isLoading ? (
-          <p>Carregando...</p>
+          <Text>Carregando...</Text>
         ) : error ? (
-          <p>Houve um erro</p>
+          <Text>Houve um erro</Text>
         ) : (
           tripDetails.name
         )}
@@ -106,9 +105,9 @@ function TripDetailsPage() {
             Descrição:
           </Text>
           {isLoading ? (
-            <p>Carregando...</p>
+            <Text mt={3} fontSize="2xl">Carregando...</Text>
           ) : error ? (
-            <p>Houve um erro</p>
+            <Text mt={3} fontSize="2xl">Houve um erro</Text>
           ) : (
             tripDetails.description
           )}
@@ -116,9 +115,9 @@ function TripDetailsPage() {
         <Text m="0.7em" fontSize="2xl">
           Planeta/Satélite:{" "}
           {isLoading ? (
-            <p>Carregando...</p>
+            <Text mt={3} fontSize="2xl">Carregando...</Text>
           ) : error ? (
-            <p>Houve um erro</p>
+            <Text mt={3} fontSize="2xl">Houve um erro</Text>
           ) : (
             tripDetails.planet
           )}
@@ -126,9 +125,9 @@ function TripDetailsPage() {
         <Text m="0.7em" fontSize="2xl">
           Data de início:{" "}
           {isLoading ? (
-            <p>Carregando...</p>
+            <Text mt={3} fontSize="2xl">Carregando...</Text>
           ) : error ? (
-            <p>Houve um erro</p>
+            <Text mt={3} fontSize="2xl">Houve um erro</Text>
           ) : (
             tripDetails.date
           )}
@@ -136,24 +135,24 @@ function TripDetailsPage() {
         <Text m="0.7em" fontSize="2xl">
           Duração (dias):{" "}
           {isLoading ? (
-            <p>Carregando...</p>
+            <Text mt={3} fontSize="2xl">Carregando...</Text>
           ) : error ? (
-            <p>Houve um erro</p>
+            <Text mt={3} fontSize="2xl">Houve um erro</Text>
           ) : (
             tripDetails.durationInDays
           )}
         </Text>
       </Box>
-      <Text fontSize="3xl" fontWeight="500">
+      <Text fontSize="3xl" fontWeight="500" mt={5}>
         Candidaturas Pendentes
       </Text>
 
       {isLoading ? (
-        <p>Carregando...</p>
+        <Text mt={3} fontSize="2xl">Carregando...</Text>
       ) : error ? (
-        <p>Houve um erro</p>
-      ) : candidatos.length == 0 ? (
-        <p>Sem candidatos</p>
+        <Text mt={3} fontSize="2xl">Houve um erro</Text>
+      ) : candidatos.length === 0 ? (
+        <Text m={3} fontSize="2xl">Sem candidatos pendentes</Text>
       ) : (
         candidatos
       )}
@@ -162,13 +161,13 @@ function TripDetailsPage() {
         Candidaturas Aprovadas
       </Text>
       {isLoading ? (
-        <p>Carregando...</p>
+        <Text mt={3} fontSize="2xl">Carregando...</Text>
       ) : error ? (
-        <p>Houve um erro</p>
-      ) : candidatosAprovados.length == 0 ? (
-        <p>Sem candidatos aprovados</p>
+        <Text mt={3} fontSize="2xl">Houve um erro</Text>
+      ) : candidatosAprovados.length === 0 ? (
+        <Text mt={3} fontSize="2xl">Sem candidatos aprovados</Text>
       ) : (candidatosAprovados)}
-      <Button onClick={goToListAdminPage} colorScheme="purple" m="2rem">
+      <Button onClick={goToListAdminPage} colorScheme="purple" m="1rem">
         Voltar
       </Button>
     </Flex>

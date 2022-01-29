@@ -4,23 +4,28 @@ import { httpClient } from "../constants";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
+import TripCard from "../component/TripCard";
 function AdminHomePage() {
-
   const [trips, setTrips] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useProtectedPage();
   const history = useHistory();
   useEffect(() => {
     getTrips();
   }, [trips]);
   const getTrips = () => {
+    setIsLoading(true);
     httpClient
       .get(`/trips`)
       .then(({ data }) => {
         setTrips(data.trips);
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false)
       });
+    setIsLoading(false);
   };
   const deleteTrip = async (tripId) => {
     await httpClient
@@ -48,39 +53,12 @@ function AdminHomePage() {
   const tripList = trips.map((trip) => {
     return (
       <Flex justify="center" key={trip.id}>
-        <Box
-          bg="white"
-          w="auto"
-          p={4}
-          border="1px solid purple"
-          mb={10}
-          borderRadius="15"
-          cursor={"pointer"}
-          _hover={{ bg: "gray.200" }}
-        >
-          <Grid
-            justify="center"
-            templateColumns="21em 1fr"
-            templateRows={"1fr"}
-          >
-            <Text
-              fontSize="3xl"
-              fontWeight="700"
-              onClick={() => goToDetailsPage(trip.id)}
-            >
-              {trip.name}
-            </Text>
-            <DeleteIcon
-              fontSize="3xl"
-              color="purple"
-              mt={10}
-              onClick={() => deleteTrip(trip.id)}
-            />
-            <Text fontSize="2xl" color="purple.700">
-              {trip.date}
-            </Text>
-          </Grid>
-        </Box>
+      <TripCard 
+      name={trip.name}
+      data={trip.date}
+      goToDetailsPage={goToDetailsPage}
+      deleteTrip={deleteTrip}
+      id={trip.id}/>
       </Flex>
     );
   });
@@ -102,7 +80,8 @@ function AdminHomePage() {
           </Button>
         </Flex>
       </Flex>
-      {tripList}
+      {isLoading && <p>Carregando...</p>}
+      {!isLoading && tripList}
     </>
   );
 }
