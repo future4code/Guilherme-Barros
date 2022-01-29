@@ -2,6 +2,8 @@ import { DeleteIcon } from "@chakra-ui/icons"
 import { Box, Grid, Text } from "@chakra-ui/react"
 
 const TripCard=(props)=>{
+	let data=new Date(props.data)
+  const dataFormatada=data.toLocaleDateString('pt-BR',{timeZone:'UTC'})
 	return (
 		<Box
 		bg="white"
@@ -12,18 +14,18 @@ const TripCard=(props)=>{
 		mb={10}
 		borderRadius="15"
 		cursor={"pointer"}
-		_hover={{ bg: "gray.200", borderColor: "purple.500" }}
-		onClick={() => props.goToDetailsPage(props.id)}
+		_hover={{ bg: "gray.200", border: "2px solid", borderColor:'purple.500' }}
+		
 	      >
 		<Grid
 		  justify="center"
 		  templateColumns="21em 1fr"
 		  templateRows={"1fr"}
 		>
-		  <Text fontSize="3xl" fontWeight="700">
+		  <Text fontSize="3xl" fontWeight="700" onClick={() => props.goToDetailsPage(props.id)}>
 		    {props.name}
 		  </Text>
-		  <button>
+		 
 		    <DeleteIcon
 		      fontSize="3xl"
 		      color="purple.400"
@@ -31,9 +33,9 @@ const TripCard=(props)=>{
 		      onClick={() => props.deleteTrip(props.id)}
 		      _hover={{ color: "purple.500" }}
 		    />
-		  </button>
-		  <Text fontSize="2xl" color="purple.700">
-		    {props.data}
+		  
+		  <Text fontSize="2xl" color="purple.700" onClick={() => props.goToDetailsPage(props.id)}>
+		    {dataFormatada}
 		  </Text>
 		</Grid>
 	      </Box>

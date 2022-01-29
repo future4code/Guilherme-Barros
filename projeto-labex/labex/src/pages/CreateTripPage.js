@@ -30,7 +30,7 @@ function CreateTripPage() {
   };
   useProtectedPage();
   return (
-    <form onSubmit={createTrip}>
+    <form onSubmit={createTrip} method="POST">
       <Flex justify="center" direction="column" align="center" minH="100vh">
         <Text fontSize="5xl" fontWeight="700" color="purple.600">
           Criar Viagem
@@ -116,6 +116,11 @@ function CreateTripPage() {
           name="description"
           value={form.description}
           onChange={onChange}
+          minlength='1'
+          rows="4"
+          cols="80"
+          maxLength={'200'}
+          title="Descrição deve possuir ao menos 20 caracteres"
           required
         />
         <Flex>

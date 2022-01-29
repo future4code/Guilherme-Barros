@@ -5,51 +5,53 @@ import { url } from "../constants";
 import useRequestData from "../hooks/useRequestData";
 
 function ListTripsPage() {
-  const [tripsData, isLoading, errorRequest] = useRequestData(
-    `${url}/trips`,
-    {
-      auth: localStorage.getItem("token")
-  }
-  );
-  const [sortingParameter,setSortingParameter]=useState('')
-  const [filterParameter,setFilterParameter]=useState('')
-  const updateSortingParameter=({target})=>{
-      setSortingParameter(target.value)
-  }
-  const updateFilterParameter=({target})=>{
-    setFilterParameter(target.value)
-}
+  const [tripsData, isLoading, errorRequest] = useRequestData(`${url}/trips`, {
+    auth: localStorage.getItem("token"),
+  });
+  const [sortingParameter, setSortingParameter] = useState("");
+  const [filterParameter, setFilterParameter] = useState("");
+
+  const updateSortingParameter = ({ target }) => {
+    setSortingParameter(target.value);
+  };
+  const updateFilterParameter = ({ target }) => {
+    setFilterParameter(target.value);
+  };
   const lista =
     tripsData &&
     tripsData.trips &&
-    tripsData.trips.map((trip) => {
-      return (
-        <Trip
-          description={trip.description}
-          key={trip.id}
-          name={trip.name}
-          data={trip.date}
-          id={trip.id}
-          duration={trip.durationInDays}
-          planet={trip.planet}
-        />
-      );
-    }).sort((currentTrip,nextTrip)=>{
-      switch(sortingParameter){
-        case 'Destino':
-          return currentTrip.props.name.localeCompare(nextTrip.name);
-        case 'Duracao':
-          return currentTrip.props.duration - nextTrip.props.duration
-        default:
-          return 
+    tripsData.trips
+      .map((trip) => {
+        return (
+          <Trip
+            description={trip.description}
+            key={trip.id}
+            name={trip.name}
+            data={trip.date}
+            id={trip.id}
+            duration={trip.durationInDays}
+            planet={trip.planet}
+          />
+        );
+      })
+      .sort((currentTrip, nextTrip) => {
+        switch (sortingParameter) {
+          case "Destino":
+            return currentTrip.props.name.localeCompare(nextTrip.name);
+          case "Duracao":
+            return currentTrip.props.duration - nextTrip.props.duration;
+          case "Data":
+            return (
+              new Date(currentTrip.props.data).getTime() -
+              new Date(nextTrip.props.data).getTime()
+            );
+          default:
+            return;
         }
-      
-    }).filter((trip)=>{
-     
-    
-        return  trip.props.planet.includes(filterParameter)
-      }
-    ) ;
+      })
+      .filter((trip) => {
+        return trip.props.planet.includes(filterParameter);
+      });
   return (
     <div>
       <Flex>
@@ -86,13 +88,14 @@ function ListTripsPage() {
         >
           <option value="Destino">Destino</option>
           <option value="Duracao">Duração (dias)</option>
+          <option value="Data">Data</option>
         </Select>
       </Flex>
       <Center>
         <Grid templateColumns="1fr 1fr 1fr" gap={6} m="1rem">
           {isLoading && <p>Carregando...</p>}
-          {!isLoading && lista }
-         {errorRequest && <p>Ocorreu um erro</p>}
+          {!isLoading && lista}
+          {errorRequest && <p>Ocorreu um erro</p>}
         </Grid>
       </Center>
     </div>

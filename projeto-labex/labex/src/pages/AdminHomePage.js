@@ -28,14 +28,18 @@ function AdminHomePage() {
     setIsLoading(false);
   };
   const deleteTrip = async (tripId) => {
-    await httpClient
-      .delete(`trips/${tripId}`)
-      .then((res) => {
-        alert("Viagem deletada!");
+   
+     
+      const choose = window.confirm("Deseja mesmo deletar essa viagem?");
+      if(choose){
+      await httpClient
+        .delete(`trips/${tripId}`)
+      .then((res) => {  
+        alert('Viagem deletada!')      
       })
       .catch((err) => {
         console.log(err);
-      });
+      })};
   };
   const goBack = () => {
     history.push("/");

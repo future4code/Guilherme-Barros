@@ -46,7 +46,7 @@ const paises=countries && countries.map((pais,index)=>{
   </>)
 })
   return (
-    <form onSubmit={applyToTrip}>
+    <form onSubmit={applyToTrip} method="POST">
       <Flex justify="center" direction="column" align="center" minH="100vh">
         <Text color="purple" fontWeight="600" fontSize="5xl" m="1em">
           Inscrição para a Viagem selecionada

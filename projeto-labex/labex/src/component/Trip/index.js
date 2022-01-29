@@ -25,7 +25,7 @@ function Trip(props) {
         {props.name}
         <Spacer />
         <Text as="i" color="purple.500">
-          {props.data}
+          {dataFormatada}
         </Text><br/>
         <Text as="i" >
          Duração em dias: {props.duration}

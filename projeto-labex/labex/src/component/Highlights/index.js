@@ -5,6 +5,8 @@ function Highlights(props) {
   const goToListTripsPage = () => {
     history.push("/trips");
   };
+  let data=new Date(props.data)
+  const dataFormatada=data.toLocaleDateString('pt-BR',{timeZone:'UTC'})
   return (
     <Grid gap={5}>
       <Box
@@ -21,7 +23,7 @@ function Highlights(props) {
         {props.name}
         <Spacer />
         <Text as="i" color="purple.500">
-          {props.data}
+          {dataFormatada}
         </Text>
         <Spacer />
 
