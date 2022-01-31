@@ -34,7 +34,7 @@ const TripCard=(props)=>{
 		      _hover={{ color: "purple.500" }}
 		    />
 		  
-		  <Text fontSize="2xl" color="purple.700" onClick={() => props.goToDetailsPage(props.id)}>
+		  <Text fontSize="2xl" color="purple.700" as="i" onClick={() => props.goToDetailsPage(props.id)}>
 		    {dataFormatada}
 		  </Text>
 		</Grid>

@@ -1,10 +1,11 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Box, Text, Flex, Spacer } from "@chakra-ui/react";
+import { Box, Text, Flex, Spacer, ChakraProvider, Spinner} from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
 import Highlights from "../component/Highlights";
-import { url } from "../constants";
+import {  url } from "../constants";
 import useRequestData from "../hooks/useRequestData";
+import theme from "../theme/";
 function HomePage() {
   const [tripsData, isLoading, errorRequest] = useRequestData(
     `${url}/trips`,
@@ -23,7 +24,6 @@ function HomePage() {
       return trip.planet === "Marte";
     })
       .map((trip) => {
-        console.log(trip.planet);
         return (
           <>
             <Highlights
@@ -31,13 +31,15 @@ function HomePage() {
               name={trip.name}
               data={trip.date}
               planet={trip.planet}
+              duration={trip.durationInDays}
             />
             <Spacer p="0.3em" />
           </>
         );
       })
   return (
-    <>
+    <ChakraProvider theme={theme}>
+      
       <Flex color="white">
         <Box
           bg="purple.700"
@@ -45,8 +47,10 @@ function HomePage() {
           w="50%"
           pt="1em"
           pb="0.3em"
-          pl="0.5em"
+          pl="1.10em"
+          pr="0.5em"
           fontSize="6xl"
+          fontWeight={'500'}
         >
           Que tal conhecer o espaço mais de perto? A LabeX te leva!
           <Text
@@ -66,17 +70,19 @@ function HomePage() {
           <Box
             fontSize="7xl"
             color="gray.600"
-            fontWeight="600"
+            
             ml="9rem"
             mt="2rem"
+       
           >
-            DESTAQUES
-            {isLoading && <Text fontSize="3xl">Carregando...</Text>}
+          <Text fontWeight={'600'}> DESTAQUES </Text>
+            {isLoading && <Spinner p={10} m={150} size='xl' color='purple.500'/>}
             {!isLoading && high}
+            {errorRequest && <p>Ocorreu um erro</p>}
           </Box>
         </Flex>
       </Flex>
-    </>
+    </ChakraProvider>
   );
 }
 

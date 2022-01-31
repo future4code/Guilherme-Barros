@@ -1,4 +1,4 @@
-import { Flex, Select, Center, Grid } from "@chakra-ui/react";
+import { Flex, Select, Center, Grid, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
 import Trip from "../component/Trip";
 import { url } from "../constants";
@@ -93,7 +93,7 @@ function ListTripsPage() {
       </Flex>
       <Center>
         <Grid templateColumns="1fr 1fr 1fr" gap={6} m="1rem">
-          {isLoading && <p>Carregando...</p>}
+          {isLoading && <Spinner size='xl' p={10}  mt={'7em'} color="purple.500"/>}
           {!isLoading && lista}
           {errorRequest && <p>Ocorreu um erro</p>}
         </Grid>

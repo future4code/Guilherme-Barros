@@ -1,5 +1,6 @@
-import { Box, Text, Spacer, Button, Center, Grid } from "@chakra-ui/react";
+import { Box, Text, Spacer, Button, Center, Grid, ChakraProvider } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import theme from "../../theme";
 function Highlights(props) {
   const history = useHistory();
   const goToListTripsPage = () => {
@@ -8,6 +9,7 @@ function Highlights(props) {
   let data=new Date(props.data)
   const dataFormatada=data.toLocaleDateString('pt-BR',{timeZone:'UTC'})
   return (
+    <ChakraProvider theme={theme}>
     <Grid gap={5}>
       <Box
         border="1px solid"
@@ -19,11 +21,12 @@ function Highlights(props) {
         color="black"
         fontSize="3xl"
         mt={7}
+        fontWeight={'bold'}
       >
         {props.name}
         <Spacer />
         <Text as="i" color="purple.500">
-          {dataFormatada}
+          {dataFormatada} - {props.duration} dias
         </Text>
         <Spacer />
 
@@ -34,6 +37,7 @@ function Highlights(props) {
         </Center>
       </Box>
     </Grid>
+    </ChakraProvider>
   );
 }
 

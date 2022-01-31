@@ -1,5 +1,4 @@
-import { Button, Box, Flex, Text, Grid } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { Button, Flex, Text, Spinner } from "@chakra-ui/react";
 import { httpClient } from "../constants";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -8,6 +7,7 @@ import TripCard from "../component/TripCard";
 function AdminHomePage() {
   const [trips, setTrips] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
   useProtectedPage();
   const history = useHistory();
   useEffect(() => {
@@ -19,27 +19,27 @@ function AdminHomePage() {
       .get(`/trips`)
       .then(({ data }) => {
         setTrips(data.trips);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        setIsLoading(false)
+        setError(err);
+        setIsLoading(false);
       });
-    setIsLoading(false);
+      setIsLoading(false);
   };
   const deleteTrip = async (tripId) => {
-   
-     
-      const choose = window.confirm("Deseja mesmo deletar essa viagem?");
-      if(choose){
+    const choose = window.confirm("Deseja mesmo deletar essa viagem?");
+    if (choose) {
       await httpClient
         .delete(`trips/${tripId}`)
-      .then((res) => {  
-        alert('Viagem deletada!')      
-      })
-      .catch((err) => {
-        console.log(err);
-      })};
+        .then((res) => {
+          alert("Viagem deletada!");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const goBack = () => {
     history.push("/");
@@ -57,19 +57,20 @@ function AdminHomePage() {
   const tripList = trips.map((trip) => {
     return (
       <Flex justify="center" key={trip.id}>
-      <TripCard 
-      name={trip.name}
-      data={trip.date}
-      goToDetailsPage={goToDetailsPage}
-      deleteTrip={deleteTrip}
-      id={trip.id}/>
+        <TripCard
+          name={trip.name}
+          data={trip.date}
+          goToDetailsPage={goToDetailsPage}
+          deleteTrip={deleteTrip}
+          id={trip.id}
+        />
       </Flex>
     );
   });
   return (
     <>
       <Flex justify="center" direction="column" align="center" minH="40vh">
-        <Text fontSize="5xl" fontWeight="700" color="purple.600">
+        <Text fontSize="5xl" fontWeight="700" color="purple.600" pt={'1rem'}>
           Painel Administrativo
         </Text>
         <Flex>
@@ -83,9 +84,10 @@ function AdminHomePage() {
             Logout
           </Button>
         </Flex>
+        {isLoading &&  <Spinner color="purple.500" size="xl" />}
+        {!isLoading && tripList }
+        {error && <p>Ocorreu um erro</p>}
       </Flex>
-      {isLoading && <p>Carregando...</p>}
-      {!isLoading && tripList}
     </>
   );
 }
