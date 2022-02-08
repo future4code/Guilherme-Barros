@@ -1,16 +1,27 @@
-### LabeX
+## LabeX
+
+### Tecnologias
+- HTML5;
+- REACT JS;
+- Chakra UI;
+- Axios.
 
 ### Funcionalidades
 - Autenticação de usuário (Login);
 - Criação de viagens;
-- Navegação entre páginas pelo header;
+- Gerenciamento de Viagens;
+- Navegação entre páginas pelo Header;
 - Candidaturas por vaga;
 - Aprovação ou Reprovação de candidaturas;
-- Ordenação de Viagens por duração e Destino.
+- Ordenação de Viagens por Destino, Duração e Data.
+
+### Login 
+- Email: guilherme@gmail.com
+- Senha: 123456
 
 ### Link Surge 
 
-(https://regular-division.surge.sh/)
+(https://obscene-harmony.surge.sh/)
 
 ### Imagens
 
