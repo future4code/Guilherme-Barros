@@ -1,0 +1,26 @@
+{
+  "name": "ListaTS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex1":"tsc && node ./build/exercicio-1",
+    "ex2":"tsc && node ./build/exercicio-2",
+    "ex3":"tsc && node ./build/exercicio-3",
+    "ex4":"tsc && node ./build/exercicio-4",
+    "ex5":"tsc && node ./build/exercicio-5",
+    "ex6":"tsc && node ./build/exercicio-6",
+    "ex7":"tsc && node ./build/exercicio-7",
+    "ex8":"tsc && node ./build/exercicio-8",
+    "ex9":"tsc && node ./build/exercicio-9",
+    "ex10":"tsc && node ./build/exercicio-10"
+
+  },
+  "keywords": [],
+  "author": "Guilherme Barros",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  }
+}
