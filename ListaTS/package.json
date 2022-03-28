@@ -5,16 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ex1":"tsc && node ./build/exercicio-1",
-    "ex2":"tsc && node ./build/exercicio-2",
-    "ex3":"tsc && node ./build/exercicio-3",
-    "ex4":"tsc && node ./build/exercicio-4",
-    "ex5":"tsc && node ./build/exercicio-5",
-    "ex6":"tsc && node ./build/exercicio-6",
-    "ex7":"tsc && node ./build/exercicio-7",
-    "ex8":"tsc && node ./build/exercicio-8",
-    "ex9":"tsc && node ./build/exercicio-9",
-    "ex10":"tsc && node ./build/exercicio-10"
+    "ex1":"tsc && node ./build/exercicio1/index.js",
+    "ex2":"tsc && node ./build/exercicio2/index.js",
+    "ex3":"tsc && node ./build/exercicio3/index.js",
+    "ex4":"tsc && node ./build/exercicio4/index.js",
+    "ex5":"tsc && node ./build/exercicio5/index.js",
+    "ex6":"tsc && node ./build/exercicio6/index.js",
+    "ex7":"tsc && node ./build/exercicio7/index.js",
+    "ex8":"tsc && node ./build/exercicio8/index.js",
+    "ex9":"tsc && node ./build/exercicio9/index.js",
+    "ex10":"tsc && node ./build/exercicio10/index.js",
+    "ex11":"tsc && node ./build/exercicio11/index.js"
 
   },
   "keywords": [],
