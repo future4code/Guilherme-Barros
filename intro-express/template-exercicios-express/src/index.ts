@@ -53,8 +53,7 @@ app.get('/:iduser/posts',(request:Request,response:Response)=>{
 	const posts=usuarios.map(user=>user.posts).flat(1)
 	const users=usuarios.map(user=>user)
 	let poster
-	posts.forEach((post)=>{
-		
+	posts.forEach((post)=>{		
 		if(iduser==post.id){
 			poster=post
 		}})
