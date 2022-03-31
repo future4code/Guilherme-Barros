@@ -1,0 +1,19 @@
+{
+  "name": "aprofundamento-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",	
+"start:dev": "ts-node-dev ./src/index.ts",
+    "start": "node ./build/index.js",
+    "build": "tsc" 
+  },
+  "author": "Guilherme Barros",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^17.0.23",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  }
+}
