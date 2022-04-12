@@ -75,3 +75,151 @@ select id, name, salary from Actor where salary<500000;
 
 ## Exercício 4
 
+#### a) 
+
+- A query seleciona todos os Atores que possuírem um nome que começa com o caracter A ou J e que possuam o salário maior que 300000
+
+#### b)
+
+```mysql
+select * from Actor where name NOT LIKE  "A%"  and salary > 350000;
+```
+
+#### c)
+
+```mysql
+SELECT * FROM Actor
+WHERE name LIKE "%g%" OR name LIKE "%G%";
+```
+
+#### d)
+
+```mysql
+SELECT * FROM Actor
+WHERE 
+	(name LIKE "%g%" OR name LIKE "%G%" OR name LIKE "%a%" OR name LIKE "%A%")
+  AND salary BETWEEN 350000 AND 900000;
+```
+
+## Exercício 5
+
+#### a)
+
+```mysql
+CREATE TABLE Filmes(
+	id varchar(255) primary key,
+    nome varchar(255) not null unique,
+    sinopse text not null,
+    dataLancamento varchar(10) not null,
+    avaliacao int
+);
+```
+
+#### b)
+
+```mysql
+insert into Filmes values(
+"001",
+"Se Eu Fosse Você",
+"Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. 
+Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+"06/01/2006",
+7
+);
+```
+
+#### c)
+
+```mysql
+insert into Filmes values(
+"002",
+"Doce de mãe",
+"Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. 
+A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, 
+empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+"27/12/2012",
+10
+);
+```
+
+#### d)
+
+```mysql
+insert into Filmes values(
+"003",
+"Dona Flor e Seus Dois Maridos",
+"Dona Flor é uma sedutora professora de culinária casada com Vadinho, 
+que só quer saber de farras e jogatina nas boates. 
+A vida de abusos acaba por acarretar sua morte precoce.",
+"02/11/2017",
+8
+);
+```
+
+#### e)
+
+```mysql
+insert into Filmes values(
+"004",
+"Tropa de Elite",
+"Nascimento, capitão da Tropa de Elite do Rio de Janeiro, 
+é designado para chefiar uma das equipes que tem como missão apaziguar o Morro do Turano. 
+Ele precisa cumprir as ordens enquanto procura por um substituto para ficar em seu lugar. 
+Em meio a um tiroteio, Nascimento e sua equipe resgatam Neto e Matias, 
+dois aspirantes a oficiais da PM. Ansiosos para entrar em ação e impressionados com a eficiência de seus salvadores,
+ os dois se candidatam ao curso de formação da Tropa de Elite.",
+"05/10/2007",
+10
+);
+```
+
+## Exercício 6
+
+#### a)
+
+```mysql
+select id,nome,avaliacao from Filmes where id="004";
+```
+
+#### b)
+
+```mysql
+select * from Filmes where nome="Tropa de Elite";
+```
+
+#### c)
+
+```mysql
+select id,nome,sinopse from Filmes where avaliacao>=7;
+```
+
+## Exercício 7
+
+#### a)
+
+````mysql
+select * from Filmes where nome LIKE "%vida%";
+````
+
+#### b)
+
+````mysql
+SELECT * FROM Movie
+WHERE title LIKE "%TERMO DE BUSCA%" OR
+      synopsis LIKE "%TERMO DE BUSCA%";
+````
+
+#### c)
+
+````mysql
+select * from Filmes where dataLancamento < curdate();
+````
+
+#### d)
+
+```mysql
+SELECT * FROM Movie
+WHERE title LIKE "%TERMO DE BUSCA%" OR
+      synopsis LIKE "%TERMO DE BUSCA%" and avaliacao>7 and dataLancamento < curdate();
+```
+
