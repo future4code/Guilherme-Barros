@@ -1,0 +1,13 @@
+###
+GET http://localhost:3003/users
+
+### 
+POST http://localhost:3003/users/newUser
+Content-Type: application/json
+
+{"name":"Maria","cpf":"90205533051",
+"dataNascimento":"10/10/1995","saldo":1400000,
+"extract":[{"valor":50000,"transacao":"Débito"}]}
+
+###
+GET http://localhost:3003/user/17423875864
