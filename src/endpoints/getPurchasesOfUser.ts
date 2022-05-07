@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { off } from "process";
 import { connection } from "../data/connection";
-import { Purchase } from "../types";
 
 
 export default async function selectPurchases(userId:string):Promise<any>{
@@ -19,20 +18,37 @@ export default async function selectPurchases(userId:string):Promise<any>{
 	return res
 }
 
-export const getPurchasesOfUser=async(req:Request,res:Response):Promise<any>=>{
+export const getPurchasesOfUser=async(req:Request,res:Response):Promise<void>=>{
 	try {
 		const {userId}=req.params
-		const compras:Purchase[]=await selectPurchases(userId)
+		const compras=await selectPurchases(userId)
 		if (compras===[]) {
 			throw new Error("[]");
 		}
 		res.status(200).send(compras);
-	} catch(error){
-		if (error instanceof Error) {
-		 res.send(error.message);
-		} else {
-		  res.send(error.message || error.sqlMessage)
-		}
-	       }
-	     
+	} catch (error:any) {
+		res.status(400).send({message: error.message});
+	}
 }
+
+/* connection.raw(`select labecommerce_users.name as userName,
+	labecommerce_products.name as productName,
+	price,
+	quantity,
+	total_price
+	FROM labecommerce_purchases
+	inner join labecommerce_users on labecommerce_purchases.user_id=labecommerce_users.id
+	inner join labecommerce_products on labecommerce_purchases.product_id=labecommerce_products.id
+	where labecommerce_users.id=${userId}
+	`)
+	const purchases = res[0].map((purchase:any) => {
+		return {
+		    productName: purchase.productName,
+		    price: purchase.price,
+		    quantity: purchase.quantity,
+		    totalPrice: purchase.totalPrice,
+		}
+	    })
+	
+	    return purchases
+	*/	
