@@ -36,3 +36,4 @@ export const createPurchase=async(req:Request,res:Response):Promise<any>=>{
 		  res.send(error.message || error.sqlMessage)
 		}
 	       }
+	}

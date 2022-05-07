@@ -31,3 +31,6 @@ export const getPurchasesOfUser=async(req:Request,res:Response):Promise<any>=>{
 		 res.send(error.message);
 		} else {
 		  res.send(error.message || error.sqlMessage)
+		}
+	}
+}
