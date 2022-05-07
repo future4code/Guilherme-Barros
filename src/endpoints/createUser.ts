@@ -6,13 +6,13 @@ import { v4 as generateId } from 'uuid';
 export default async function insertUser(name:string,email:string,password:string):Promise<void>{
 	await connection.insert({
 		id: generateId(),
-		name: name,
-	       email: email,
-	       password:password
+		name,
+	       email,
+	       password
 	}).into("labecommerce_users")
 }
 
-export const createUser=async(req:Request,res:Response):Promise<void>=>{
+export const createUser=async(req:Request,res:Response):Promise<any>=>{
 	try {
 		const{name,email,password}=req.body;
 		if(!name || !password || !email){
@@ -20,7 +20,11 @@ export const createUser=async(req:Request,res:Response):Promise<void>=>{
 		}
 		await insertUser(name,email,password)
 		res.status(200).send({message: "Sucess"});
-	} catch (error:any) {
-		res.status(400).send({message: error.message});
-	}
+	}catch(error){
+		if (error instanceof Error) {
+		 res.send(error.message);
+		} else {
+		  res.send(error.message || error.sqlMessage)
+		}
+	       }
 }

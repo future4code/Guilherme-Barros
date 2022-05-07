@@ -2,7 +2,8 @@ export type User={
 	id:string,
 	name:string,
 	email:string,
-	password:string
+	password:string,
+	purchases?:Purchase[]
 }
 export type Product={
 	id:string,
@@ -15,5 +16,6 @@ export type Purchase={
 	user_id:string,
 	product_id:string,
 	quantity:number,
+	price:number,
 	total_price:number
 }
