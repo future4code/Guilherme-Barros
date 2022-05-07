@@ -9,8 +9,10 @@ export  async function selectProductById(id:string):Promise<any> {
 	return res
 }
 export default async function insertPurchase(user:string,productId:string,quantity:number):Promise<void>{
-	const product:Product=await selectProductById(productId)
-	const total=product.price*quantity
+	const product=await selectProductById(productId)
+	const total=product.map((product:Product)=>{
+		return product.price*quantity
+	})
 	await connection.into("labecommerce_purchases")
 	.insert({
 		id: generateId(),
@@ -21,7 +23,7 @@ export default async function insertPurchase(user:string,productId:string,quanti
 	})
 }
 
-export const createPurchase=async(req:Request,res:Response):Promise<any>=>{
+export const createPurchase=async(req:Request,res:Response):Promise<void>=>{
 	try {
 		const{user_id,product_id,quantity}=req.body;
 		if(!user_id || !product_id || !quantity){
@@ -29,11 +31,7 @@ export const createPurchase=async(req:Request,res:Response):Promise<any>=>{
 		}
 		await insertPurchase(user_id,product_id,quantity)
 		res.status(200).send({message: "Sucess"});
-	} catch(error){
-		if (error instanceof Error) {
-		 res.send(error.message);
-		} else {
-		  res.send(error.message || error.sqlMessage)
-		}
-	       }
+	} catch (error:any) {
+		res.status(400).send({message: error.message});
+	}
 }

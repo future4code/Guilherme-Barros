@@ -2,18 +2,17 @@ import { Request, Response } from "express";
 import { off } from "process";
 import { connection } from "../data/connection";
 import { v4 as generateId } from 'uuid';
-import { ErrorCallback } from "typescript";
 
-export default async function insertProduct(name:string,price:number,image_url:string):Promise<void>{
+export default async function insertProduct(name:string,price:number,image:string):Promise<void>{
 	await connection.insert({
 		id: generateId(),
-		name,
-	      price,
-	      image_url
+		name: name,
+	      price: price,
+	      image_url:image
 	}).into("labecommerce_products")
 }
 
-export const createProducts=async(req:Request,res:Response):Promise<any>=>{
+export const createProducts=async(req:Request,res:Response):Promise<void>=>{
 	try {
 		const{name,price,image_url}=req.body;
 		if(!name || !price || !image_url){
@@ -21,11 +20,7 @@ export const createProducts=async(req:Request,res:Response):Promise<any>=>{
 		}
 		await insertProduct(name,price,image_url)
 		res.status(200).send({message: "Sucess"});
-	}catch(error){
-		if (error instanceof Error) {
-		 res.send(error.message);
-		} else {
-		  res.send(error.message || error.sqlMessage)
-		}
-	       }
+	} catch (error:any) {
+		res.status(400).send({message: error.message});
+	}
 }
