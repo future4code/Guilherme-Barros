@@ -1,0 +1,38 @@
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Beatriz Fraga",
+    "email": "befraga@outlook.com",
+    "password":"123456"
+}
+
+###
+GET http://localhost:3003/users
+
+###
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Notebook",
+    "price": 500.00,
+    "image_url":"https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
+}
+
+###
+GET http://localhost:3003/products
+
+###
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id":"e59922f7-ab12-4b6a-9db5-26fc63a43b0e",
+    "product_id":"c42b7619-6cf2-44cc-b1dd-702d9419fb3a",
+    "quantity":6
+}
+
+###
+GET http://localhost:3003/users/e59922f7-ab12-4b6a-9db5-26fc63a43b0e/purchases
