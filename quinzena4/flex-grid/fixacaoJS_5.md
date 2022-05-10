@@ -1,1 +1,0 @@
-````function contaOcorrencias(arrayDeNumeros, numeroEscolhido) {const findNumbers = arrayDeNumeros.filter(item=>{return item==numeroEscolhido})if(findNumbers.length){return 'O número,numeroEscolhido, aparece,findNumbers.length, x}else{return 'Número não encontrado'}}```
