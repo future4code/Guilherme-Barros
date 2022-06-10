@@ -7,15 +7,16 @@ export class PostController {
 
 	public createPost=async(req:Request,res:Response) =>{
 		try {
-			const {photo,description,type,createdAt,authorId}=req.body
+			const {photo,description,type,created_at,author_id}=req.body
 			const input:PostInputDTO={
 				photo,
 				description,
 				type,
-				createdAt,
-				authorId
+				created_at,
+				author_id
 			}
 			await this.postBusiness.createPost(input)
+			res.status(200).send("Post criado com sucesso")
 		} catch (error:any) {
 			res.status(400).send(error.message);
 		}
@@ -24,7 +25,8 @@ export class PostController {
 	public getPostById=async(req:Request,res:Response)=> {
 		try {
 			const {id}=req.params
-			return await this.postBusiness.getPostById(id)
+			const post =await this.postBusiness.getPostById(id)
+			res.status(200).send(post)
 		} catch (error:any) {
 			res.status(400).send(error.message);
 		}

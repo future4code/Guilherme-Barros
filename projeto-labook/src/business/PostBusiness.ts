@@ -9,20 +9,23 @@ export class PostBusiness{
 	
 	public createPost=async(input:PostInputDTO)=> {
 		try {
-			const {photo,description,type,createdAt,authorId}=input
-			if (!photo || !description || !type || !createdAt || !authorId) {
+			const {photo,description,type,created_at,author_id}=input
+			if (!photo || !description || !type || !created_at || !author_id) {
 				throw new CustomError(400,"Há parâmetros faltando. Revise o corpo da requisição");
 			}
 			const id: string = generateId();
-
+			
+				
 			const post:post={
 				id,
 				photo,
 				description,
 				type,
-				createdAt,
-				authorId
+				created_at,
+				author_id
 			}
+			
+			
 			await this.postDatabase.insertPost(post)
 		} catch (error:any) {
 			throw new Error(error.message);
@@ -36,4 +39,5 @@ export class PostBusiness{
 			throw new Error(error.message);
 		}
 	}
+	
 }

@@ -7,5 +7,5 @@ const postDatabase=new PostDatabase()
 const postBusiness=new PostBusiness(postDatabase)
 const postController=new PostController(postBusiness)
 
-postRouter.post("/post",(req,res)=>postController.createPost(req,res))
-postRouter.get("/post/:id",(req,res)=>postController.getPostById(req,res))
+postRouter.post("/create",(req,res)=>postController.createPost(req,res))
+postRouter.get("/get/:id",(req,res)=>postController.getPostById(req,res))
