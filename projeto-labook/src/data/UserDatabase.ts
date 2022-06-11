@@ -44,7 +44,7 @@ export class UserDatabase extends BaseDatabase{
 			return await UserDatabase.connection.raw(`
 			SELECT p.id,p.photo,p.description,p.type,p.created_at,p.author_id 
 			FROM labook_posts as p inner join labook_friends f 
-			ON p.author_id=f.friend_id
+			ON p.author_id=f.friend_id order by p.created_at DESC
 			`)
 		} catch (error:any) {
 			throw new Error(error.message)
