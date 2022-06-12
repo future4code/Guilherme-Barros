@@ -88,4 +88,12 @@ post_id,message	:Promise<void>=> */
 			throw new Error(error.message)
 		}
 	}
+	
+	public deslikePost=async(post_id:string):Promise<void>=> {
+		try {
+			await UserDatabase.connection("labook_likes").where("post_id",post_id).del()
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
 }

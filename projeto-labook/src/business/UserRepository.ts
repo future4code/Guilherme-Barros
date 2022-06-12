@@ -12,4 +12,5 @@ export interface UserRepository{
 	getPostByType(type:string):Promise<post[]>
 	publishComment(comment:comment):Promise<void>
 	likePost(like:Like):Promise<void>
+	deslikePost(post_id:string):Promise<void>
 }

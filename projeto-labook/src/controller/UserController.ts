@@ -106,4 +106,14 @@ export class UserController {
 			res.status(400).send(error.message);
 		}	
 	}
+	public deslikePost=async(req:Request,res:Response):Promise<void>=> {
+		try {
+			const {post_id}=req.params;
+			
+			await this.userBusiness.deslikePost(post_id)
+			res.status(200).send("Post descurtido com sucesso!")
+		} catch (error:any) {
+			res.status(400).send(error.message);
+		}	
+	}
 }

@@ -57,3 +57,6 @@ Content-Type: application/json
 {
 	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518"
 }
+
+###
+DELETE  http://localhost:3003/user/deslike/fgfgadfgadfgdf

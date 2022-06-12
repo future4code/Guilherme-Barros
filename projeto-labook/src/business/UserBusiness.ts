@@ -117,7 +117,7 @@ type:string	=> */
 		try {
 			const {post_id,message}=input
 			if (!post_id || !message) {
-				throw new CustomError(400,"Por favor, passe o id do post a ser comentado e/ou o comentário corretamente");
+				throw new CustomError(400,"Por favor, passe o id do Post a ser comentado e/ou o comentário corretamente");
 			} 
 			const id:string=generateId()
 			const comment={
@@ -137,12 +137,23 @@ input:LikeInputDTO	:Promise<void>=> */
 		try {
 			const {post_id}=input
 			if (!post_id) {
-				throw new CustomError(400,"Por favor, passe o id correto do post a ser curtido");
+				throw new CustomError(400,"Por favor, passe o id correto do Post a ser curtido");
 			} 
 			const like:Like={
 				post_id
 			}
 			await this.userDatabase.likePost(like)
+		} catch (error:any) {
+			throw new Error(error.message);
+		}
+	}
+	
+	public deslikePost=async(post_id:string):Promise<void>=> {
+		try {
+			if (!post_id) {
+				throw new CustomError(400,"Por favor, passe o id correto do Post a ser descurtido");
+			}
+			await this.userDatabase.deslikePost(post_id)
 		} catch (error:any) {
 			throw new Error(error.message);
 		}
