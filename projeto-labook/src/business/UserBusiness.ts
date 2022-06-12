@@ -1,10 +1,11 @@
 import { friendship } from './../types/Friendship';
 import { FriendshipInputDTO, FriendshipInputDeleteDTO } from './../model/user';
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword } from "../error/customError";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, InvalidType, NotFoundPosts } from "../error/customError";
 import { UserInputDTO } from "../model/user";
 import { generateId } from "../service/generateId";
 import { user } from "../types/User";
 import { UserRepository } from "./UserRepository";
+import { post } from '../types/Post';
 
 export class UserBusiness {
 	constructor(private userDatabase:UserRepository) {}
@@ -82,6 +83,37 @@ export class UserBusiness {
 			   size = 5
 			 }
 			return await this.userDatabase.getFeed(size,offset)
+		} catch (error:any) {
+			throw new Error(error.message);
+		}
+	}
+	/**
+	 * getPostByType=async
+type:string	=> */
+	public getPostByType=async(type:string)=> {
+		try {
+			if (!type) {
+				throw new CustomError(400,"Por favor, passe o parâmetro type");
+				
+			}	
+			if(type !== 'normal' && type !== 'event'){
+				throw new InvalidType();
+			}
+
+			const posts:post[]= await this.userDatabase.getPostByType(type)
+			
+			
+			if (posts.length === 0) {
+				throw new NotFoundPosts();
+				
+			
+			}else{
+				return posts
+				
+				
+			}
+				
+			
 		} catch (error:any) {
 			throw new Error(error.message);
 		}

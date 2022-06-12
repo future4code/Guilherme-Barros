@@ -36,4 +36,7 @@ Content-Type: application/json
 DELETE http://localhost:3003/user/deleteFriendship/667e1a63-f728-49c0-9b1a-ae9afe9fe7e3
 
 ###
-GET http://localhost:3003/user/feed
+GET http://localhost:3003/user/feed?page=1
+
+###
+GET http://localhost:3003/user/type/normal

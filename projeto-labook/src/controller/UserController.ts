@@ -66,4 +66,15 @@ export class UserController {
 			res.status(400).send(error.message);
 		}
 	}
+	
+	public getPostByType=async(req:Request,res:Response):Promise<any>=> {
+		try {
+			const {type}=req.params
+			const posts=await this.userBusiness.getPostByType(type)
+			res.status(200).send(posts)
+			
+		} catch (error:any) {
+			res.status(400).send(error.message);
+		}
+	}
 }

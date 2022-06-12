@@ -50,4 +50,14 @@ export class UserDatabase extends BaseDatabase{
 			throw new Error(error.message)
 		}
 	}
+	/**
+	 * getPostByType=async
+type	 */
+	public getPostByType=async(type:string):Promise<any>=> {
+		try {
+			return await UserDatabase.connection('labook_posts').where("type",type).orderBy("created_at","desc")
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
 }

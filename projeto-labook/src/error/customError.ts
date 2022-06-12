@@ -17,4 +17,14 @@ export class CustomError extends Error {
 	    constructor(){
 		    super(400,"Senha inválida")
 	    }
-    }
+	}
+	export class InvalidType extends CustomError{
+		constructor(){
+			super(400,'Tipo inválido')
+		}
+	}
+	export class NotFoundPosts extends CustomError{
+		constructor(){
+			super(404,"Não foi encontrado posts com esse tipo")
+		}
+	}
