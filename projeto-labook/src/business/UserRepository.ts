@@ -1,3 +1,4 @@
+import { comment } from './../types/Comment';
 import { friendship } from './../types/Friendship';
 import { user } from "../types/User";
 import { post } from '../types/Post';
@@ -8,4 +9,5 @@ export interface UserRepository{
 	deleteFriendship(friend_id:string):Promise<void>
 	getFeed(size:number,offset:number):Promise<post[]>
 	getPostByType(type:string):Promise<post[]>
+	publishComment(comment:comment):Promise<void>
 }

@@ -1,5 +1,5 @@
 import { friendship } from './../types/Friendship';
-import { FriendshipInputDTO, FriendshipInputDeleteDTO } from './../model/user';
+import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO } from './../model/user';
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { UserInputDTO } from "../model/user";
@@ -73,6 +73,22 @@ export class UserController {
 			const posts=await this.userBusiness.getPostByType(type)
 			res.status(200).send(posts)
 			
+		} catch (error:any) {
+			res.status(400).send(error.message);
+		}
+	}
+	/**
+	 * publishComment=async
+	 */
+	public publishComment=async(req:Request,res:Response):Promise<void>=> {
+		try {
+			const {post_id,message}=req.body
+			const input:CommentInputDTO={
+				post_id,
+				message
+			}
+			await this.userBusiness.publishComment(input)
+			res.status(200).send("Comentário publicado com sucesso")
 		} catch (error:any) {
 			res.status(400).send(error.message);
 		}

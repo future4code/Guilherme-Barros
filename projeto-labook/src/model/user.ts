@@ -10,3 +10,7 @@ export interface FriendshipInputDTO{
 export interface FriendshipInputDeleteDTO{
 	friend_id:string
 }
+export interface CommentInputDTO{
+	post_id:string,
+	message:string
+}

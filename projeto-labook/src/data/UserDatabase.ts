@@ -1,6 +1,7 @@
 import { friendship } from './../types/Friendship';
 import { user } from "../types/User"
 import { BaseDatabase } from "./BaseDataBase"
+import { comment } from '../types/Comment';
 
 export class UserDatabase extends BaseDatabase{
 	public insertUser = async(
@@ -56,6 +57,20 @@ type	 */
 	public getPostByType=async(type:string):Promise<any>=> {
 		try {
 			return await UserDatabase.connection('labook_posts').where("type",type).orderBy("created_at","desc")
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
+	/**
+	 * publishComment=async
+post_id,message	:Promise<void>=> */
+	public publishComment=async(comment:comment):Promise<void>=> {
+		try {
+			await UserDatabase.connection.insert(
+			{	id:comment.id,
+				post_id:comment.post_id,
+				message:comment.message}
+			).into("labook_comments")
 		} catch (error:any) {
 			throw new Error(error.message)
 		}

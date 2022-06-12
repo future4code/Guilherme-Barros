@@ -13,3 +13,4 @@ userRouter.post('/createFriendship',(req,res)=>userController.createFriendship(r
 userRouter.delete('/deleteFriendship/:friend_id',(req,res)=>userController.deleteFriendship(req,res))
 userRouter.get("/feed",(req,res)=>userController.getFeed(req,res))
 userRouter.get("/type/:type",(req,res)=>userController.getPostByType(req,res))
+userRouter.post("/comment",(req,res)=>userController.publishComment(req,res))

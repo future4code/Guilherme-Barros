@@ -1,5 +1,6 @@
+import { comment } from './../types/Comment';
 import { friendship } from './../types/Friendship';
-import { FriendshipInputDTO, FriendshipInputDeleteDTO } from './../model/user';
+import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO } from './../model/user';
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, InvalidType, NotFoundPosts } from "../error/customError";
 import { UserInputDTO } from "../model/user";
 import { generateId } from "../service/generateId";
@@ -64,7 +65,7 @@ export class UserBusiness {
 			throw new Error(error.message);
 		}
 	}
-	public deleteFriendship=async(input:FriendshipInputDeleteDTO)=> {
+	public deleteFriendship=async(input:FriendshipInputDeleteDTO):Promise<void>=> {
 		try {
 			const {friend_id}=input
 			if (!friend_id) {
@@ -93,27 +94,36 @@ type:string	=> */
 	public getPostByType=async(type:string)=> {
 		try {
 			if (!type) {
-				throw new CustomError(400,"Por favor, passe o parâmetro type");
-				
+				throw new CustomError(400,"Por favor, passe o parâmetro type");		
 			}	
 			if(type !== 'normal' && type !== 'event'){
 				throw new InvalidType();
 			}
-
 			const posts:post[]= await this.userDatabase.getPostByType(type)
-			
 			
 			if (posts.length === 0) {
 				throw new NotFoundPosts();
-				
-			
 			}else{
-				return posts
-				
-				
+				return posts		
 			}
-				
-			
+		} catch (error:any) {
+			throw new Error(error.message);
+		}
+	}
+	
+	public publishComment=async (input:CommentInputDTO):Promise<void> => {
+		try {
+			const {post_id,message}=input
+			if (!post_id || !message) {
+				throw new CustomError(400,"Por favor, passe o id do post a ser comentado e/ou o comentário corretamente");
+			} 
+			const id:string=generateId()
+			const comment={
+				id,
+				post_id,
+				message
+			}
+			await this.userDatabase.publishComment(comment)
 		} catch (error:any) {
 			throw new Error(error.message);
 		}

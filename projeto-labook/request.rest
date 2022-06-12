@@ -40,3 +40,12 @@ GET http://localhost:3003/user/feed?page=1
 
 ###
 GET http://localhost:3003/user/type/normal
+
+###
+POST http://localhost:3003/user/comment
+Content-Type: application/json
+
+{
+	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518",
+	"message":"Linda foto!"
+}
