@@ -22,6 +22,7 @@ export class PostDatabase extends BaseDatabase {
 }
 public getPostById=async (id:string) => {
 	try {
+		
 		return await PostDatabase.connection(PostDatabase.TABLE_NAME)
 		.where("id","=",id)
 	} catch (error:any) {

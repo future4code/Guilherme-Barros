@@ -74,9 +74,14 @@ export class UserBusiness {
 			throw new Error(error.message);
 		}
 	}
-	public getFeed=async():Promise<any>=>{
+	public getFeed=async(page:number):Promise<any>=>{
 		try {
-			return await this.userDatabase.getFeed()
+			let size = 5
+			let offset = size*(page-1)
+			if(isNaN(size) || size < 1) {
+			   size = 5
+			 }
+			return await this.userDatabase.getFeed(size,offset)
 		} catch (error:any) {
 			throw new Error(error.message);
 		}

@@ -6,5 +6,5 @@ export interface UserRepository{
 	insertUser(user:user):Promise<void>
 	insertFriendship(friendship:friendship):Promise<void>
 	deleteFriendship(friend_id:string):Promise<void>
-	getFeed():Promise<post[]>
+	getFeed(size:number,offset:number):Promise<post[]>
 }

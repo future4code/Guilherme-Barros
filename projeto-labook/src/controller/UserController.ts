@@ -59,7 +59,8 @@ export class UserController {
 	
 	public getFeed=async(req:Request,res:Response):Promise<any>=> {
 		try {
-			const posts=await this.userBusiness.getFeed()
+			const {page}=req.query
+			const posts=await this.userBusiness.getFeed(Number(page))
 			res.status(200).send(posts[0])
 		} catch (error:any) {
 			res.status(400).send(error.message);
