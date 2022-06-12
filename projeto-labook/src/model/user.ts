@@ -14,3 +14,6 @@ export interface CommentInputDTO{
 	post_id:string,
 	message:string
 }
+export interface LikeInputDTO{
+	post_id:string
+}

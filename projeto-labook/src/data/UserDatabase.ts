@@ -2,6 +2,7 @@ import { friendship } from './../types/Friendship';
 import { user } from "../types/User"
 import { BaseDatabase } from "./BaseDataBase"
 import { comment } from '../types/Comment';
+import { Like } from '../types/Like';
 
 export class UserDatabase extends BaseDatabase{
 	public insertUser = async(
@@ -71,6 +72,18 @@ post_id,message	:Promise<void>=> */
 				post_id:comment.post_id,
 				message:comment.message}
 			).into("labook_comments")
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
+	/**
+	 * likePost
+	 */
+	public likePost=async(like:Like):Promise<void>=> {
+		try {
+			await UserDatabase.connection.insert(
+			{	post_id:like.post_id}
+			).into("labook_likes")
 		} catch (error:any) {
 			throw new Error(error.message)
 		}

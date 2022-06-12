@@ -49,3 +49,11 @@ Content-Type: application/json
 	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518",
 	"message":"Linda foto!"
 }
+
+###
+POST http://localhost:3003/user/like
+Content-Type: application/json
+
+{
+	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518"
+}

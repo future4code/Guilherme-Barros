@@ -1,12 +1,14 @@
 import { comment } from './../types/Comment';
 import { friendship } from './../types/Friendship';
-import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO } from './../model/user';
+import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO, LikeInputDTO } from './../model/user';
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, InvalidType, NotFoundPosts } from "../error/customError";
 import { UserInputDTO } from "../model/user";
 import { generateId } from "../service/generateId";
 import { user } from "../types/User";
 import { UserRepository } from "./UserRepository";
 import { post } from '../types/Post';
+import { Like } from '../types/Like';
+import { timeStamp } from 'console';
 
 export class UserBusiness {
 	constructor(private userDatabase:UserRepository) {}
@@ -124,6 +126,23 @@ type:string	=> */
 				message
 			}
 			await this.userDatabase.publishComment(comment)
+		} catch (error:any) {
+			throw new Error(error.message);
+		}
+	}
+	/**
+	 * likePost=async
+input:LikeInputDTO	:Promise<void>=> */
+	public likePost=async(input:LikeInputDTO):Promise<void>=> {
+		try {
+			const {post_id}=input
+			if (!post_id) {
+				throw new CustomError(400,"Por favor, passe o id correto do post a ser curtido");
+			} 
+			const like:Like={
+				post_id
+			}
+			await this.userDatabase.likePost(like)
 		} catch (error:any) {
 			throw new Error(error.message);
 		}

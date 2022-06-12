@@ -1,5 +1,5 @@
 import { friendship } from './../types/Friendship';
-import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO } from './../model/user';
+import { FriendshipInputDTO, FriendshipInputDeleteDTO, CommentInputDTO, LikeInputDTO } from './../model/user';
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { UserInputDTO } from "../model/user";
@@ -92,5 +92,18 @@ export class UserController {
 		} catch (error:any) {
 			res.status(400).send(error.message);
 		}
+	}
+	
+	public likePost=async(req:Request,res:Response):Promise<void>=> {
+		try {
+			const {post_id}=req.body;
+			const input:LikeInputDTO={
+				post_id
+			}
+			await this.userBusiness.likePost(input)
+			res.status(200).send("Post curtido com sucesso!")
+		} catch (error:any) {
+			res.status(400).send(error.message);
+		}	
 	}
 }
