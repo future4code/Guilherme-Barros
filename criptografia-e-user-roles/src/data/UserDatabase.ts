@@ -33,16 +33,17 @@ export class UserDatabase extends BaseDatabase {
     }
   };
 
-  public editUser = async (user: EditUserInput) => {
+  public getUserById=async(id:string):Promise<any>=>{
     try {
-      await UserDatabase.connection
-        .update({ name: user.name, nickname: user.nickname })
-        .where({ id: user.id })
-        .into("Auth_users");
-    } catch (error: any) {
+  
+      const res=await UserDatabase.connection("Auth_users").where("id",id)
+  
+  
+       return res[0]
+    }  catch (error: any) {
       throw new CustomError(400, error.message);
     }
-  };
+    }
 
  
 }

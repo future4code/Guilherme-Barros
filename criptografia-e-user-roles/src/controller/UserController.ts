@@ -8,14 +8,15 @@ export class UserController {
     
       public signup = async (req: Request, res: Response) => {
         try {
-          const { name, nickname, email, password } = req.body;
+          const { name, nickname, email, password,role } = req.body;
        
     
           const input: UserInputDTO = {
             name,
             nickname,
             email,
-            password
+            password,
+            role
           };
           const userBusiness = new UserBusiness()
           const token = await userBusiness.createUser(input);
@@ -28,11 +29,12 @@ export class UserController {
       
       public login = async (req: Request, res: Response) => {
         try {
-          const { email, password } = req.body;
+          const { email, password,role } = req.body;
     
           const input: LoginInputDTO = {
             email,
             password,
+            role
           };
         
 
@@ -45,29 +47,15 @@ export class UserController {
         }
       }; 
 
-      public editUser = async (req: Request, res: Response) => {
+      public getUserData=async(req: Request, res: Response):Promise<any>=> {
         try {
-
-          const input: EditUserInputDTO = {
-            name: req.body.name,
-            nickname: req.body.nickname,
-            id: req.params.id,
-            token: req.headers.authorization as string
-          };
-
-          const userBusiness = new UserBusiness()
-          console.log(input)
-          await userBusiness.editUser(input);
+          const authorization=req.headers.authorization!
     
-          res.status(201).send({ message: "Usuário alterado!" });
+          const userBusiness = new UserBusiness()
+          const result =await userBusiness.getUserData(authorization as string) 
+          res.status(200).send({email:result.email,password:result.password})
         } catch (error: any) {
           res.status(400).send(error.message);
-        }
-      }; 
-
-      
- 
-
-
-
+              }
+            } 
 }

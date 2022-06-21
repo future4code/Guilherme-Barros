@@ -3,8 +3,6 @@ import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, 
 import {
   UserInputDTO,
   user,
-  EditUserInputDTO,
-  EditUserInput,
   LoginInputDTO,
 } from "../model/user";
 import { HashManager } from "../services/HashManager";
@@ -19,7 +17,7 @@ const hashManager=new HashManager()
 export class UserBusiness {
   public createUser = async (input: UserInputDTO): Promise<string> => {
     try {
-      const { name, nickname, email, password } = input;
+      const { name, nickname, email, password,role } = input;
 
       if (!name || !nickname || !email || !password) {
         throw new CustomError(
@@ -44,10 +42,15 @@ export class UserBusiness {
         nickname,
         email,
         password:hashPassword,
+        role
       };
    
       await userDatabase.insertUser(user);
-      const token = tokenGenerator.generateToken(id)
+      const inputToken={
+        id,
+        role
+      }
+      const token = tokenGenerator.generateToken(inputToken)
 
       return token
     } catch (error: any) {
@@ -84,8 +87,11 @@ export class UserBusiness {
       if (!compare) {
         throw new InvalidPassword()
       }
-  
-      const token = tokenGenerator.generateToken(user.id)
+      const inputToken={
+        id:user.id,
+        role:user.role
+      }
+      const token = tokenGenerator.generateToken(inputToken)
      
       return token
     } catch (error: any) {
@@ -93,37 +99,25 @@ export class UserBusiness {
     }
   };
 
-  public editUser = async (input: EditUserInputDTO) => {
-    try {
-      const { name, nickname, id, token } = input;
+  public getUserData=async(token:string): Promise<any>=> {
+		try {
+			if (!token) {
+				throw new CustomError(400,"Por favor, passe o token no header da requisição");
+			}
 
-      if (!name || !nickname || !id || !token) {
-        throw new CustomError(
-          400,
-          'Preencha os campos "id", "name", "nickname" e "token"'
-        );
+			const userDatabase = new UserDatabase();
+			
+			const authenticationData = tokenGenerator.tokenData(token);
+      if (authenticationData.role !== "normal") {
+        throw new Error("Only a normal user can access this funcionality");
       }
 
-      const data = tokenGenerator.tokenData(token)
+			const user = await userDatabase.getUserById(authenticationData.id);
 
-      if(!data.id) {
-        throw new Unauthorized()
-      }
 
-      if (name.length < 4) {
-        throw new InvalidName();
-      }
-
-      const editUserInput: EditUserInput = {
-        id,
-        name,
-        nickname,
-      };
-
-      const userDatabase = new UserDatabase();
-      await userDatabase.editUser(editUserInput);
-    } catch (error: any) {
-      throw new CustomError(400, error.message);
-    }
-  };
+			return user
+		} catch (error: any) {
+			throw new CustomError(400, error.message);
+		      }
+	      }
 }
