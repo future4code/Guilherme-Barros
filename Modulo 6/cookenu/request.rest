@@ -1,0 +1,28 @@
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+	"name":"Minato Namikaze",
+	"email":"minato@gmail.com",
+	"password":"123456"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+	"email":"minato@gmail.com",
+	"password":"123456"
+}
+
+###
+POST http://localhost:3003/recipe/create
+Content-Type: application/json
+
+{
+	"title":"Limonada",
+	"description":"Limão e açucar",
+	"createdAt":"2022-06-20 22:37:00"
+}
