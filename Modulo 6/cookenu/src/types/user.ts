@@ -4,3 +4,8 @@ export type user={
 	email:string,
 	password:string
 }
+export type follow={
+	id:string,
+	userId:string,
+	followId:string
+}

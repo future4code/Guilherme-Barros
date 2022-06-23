@@ -7,3 +7,6 @@ export interface LoginInputDTO{
 	email:string,
 	password:string
 }
+export interface FollowerInputDTO{
+	followId:string
+}

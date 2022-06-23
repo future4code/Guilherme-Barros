@@ -5,17 +5,28 @@ import { RecipeInputDTO } from "../model/recipe";
 
 export class RecipeController {
 	constructor(private recipeBusiness:RecipeBusiness) {}
-	createRecipe=async(req:Request,res:Response):Promise<void>=>{
+	createRecipe=async(req:Request,res:Response)=>{
 		try {
-			const {title,description,createdAt}=req.body
+			const auth=req.headers.authorization!
+
+			const {title,description}=req.body
 			const input:RecipeInputDTO={
 				title,
-				description,
-				createdAt
+				description
 			}	
-			const token = await this.recipeBusiness.createRecipe(input)
+			 await this.recipeBusiness.createRecipe(input,auth)
 
-			res.status(200).send("access token: "+token)
+			res.status(200).send("Receita criada")
+		}  catch (error: any) {
+			res.status(400).send(error.message);
+		      }
+	}
+	getRecipeById=async(req:Request,res:Response)=>{
+		try {
+			const auth=req.headers.authorization!
+			const {id}=req.params
+			const result=await this.recipeBusiness.getRecipeById(id,auth)
+			res.status(200).send(result)
 		}  catch (error: any) {
 			res.status(400).send(error.message);
 		      }

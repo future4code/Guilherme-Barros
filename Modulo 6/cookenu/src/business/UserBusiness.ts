@@ -1,11 +1,12 @@
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from "../error/customError";
-import { LoginInputDTO, UserInputDTO } from "../model/user";
+import { FollowerInputDTO, LoginInputDTO, UserInputDTO } from "../model/user";
 import { UserRepository } from "./UserRepository";
 import { IdGenerator } from "../service/generatorId";
-import { user } from "../types/user";
+import { follow, user } from "../types/user";
 import { TokenGenerator } from "../service/generatorToken";
 import { UserDatabase } from "../data/UserDatabase";
 import { HashManager } from "../service/hashManager";
+import { recipe } from "../types/recipe";
 
 
 const tokenGenerator = new TokenGenerator()
@@ -80,5 +81,96 @@ export class UserBusiness implements UserRepository{
 		}  catch (error:any) {
 			throw new Error(error.message);
 		}
+	}
+	getUserData=async(token: string): Promise<user>=> {
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		const userDatabase=new UserDatabase()
+		const authData=tokenGenerator.tokenData(token)
+
+		const user = await userDatabase.getUserById(authData.id)
+
+		return user
+	    }catch (error:any) {
+		throw new Error(error.message);
+	}
+	}
+	follow=async(input: FollowerInputDTO,token:string): Promise<void> =>{
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		const {followId}=input
+		
+		if (!followId) {
+			throw new CustomError(400,"Por favor, passe o id do Usuário que queira seguir");
+		}
+		const id: string = Idgenerator.generateId();
+		const userDatabase=new UserDatabase()
+		const authData=tokenGenerator.tokenData(token)
+
+		const user = await userDatabase.getUserById(authData.id)
+		const follow:follow={
+			id,
+			userId:user.id,
+			followId
+		}
+		await userDatabase.followUser(follow)
+
+
+	    } catch (error:any) {
+		throw new Error(error.message);
+	}
+	}
+	getUserById(id: string,token:string): Promise<user> {
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		const userDatabase=new UserDatabase()
+		const user = userDatabase.getUserById(id)
+		return user
+	    } catch (error:any) {
+		throw new Error(error.message);
+	}
+	}
+	unfollow=async(id:string,token:string):Promise<void>=>{
+		try {
+			if (!token) {
+				throw new CustomError(400,"Por favor, passe o token no header da requisição");
+			}
+			if (!id) {
+				throw new CustomError(400,"Por favor, passe o id do Usuário que queira deixar de seguir");
+			}
+			const userDatabase=new UserDatabase()
+			const unfollowedUser= await userDatabase.getFollowById(id)
+			if (!unfollowedUser) {
+				throw new CustomError(404,"O usuário com o id passado não está sendo seguido");
+				
+			}
+		}catch (error:any) {
+			throw new Error(error.message);
+		}
+	}
+	getFeed=async(token: string): Promise<recipe[]>=> {
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		const userDatabase=new UserDatabase()
+		const authData=tokenGenerator.tokenData(token)
+
+		const user = await userDatabase.getUserById(authData.id)
+		if (!user) {
+			throw new CustomError(404,"Usuário não encontrado");
+			
+		}
+		const recipes=await userDatabase.getFeed()
+		return recipes
+	    } catch (error:any) {
+		throw new Error(error.message);
+	}
 	}
 }
