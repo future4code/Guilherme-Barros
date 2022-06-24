@@ -1,19 +1,20 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { LoginInputDTO, UserInputDTO } from "../model/user";
+import { FollowerInputDTO, LoginInputDTO, UserInputDTO } from "../model/user";
 
 export class UserController {
 	constructor(private userBusiness:UserBusiness){}
 	public signup = async (req: Request, res: Response) => {
 
 		try {
-		  const { name, email, password } = req.body;
+		  const { name, email, password,role } = req.body;
 	
 	
 		  const input: UserInputDTO = {
 		    name,
 		    email,
-		    password
+		    password,
+		    role
 		  };
 		
 		  const token = await this.userBusiness.createUser(input);
@@ -25,11 +26,12 @@ export class UserController {
 	      }; 
 	      public login = async (req: Request, res: Response) => {
 		try {
-		  const { email, password } = req.body;
+		  const { email, password,role } = req.body;
 	    
 		  const input: LoginInputDTO = {
 		    email,
-		    password
+		    password,
+		    role
 		  };
 		
 		  const token = await this.userBusiness.login(input);
@@ -55,7 +57,10 @@ export class UserController {
 		try {
 			const {followId}=req.body
 			const auth=req.headers.authorization!
-			await this.userBusiness.follow(followId,auth)
+			const input:FollowerInputDTO={
+				followId
+			}
+			await this.userBusiness.follow(input,auth)
 
 			res.status(200).send("Seguindo usuário com sucesso")
 		} catch (error: any) {
@@ -87,9 +92,25 @@ export class UserController {
 	      }
 	      getFeed=async (req:Request,res:Response) => {
 		try {
+			
+			
 			const auth=req.headers.authorization!
 			const userBusiness=new UserBusiness()
 			
+			
+			const result= await userBusiness.getFeed(auth)
+			res.status(200).send(result)
+		} catch (error: any) {
+			res.status(400).send(error.message);
+		      }
+	      }
+	      deleteAccount=async(req:Request,res:Response)=>{
+		try {
+			const auth=req.headers.authorization!
+			const {id}=req.params
+			const userBusiness=new UserBusiness()
+			await userBusiness.deleteAccount(id,auth)
+			res.status(200).send("Conta deletada com sucesso")
 		} catch (error: any) {
 			res.status(400).send(error.message);
 		      }

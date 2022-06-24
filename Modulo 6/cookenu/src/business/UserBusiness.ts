@@ -17,9 +17,9 @@ export class UserBusiness implements UserRepository{
 	
 	public createUser=async(input:UserInputDTO):Promise<string>=> {
 		try {
-			const { name, email, password } = input;
+			const { name, email, password, role } = input;
 
-			if (!name || !email || !password) {
+			if (!name || !email || !password || !role) {
 				throw new CustomError(
 				  400,
 				  'Preencha os campos "name", "email" e "password"'
@@ -44,11 +44,15 @@ export class UserBusiness implements UserRepository{
 				name,
 				email,
 				password:hashPassword,
+				role
 			      };
 			      const userDatabase = new UserDatabase();
 			    await userDatabase.createUser(user)
-
-			      const token = tokenGenerator.generateToken(id)
+			    const inputToken={
+				id,
+				role
+			      }
+			      const token = tokenGenerator.generateToken(inputToken)
 			      return token
 	
 		}  catch (error:any) {
@@ -65,6 +69,7 @@ export class UserBusiness implements UserRepository{
 			if (!email.includes("@")) {
 				throw new InvalidEmail();
 			}
+			
 			const userDatabase = new UserDatabase();
 			const user= await userDatabase.findUserByEmail(email)
 			if (!user) {
@@ -76,7 +81,11 @@ export class UserBusiness implements UserRepository{
 			if (!compare) {
 				throw new InvalidPassword();
 			}
-			const token=tokenGenerator.generateToken(user.id)
+			const inputLogin={
+				id:user.id,
+				role:user.role
+			}
+			const token=tokenGenerator.generateToken(inputLogin)
 			return token
 		}  catch (error:any) {
 			throw new Error(error.message);
@@ -102,9 +111,12 @@ export class UserBusiness implements UserRepository{
 		if (!token) {
 			throw new CustomError(400,"Por favor, passe o token no header da requisição");
 		}
+		
+		
 		const {followId}=input
 		
-		if (!followId) {
+		
+		if (!input) {
 			throw new CustomError(400,"Por favor, passe o id do Usuário que queira seguir");
 		}
 		const id: string = Idgenerator.generateId();
@@ -150,6 +162,7 @@ export class UserBusiness implements UserRepository{
 				throw new CustomError(404,"O usuário com o id passado não está sendo seguido");
 				
 			}
+			await userDatabase.unfollow(unfollowedUser.id)
 		}catch (error:any) {
 			throw new Error(error.message);
 		}
@@ -159,16 +172,47 @@ export class UserBusiness implements UserRepository{
 		if (!token) {
 			throw new CustomError(400,"Por favor, passe o token no header da requisição");
 		}
+		
+		
 		const userDatabase=new UserDatabase()
-		const authData=tokenGenerator.tokenData(token)
-
+		const authData= tokenGenerator.tokenData(token)
+		
+		
+		const user = await userDatabase.getUserById(authData.id)
+		
+		if (!user) {
+			throw new CustomError(404,"Usuário não encontrado");
+			
+		}
+		const recipes=await userDatabase.getFeed(user.id)
+		return recipes
+	    } catch (error:any) {
+		throw new Error(error.message);
+	}
+	}
+	deleteAccount=async(id: string,token:string): Promise<void>=> {
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		if (!id) {
+			throw new CustomError(400,"Por favor, passe o id do Usuário que queira deletar");
+		}
+		const userDatabase=new UserDatabase()
+		const authData= tokenGenerator.tokenData(token)
 		const user = await userDatabase.getUserById(authData.id)
 		if (!user) {
 			throw new CustomError(404,"Usuário não encontrado");
 			
 		}
-		const recipes=await userDatabase.getFeed()
-		return recipes
+		if (user.role !== 'ADMIN') {
+			throw new CustomError(401,"Você não tem permissão para deletar a conta");
+		}
+		
+		await userDatabase.deleteAllFollows(user.id)
+		await userDatabase.deleteAllRecipes(user.id)
+		await userDatabase.deleteAccount(user.id)
+		
 	    } catch (error:any) {
 		throw new Error(error.message);
 	}

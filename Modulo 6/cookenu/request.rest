@@ -3,9 +3,10 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-	"name":"Minato Namikaze",
-	"email":"minato@gmail.com",
-	"password":"123456"
+	"name":"Sasuke Uchiha",
+	"email":"sasuke@gmail.com",
+	"password":"123456",
+	"role":"NORMAL"
 }
 
 ###
@@ -13,16 +14,58 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-	"email":"minato@gmail.com",
+	"email":"naruto@gmail.com",
 	"password":"123456"
 }
 
 ###
 POST http://localhost:3003/recipe/create
 Content-Type: application/json
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdmMWZhMzVjLTg2MTItNDc4ZS05ZjE0LWU0OWUwODk0MzgxZiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYwNDk2NTksImV4cCI6MTY1NjA1MzI1OX0.SeXTipreVK-hkmBhUlBs4eYUKQcmw9agzgUjYao--vw
 
 {
-	"title":"Limonada",
-	"description":"Limão e açucar",
-	"createdAt":"2022-06-20 22:37:00"
+	"title":"Sorvete",
+	"description":"leite, água e tutti-fruit"
 }
+
+###
+GET http://localhost:3003/user/fed9b30f-7e90-458f-8906-733dffc43249
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZlZDliMzBmLTdlOTAtNDU4Zi04OTA2LTczM2RmZmM0MzI0OSIsImlhdCI6MTY1NjAyNTA0MSwiZXhwIjoxNjU2MDI4NjQxfQ.t9hVl2Gp12Ob9x5LOJLVnsmjTudQmTvIXAYvASfaoq0
+
+###
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0YzAwM2JkLWZjN2ItNDlkYS05ZWI1LTJhYWNjYzAwNDgwYSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYwMzA3NjUsImV4cCI6MTY1NjAzNDM2NX0.t3yoC3zOPPwp0MnnK82DKM6WM3GkL9BI_kGYZnkyYAI
+
+###
+POST http://localhost:3003/user/follow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZlZDliMzBmLTdlOTAtNDU4Zi04OTA2LTczM2RmZmM0MzI0OSIsImlhdCI6MTY1NjAyNzI4NiwiZXhwIjoxNjU2MDMwODg2fQ.kabIB7Gb8OxmvQgw3JgwMtkR22IIEZbTppefSP1kY1I
+
+{
+	"followId":"7f1fa35c-8612-478e-9f14-e49e0894381f"	
+}
+
+###
+GET http://localhost:3003/user/feed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdmMWZhMzVjLTg2MTItNDc4ZS05ZjE0LWU0OWUwODk0MzgxZiIsImlhdCI6MTY1NjAyOTM2MywiZXhwIjoxNjU2MDMyOTYzfQ.xtINjOjkNSYSO7jS5ZMzAdxR2-8UH0H-dsl9oaL1GIU
+
+###
+GET http://localhost:3003/recipe/bed83f58-c673-4966-b58a-04e6b87ed5a9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdmMWZhMzVjLTg2MTItNDc4ZS05ZjE0LWU0OWUwODk0MzgxZiIsImlhdCI6MTY1NjAyOTM2MywiZXhwIjoxNjU2MDMyOTYzfQ.xtINjOjkNSYSO7jS5ZMzAdxR2-8UH0H-dsl9oaL1GIU
+
+###
+PUT http://localhost:3003/recipe/edit/bed83f58-c673-4966-b58a-04e6b87ed5a9
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZlZDliMzBmLTdlOTAtNDU4Zi04OTA2LTczM2RmZmM0MzI0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjAzNjc1MywiZXhwIjoxNjU2MDQwMzUzfQ.CQS9rbWC98MprIw0-F67IP499Y9N38lk7igrY1l6vWM
+
+{
+	"title":"Suco de uva",
+	"description":"Uva, água e açúcar",
+	"createdAt":"2022-06-23",
+	"userId":"bed83f58-c673-4966-b58a-04e6b87ed5a9",
+	"userName":"Minato Namikaze"
+}
+
+###
+DELETE http://localhost:3003/recipe/delete/bed83f58-c673-4966-b58a-04e6b87ed5a9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZlZDliMzBmLTdlOTAtNDU4Zi04OTA2LTczM2RmZmM0MzI0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjA0Njk5MSwiZXhwIjoxNjU2MDUwNTkxfQ.atmyC_Z1C9XuURsjNzsCWpu1P0UypE1SLf2t4j5Uel0

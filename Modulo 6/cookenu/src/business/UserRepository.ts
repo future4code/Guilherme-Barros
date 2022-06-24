@@ -10,4 +10,5 @@ export interface UserRepository{
 	getUserById(id:string,token:string):Promise<user>
 	unfollow(id:string,token:string):Promise<void>
 	getFeed(token:string):Promise<recipe[]>
+	deleteAccount(id:string,token:string):Promise<void>
 }
