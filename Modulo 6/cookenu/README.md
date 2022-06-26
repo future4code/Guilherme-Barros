@@ -7,13 +7,13 @@
 * Criar um arquivo .env na raiz do projeto e preencher as chaves a seguir com os valores apropriados:
    ```
   DB_HOST=
-DB_USER=
-DB_PASSWORD= 
-DB_NAME=
-BCRYPT_COST=
-JWT_KEY=
-NODEMAILER_USER=
-NODEMAILER_PASS=
+  DB_USER=
+  DB_PASSWORD= 
+  DB_NAME=
+  BCRYPT_COST=
+  JWT_KEY=
+  NODEMAILER_USER=
+  NODEMAILER_PASS=
  
    ```
 # Endpoints
