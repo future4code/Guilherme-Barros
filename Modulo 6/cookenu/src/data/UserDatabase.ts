@@ -50,18 +50,20 @@ export class UserDatabase extends BaseDatabase{
 		      }	
 	}
 
-	getFollowById=async(id:string):Promise<follow>=>{
+	getFollowById=async(id:string):Promise<string>=>{
 		try {
 			const result=await UserDatabase.connection('Follow')
 			.where("follow_id",id)
-			return result[0]
+			
+			
+			return result[0].follow_id
 		} catch (error: any) {
 			throw new CustomError(400, error.message);
 		      }
 	}
-	unfollow=async(id:string):Promise<void>=>{
+	unfollow=async(id:string,userId:string):Promise<void>=>{
 		try {
-		await UserDatabase.connection('Follow').where("follow_id",id).del()
+		await UserDatabase.connection('Follow').where("follow_id",id).whereRaw(`user_id='${userId}'`).del()
 		} catch (error: any) {
 			throw new CustomError(400, error.message);
 		      }

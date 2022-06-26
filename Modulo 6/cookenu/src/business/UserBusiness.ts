@@ -158,12 +158,14 @@ export class UserBusiness implements UserRepository{
 				throw new CustomError(400,"Por favor, passe o id do Usuário que queira deixar de seguir");
 			}
 			const userDatabase=new UserDatabase()
+			const authData= tokenGenerator.tokenData(token)
+		const user = await userDatabase.getUserById(authData.id)
 			const unfollowedUser= await userDatabase.getFollowById(id)
 			if (!unfollowedUser) {
 				throw new CustomError(404,"O usuário com o id passado não está sendo seguido");
 				
 			}
-			await userDatabase.unfollow(unfollowedUser.id)
+			await userDatabase.unfollow(unfollowedUser,user.id)
 		}catch (error:any) {
 			throw new Error(error.message);
 		}
