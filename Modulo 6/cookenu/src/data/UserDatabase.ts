@@ -71,7 +71,7 @@ export class UserDatabase extends BaseDatabase{
 		
 		const result = await UserDatabase.connection.raw(`
 		SELECT r.id, r.title, r.description, r.createdAt, r.userId, r.userName FROM Recipe 
-		as r INNER JOIN Follow f ON r.userId = f.follow_id AND f.follow_id <> '${userId}' order by r.createdAt DESC`)	
+		as r INNER JOIN Follow f ON r.userId = f.follow_id WHERE f.user_id= '${userId}' order by r.createdAt DESC`)	
 		return result[0]
 	} catch (error: any) {
 			throw new CustomError(400, error.message);
@@ -84,7 +84,35 @@ export class UserDatabase extends BaseDatabase{
 			throw new CustomError(400, error.message);
 		      }
 	}
-	
+	getAllRecipes=async(id:string):Promise<boolean>=>{
+		try {
+			const result = await UserDatabase.connection.raw(`
+		SELECT r.id, r.title, r.description, r.createdAt, r.userId, r.userName 
+		FROM Cookenusers as c INNER JOIN Recipe r ON c.id = '${id}' AND r.userId = '${id}';
+		`)	
+		if (result[0].id>1) {
+			return true
+		}else{
+			return false
+		}	
+		}  catch (error: any) {
+			throw new CustomError(400, error.message);
+		      }
+	}
+	getAllFollows=async(id:string):Promise<boolean>=>{
+		try {
+			const result = await UserDatabase.connection.raw(`
+			SELECT f.id FROM Follow as f INNER JOIN Cookenusers c ON c.id = '${id}' AND f.user_id = '${id}';
+			`)	
+			if (result[0].id>1) {
+				return true
+			}else{
+				return false
+			}	
+		} catch (error: any) {
+			throw new CustomError(400, error.message);
+		      }
+	}
 	deleteAllRecipes=async(id:string):Promise<void>=>{
 		try {
 		await UserDatabase.connection('Recipe').where("userId",id).del()
@@ -95,7 +123,14 @@ export class UserDatabase extends BaseDatabase{
 	deleteAllFollows=async(id:string):Promise<void>=>{
 		try {
 			await UserDatabase.connection.raw(`
-			DELETE FROM Follow WHERE user_id = '${id}' and follow_id ='${id}'`)
+			DELETE FROM Follow WHERE user_id = '${id}' OR follow_id ='${id}'`)
+		} catch (error: any) {
+			throw new CustomError(400, error.message);
+		      }
+	}
+	putNewPassword=async(id:string,password:string):Promise<void>=>{
+		try {
+			await UserDatabase.connection('Cookenusers').where({id}).update({password})
 		} catch (error: any) {
 			throw new CustomError(400, error.message);
 		      }

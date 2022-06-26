@@ -1,5 +1,6 @@
 import knex from "knex";
 import dotenv from 'dotenv'
+import nodemailer from 'nodemailer'
 dotenv.config()
 
 export abstract class BaseDatabase{
@@ -12,5 +13,7 @@ export abstract class BaseDatabase{
 		  password: process.env.DB_PASSWORD,
 		  database: process.env.DB_NAME,
 		}
-	      })	
+	      })
+	
+		       
 }

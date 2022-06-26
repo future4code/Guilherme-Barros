@@ -115,4 +115,14 @@ export class UserController {
 			res.status(400).send(error.message);
 		      }
 	      }
+	      forgotPassword=async (req:Request,res:Response) => {
+		try {
+			const auth=req.headers.authorization!
+			const userBusiness=new UserBusiness()
+			await userBusiness.forgotPassword(auth)
+			res.status(200).send("Senha alterada")
+		} catch (error: any) {
+			res.status(400).send(error.message);
+		      }
+	      }
 }

@@ -88,7 +88,8 @@ export class RecipeBusiness implements RecipeRepository{
 			throw new CustomError(404,"Usuário não encontrado");	
 		}
 		const verifyRecipe= await recipeDatabase.getRecipeByUser(authData.id)
-	
+		
+		
 		
 		const recipe:recipe={
 			id,
@@ -100,7 +101,7 @@ export class RecipeBusiness implements RecipeRepository{
 		}
 		
 	
-		if (user.role === 'ADMIN' ||  verifyRecipe) {
+		if (user.role === 'ADMIN' ||  user.role === 'NORMAL' && verifyRecipe) {
 			await recipeDatabase.editRecipe(recipe.id,recipe)
 		}
 		else {

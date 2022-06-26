@@ -11,4 +11,5 @@ export interface UserRepository{
 	unfollow(id:string,token:string):Promise<void>
 	getFeed(token:string):Promise<recipe[]>
 	deleteAccount(id:string,token:string):Promise<void>
+	forgotPassword(token:string):Promise<void>
 }

@@ -7,7 +7,8 @@ import { TokenGenerator } from "../service/generatorToken";
 import { UserDatabase } from "../data/UserDatabase";
 import { HashManager } from "../service/hashManager";
 import { recipe } from "../types/recipe";
-
+import generator from 'generate-password'
+import transporter from "../service/nodeMailer";
 
 const tokenGenerator = new TokenGenerator()
 
@@ -185,6 +186,10 @@ export class UserBusiness implements UserRepository{
 			
 		}
 		const recipes=await userDatabase.getFeed(user.id)
+		if (recipes.length === 0) {
+			throw new CustomError(404,'Nenhuma receita postada ainda');
+			
+		}
 		return recipes
 	    } catch (error:any) {
 		throw new Error(error.message);
@@ -201,6 +206,11 @@ export class UserBusiness implements UserRepository{
 		const userDatabase=new UserDatabase()
 		const authData= tokenGenerator.tokenData(token)
 		const user = await userDatabase.getUserById(authData.id)
+		const userDeleted=await userDatabase.getUserById(id)
+		const verifyFollows=await userDatabase.getAllFollows(userDeleted.id)
+		const verifyRecipes=await userDatabase.getAllRecipes(userDeleted.id)
+	
+
 		if (!user) {
 			throw new CustomError(404,"Usuário não encontrado");
 			
@@ -209,10 +219,40 @@ export class UserBusiness implements UserRepository{
 			throw new CustomError(401,"Você não tem permissão para deletar a conta");
 		}
 		
-		await userDatabase.deleteAllFollows(user.id)
-		await userDatabase.deleteAllRecipes(user.id)
-		await userDatabase.deleteAccount(user.id)
+		await userDatabase.deleteAllRecipes(userDeleted.id)
+		await userDatabase.deleteAllFollows(userDeleted.id)
+		await userDatabase.deleteAccount(userDeleted.id)
 		
+	    } catch (error:any) {
+		throw new Error(error.message);
+	}
+	}
+	forgotPassword=async( token: string): Promise<void>=> {
+	    try {
+		if (!token) {
+			throw new CustomError(400,"Por favor, passe o token no header da requisição");
+		}
+		const userDatabase=new UserDatabase()
+		const authData= tokenGenerator.tokenData(token)
+		const user = await userDatabase.getUserById(authData.id)
+		
+		const newPassword=generator.generate({
+			length:10,
+			numbers:true
+		})
+	
+		const hashPassword=await hashManager.generateHash(newPassword)    
+		
+		await userDatabase.putNewPassword(authData.id,hashPassword)
+		await transporter.sendMail({
+			from: `${process.env.NODEMAILER_USER}`,
+			to: user.email,
+			subject: "Senha alterada!",
+			text: "Sua senha foi alterada com sucesso!",
+			html:`<p>Sua senha foi alterada com sucesso!</p>
+			Sua nova senha é ${newPassword}`
+		       })
+		      
 	    } catch (error:any) {
 		throw new Error(error.message);
 	}

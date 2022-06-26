@@ -32,7 +32,9 @@ export class RecipeDatabase extends BaseDatabase {
 		SELECT r.id, r.title, r.description, r.createdAt, r.userId, r.userName 
 		FROM Cookenusers as c INNER JOIN Recipe r ON c.id = '${id}' AND r.userId = '${id}';
 		`)	
-		if (result.id>1) {
+		
+		
+		if (result[0].id !== "") {
 			return true
 		}else{
 			return false
