@@ -1,6 +1,6 @@
 import { userMock, userMock2 } from './../common/mocks/mocks';
 import { UserRepositoryMock } from "../common/mocks/mocks";
-import getAllUsers from "../presentation/getAllUsers";
+
 import { ROLE } from "./ports";
 
 const userRepositoryMock = new UserRepositoryMock()
