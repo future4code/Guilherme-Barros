@@ -18,7 +18,6 @@ describe("Testes de unidade de getUserById",()=>{
 	})
 	it("Resposta de sucesso",()=>{
 		expect.assertions(2)
-    
 		try {
 		  const getUserById = jest.fn(
 		    (id: string) =>  userRepositoryMock.getUserById(id)
