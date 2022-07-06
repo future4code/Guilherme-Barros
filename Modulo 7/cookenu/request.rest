@@ -1,0 +1,83 @@
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+	"name":"Guilherme Barros",
+	"email":"guinaruto1200@gmail.com",
+	"password":"123456",
+	"role":"NORMAL"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+	"email":"guinaruto1200@gmail.com",
+	"password":"3vZpDd0WiD"
+}
+
+###
+POST http://localhost:3003/recipe/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxNTM4ZjQ2LWMyM2MtNDljMS1iYzEzLTIzNmI0MzhmMDJhNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYxNzk3ODAsImV4cCI6MTY1NjE4MzM4MH0.aEoqSvkfl2JeKPscbIraOtPSg4QNaUsbIhcDSHvulIQ
+
+{
+	"title":"Lámen",
+	"description":"Macarrão, caldo, ovo, rabanete"
+}
+
+###
+GET http://localhost:3003/user/fed9b30f-7e90-458f-8906-733dffc43249
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZlZDliMzBmLTdlOTAtNDU4Zi04OTA2LTczM2RmZmM0MzI0OSIsImlhdCI6MTY1NjAyNTA0MSwiZXhwIjoxNjU2MDI4NjQxfQ.t9hVl2Gp12Ob9x5LOJLVnsmjTudQmTvIXAYvASfaoq0
+
+###
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkZDE3M2I3LTExYzEtNDliNi1hYzM0LWFmYjFkNjQwNmY5YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYyODQ2ODEsImV4cCI6MTY1NjI4ODI4MX0.Mz9zblrATCCN6hKY2XM4eyCDmHSzXiA5OmXelCDWQKE
+
+###
+POST http://localhost:3003/user/follow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkM2QyMTY5LWI1ZGEtNDEzOS05ZDliLWY2ZGIwYzVhYWM2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjE3OTY4NCwiZXhwIjoxNjU2MTgzMjg0fQ.Vb7qatRFSByQL4_T89Z2N-BgR0ipz-s5Ro5voAzIjl0
+
+{
+	"followId":"e1538f46-c23c-49c1-bc13-236b438f02a6"	
+}
+
+###
+GET http://localhost:3003/user/feed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkZDE3M2I3LTExYzEtNDliNi1hYzM0LWFmYjFkNjQwNmY5YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYyODQ2ODEsImV4cCI6MTY1NjI4ODI4MX0.Mz9zblrATCCN6hKY2XM4eyCDmHSzXiA5OmXelCDWQKE
+
+###
+GET http://localhost:3003/recipe/bed83f58-c673-4966-b58a-04e6b87ed5a9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdmMWZhMzVjLTg2MTItNDc4ZS05ZjE0LWU0OWUwODk0MzgxZiIsImlhdCI6MTY1NjAyOTM2MywiZXhwIjoxNjU2MDMyOTYzfQ.xtINjOjkNSYSO7jS5ZMzAdxR2-8UH0H-dsl9oaL1GIU
+
+###
+PUT http://localhost:3003/recipe/edit/320457bd-4783-4b52-8f31-64480c068670
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkZDE3M2I3LTExYzEtNDliNi1hYzM0LWFmYjFkNjQwNmY5YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYxOTExOTAsImV4cCI6MTY1NjE5NDc5MH0.Nx-Jdb9QoSB7G2pMDlFw7-slkx2ivipNjzDlaFIRmZY
+
+{
+	"title":"Suco de uva",
+	"description":"Uva, água e açúcar",
+	"createdAt":"2022-06-23",
+	"userId":"7dd173b7-11c1-49b6-ac34-afb1d6406f9a",
+	"userName":"Minato Namikaze"
+}
+
+###
+DELETE http://localhost:3003/recipe/delete/3d737fd8-bd57-4205-b3b0-de8a00f791d6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkM2QyMTY5LWI1ZGEtNDEzOS05ZDliLWY2ZGIwYzVhYWM2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjE3ODQzMiwiZXhwIjoxNjU2MTgyMDMyfQ.-tz8k5UYOrkV4HrdF-TfZLHcdbZQ2xQDABbQ3DXdruo
+
+###
+DELETE http://localhost:3003/user/delete/04415182-1335-4177-b562-bd1ea52a2e7d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkM2QyMTY5LWI1ZGEtNDEzOS05ZDliLWY2ZGIwYzVhYWM2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjE3ODQzMiwiZXhwIjoxNjU2MTgyMDMyfQ.-tz8k5UYOrkV4HrdF-TfZLHcdbZQ2xQDABbQ3DXdruo
+
+###
+PUT http://localhost:3003/user/newPassword
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkZDE3M2I3LTExYzEtNDliNi1hYzM0LWFmYjFkNjQwNmY5YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYxODcwMzUsImV4cCI6MTY1NjE5MDYzNX0.MHQGkiOJ_koB5wEHW-BOFgO92xzlNvoO_SFyVNV3HNc
+
+###
+DELETE http://localhost:3003/user/unfollow/e1538f46-c23c-49c1-bc13-236b438f02a6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkZDE3M2I3LTExYzEtNDliNi1hYzM0LWFmYjFkNjQwNmY5YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTYyODQ2ODEsImV4cCI6MTY1NjI4ODI4MX0.Mz9zblrATCCN6hKY2XM4eyCDmHSzXiA5OmXelCDWQKE

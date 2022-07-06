@@ -1,0 +1,62 @@
+###
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+	"name":"Matheus Lima Ribeiro",
+	"email":"matheus@gmail.com",
+	"password":"654321"
+}
+
+###
+POST http://localhost:3003/post/create/
+Content-Type: application/json
+
+{
+	"photo":"https://img.elo7.com.br/product/original/3249FFD/quadro-decorativo-natureza-paisagem-mar-sol-coqueiro-ponte-quadro-belezas-naturais.jpg",
+	"description":"Ponte entre coqueiros em um por do sol",
+	"type":"normal",
+	"created_at":"2022-04-01 21:04:00",
+	"author_id":"667e1a63-f728-49c0-9b1a-ae9afe9fe7e3"
+}
+
+###
+GET http://localhost:3003/post/get/92fe8066-9bb5-480f-b67b-790d04a9dab53
+
+###
+POST http://localhost:3003/user/createFriendship
+Content-Type: application/json
+
+{
+	"user_id":"440bea24-7e19-41b1-ae11-d372e278f228",
+	"friend_id":"667e1a63-f728-49c0-9b1a-ae9afe9fe7e3"
+}
+
+###
+DELETE http://localhost:3003/user/deleteFriendship/667e1a63-f728-49c0-9b1a-ae9afe9fe7e3
+
+###
+GET http://localhost:3003/user/feed?page=1
+
+###
+GET http://localhost:3003/user/type/normal
+
+###
+POST http://localhost:3003/user/comment
+Content-Type: application/json
+
+{
+	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518",
+	"message":"Linda foto!"
+}
+
+###
+POST http://localhost:3003/user/like
+Content-Type: application/json
+
+{
+	"post_id":"633f31d9-fbd7-4754-a01a-dd39b0928518"
+}
+
+###
+DELETE  http://localhost:3003/user/deslike/fgfgadfgadfgdf

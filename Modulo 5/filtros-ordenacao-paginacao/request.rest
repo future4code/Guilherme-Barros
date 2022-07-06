@@ -1,0 +1,17 @@
+###
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/user?name=Soter
+
+###
+GET http://localhost:3003/user/Operations
+
+###
+GET http://localhost:3003/ordenedusers?sort=name&order=DESC&page=1
+
+###
+GET http://localhost:3003/fiveusers?page=1
+
+###
+GET http://localhost:3003/ordenedusers?type=Teacher&name=João&sort=name&order=DESC&page=1
