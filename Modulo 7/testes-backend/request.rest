@@ -1,0 +1,13 @@
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+	"name":"Guilherme",
+	"email":"guilherme@gmail.com",
+	"password":"123456",
+	"role":"ADMIN"
+}
+
+###
+GET http://localhost:3003/users/profile/09b0cd85-da69-4940-a500-96a6484e7936
