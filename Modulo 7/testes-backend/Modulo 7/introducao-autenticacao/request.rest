@@ -1,0 +1,21 @@
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+	"email":"ramsesII@gmail.com",
+	"password":"654321"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+	"email":"ramsesII@gmail.com",
+	"password":"654321"
+}
+
+###
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNkOTc0NGJiLTNjODEtNGYxZC05NWRlLTQ4MjI3NzgxZGVhZiIsImlhdCI6MTY1NTI1Mzk2NCwiZXhwIjoxNjU1MjYxMTY0fQ.cy1WvzOoETgx-fkG4ez0q-85WCH2evzHFTTE6gN8mp8

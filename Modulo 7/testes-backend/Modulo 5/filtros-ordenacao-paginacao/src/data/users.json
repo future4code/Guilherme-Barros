@@ -1,0 +1,152 @@
+[
+	{
+		"id" : 1,
+		"name" : "Soter",
+		"email" : "soter@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 2,
+		"name" : "João",
+		"email" : "joao@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 3,
+		"name" : "Paula",
+		"email" : "paula@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 4,
+		"name" : "Amanda",
+		"email" : "amanda@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 5,
+		"name" : "Darvas",
+		"email" : "darvas@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 6,
+		"name" : "Severo",
+		"email" : "severo@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 7,
+		"name" : "Caio",
+		"email" : "caio@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 8,
+		"name" : "Chijo",
+		"email" : "chijo@labenu",
+		"type" : "Teacher"
+	},
+{
+		"id" : 9,
+		"name" : "Lais",
+		"email" : "lais@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 10,
+		"name" : "Bruno",
+		"email" : "bruno@labenu",
+		"type" : "Teacher"
+	},
+	{
+		"id" : 11,
+		"name" : "Luciano",
+		"email" : "luciano@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 12,
+		"name" : "Miau",
+		"email" : "miau@labenu",
+		"type" : "Operations"
+	},
+{
+		"id" : 13,
+		"name" : "Sekine",
+		"email" : "sekine@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 14,
+		"name" : "Nathalia",
+		"email" : "nathalia@labenu",
+		"type" : "Operations"
+	},
+{
+		"id" : 15,
+		"name" : "AmandaP",
+		"email" : "amandaop@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 16,
+		"name" : "Rebeca",
+		"email" : "rebeca@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 17,
+		"name" : "Jean",
+		"email" : "jean@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 18,
+		"name" : "Vitória",
+		"email" : "vitoria@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 19,
+		"name" : "Fernanda",
+		"email" : "fernanda@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 20,
+		"name" : "Tainah",
+		"email" : "mtainah@labenu",
+		"type" : "Operations"
+	},
+	{
+		"id" : 21,
+		"name" : "Aline",
+		"email" : "aline@labenu",
+		"type" : "CX"
+	},
+	{
+		"id" : 22,
+		"name" : "NathaliaB",
+		"email" : "nathaliacx@labenu",
+		"type" : "CX"
+	},
+	{
+		"id" :23,
+		"name" : "Layla",
+		"email" : "layla@labenu",
+		"type" : "CX"
+	},
+	{
+		"id" :24,
+		"name" : "Jonathan",
+		"email" : "jonathan@labenu",
+		"type" : "CX"
+	},
+	{
+		"id" :25,
+		"name" : "Maju",
+		"email" : "maju@labenu",
+		"type" : "CX"
+	}
+]

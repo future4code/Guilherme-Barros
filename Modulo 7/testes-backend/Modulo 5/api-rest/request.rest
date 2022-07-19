@@ -1,0 +1,9 @@
+###
+
+GET http://localhost:3003/users/name?name=Bob
+
+###
+POST http://localhost:3003/users/addUser
+Content-Type: application/json
+
+{"name":"Julin","email":"julin@gmail.com","type":"NORMAL","age":50}

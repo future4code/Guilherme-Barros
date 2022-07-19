@@ -1,6 +1,6 @@
 import { userMock, userMock2 } from './../common/mocks/mocks';
 import { UserRepositoryMock } from "../common/mocks/mocks";
-import getAllUsers from "../presentation/getAllUsers";
+
 import { ROLE } from "./ports";
 
 const userRepositoryMock = new UserRepositoryMock()
@@ -18,7 +18,6 @@ describe("Testes de unidade de getUserById",()=>{
 	})
 	it("Resposta de sucesso",()=>{
 		expect.assertions(2)
-    
 		try {
 		  const getUserById = jest.fn(
 		    (id: string) =>  userRepositoryMock.getUserById(id)

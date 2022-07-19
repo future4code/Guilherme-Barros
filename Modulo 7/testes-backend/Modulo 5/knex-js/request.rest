@@ -1,0 +1,8 @@
+###
+GET http://localhost:3003/users/001
+
+###
+GET http://localhost:3003/actor/Tony Ramos
+
+###
+GET http://localhost:3003/actor?gender=female
