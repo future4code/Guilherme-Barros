@@ -1,9 +1,10 @@
 import React from 'react'
 import { Header } from '../../components/Header'
 
-export const Order = () => {
+export const PizzaCreate = () => {
   return (
-    <div><Header/>
-    Orders</div>
+    <div>
+	<Header/>
+	PizzaCreate</div>
   )
 }

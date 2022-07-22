@@ -1,13 +1,18 @@
 import React from 'react'
-import { Box, Center,Image, Flex, FormControl, FormLabel, Input,InputRightElement, Button, InputGroup, Text } from '@chakra-ui/react'
+import {Image, Flex, Menu, UnorderedList,ListItem, Input,
+  InputGroup,
+  InputRightElement,} from '@chakra-ui/react'
 import Logo from './../../assets/logo.png'
-import { goToHomePage } from '../../routes/coordinator'
+import { goToCartPage, goToHomePage, goToOrderPage } from '../../routes/coordinator'
+import { SearchIcon } from "@chakra-ui/icons"
+import { useNavigate } from 'react-router-dom'
 export const Header = () => {
+  const navigate= useNavigate()
   return (
     <Flex
     direction={["column", "row"]}
     justify={["space-between"]}
-    align={"center"}
+    align={"flex-end"}
     bg={"green.600"}
     borderBottom={"solid 2px #dedede"}
     p={[".5em", 0]}
@@ -26,6 +31,55 @@ export const Header = () => {
           goToHomePage(navigate)
         }}
 	/>
-	Header</Flex>
+  <InputGroup>
+        <InputRightElement
+          pointerEvents="none"
+          children={<SearchIcon color="white" />}
+        />
+        <Input
+          
+          type={"search"}
+          variant="flushed"
+          placeholder="Procure um Pokémon..."
+          _placeholder={{ color: "white" }}
+          mb={'1em'}
+          color={"white"}
+        />
+      </InputGroup>
+  <Menu>
+  <UnorderedList styleType={"none"} m={["0 auto"]}>
+    <Flex >
+    <ListItem
+     bg={"background.blue"}
+     _hover={{ bg: "#E3350D" }}
+     color={"white"}
+     p={["0.5em", "2.7em"]}
+     cursor={"pointer"}
+     onClick={() => goToCartPage(navigate)}
+     borderBottom={'5px solid #ca3614'}
+     display={"flex"}
+     alignItems={"center"}
+     flexFlow={"column"}
+    >
+      Carrinho
+    </ListItem>
+    <ListItem
+     bg={"background.blue"}
+     _hover={{ bg: "#E3350D" }}
+     color={"white"}
+     p={[".5em", "2.7em"]}
+     cursor={"pointer"}
+     onClick={() => goToOrderPage(navigate)}
+     borderBottom={'5px solid #ca3614'}
+     display={"flex"}
+     alignItems={"center"}
+     flexFlow={"column"}
+    >
+      Pedidos
+    </ListItem>
+    </Flex>
+  </UnorderedList>
+  </Menu>
+	</Flex>
   )
 }
