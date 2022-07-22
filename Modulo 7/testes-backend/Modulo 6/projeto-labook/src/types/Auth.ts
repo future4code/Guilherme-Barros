@@ -1,0 +1,4 @@
+type authenticationData = {
+	id: string
+     }
+     

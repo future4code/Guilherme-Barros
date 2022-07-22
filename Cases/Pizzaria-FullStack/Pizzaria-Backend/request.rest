@@ -1,0 +1,60 @@
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+	"name":"Guilherme de Oliveira",
+	"email":"guilhermecomercial51@gmail.com",
+	"password":"123456",
+	"role":"ADMIN"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+	"email":"guilhermecomercial51@gmail.com",
+	"password":"123456"
+}
+
+###
+POST http://localhost:3003/pizza/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODAyMDI1MiwiZXhwIjoxNjU4MDIzODUyfQ.Fsq9rD8XLbOWCVb7TCz4XObXS0N29Oc1ha6kEEnHjok
+Content-Type: application/json
+
+{
+	"name":"Baiana",
+	"price":10.0,
+	"imgUrl":"https://www.receitasdecomida.com.br/wp-content/uploads/2013/09/pizza-baiana-rapida-6428.jpg",
+	"ingredients":"1 pitada de pimenta do reino,1 pitada sal,1 unidade massa de pizza,2 unidades de ovos,3 unidades linguiça de porco,3 unidades tomate,200 gramas queijo mozzarela"
+
+}
+
+###
+POST http://localhost:3003/item/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Nzk1MTU0NiwiZXhwIjoxNjU3OTU1MTQ2fQ.OUT6fWKdFUX-8yyowrKMp0cFCw8x1E-5C4p1mAqjEaM
+Content-Type: application/json
+
+{
+	"pizzaId":"95f57823-1fb8-48e8-aa8c-339a2d5a26aa",
+	"quantity":2
+}
+
+###
+POST http://localhost:3003/order/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODAyNzU5MSwiZXhwIjoxNjU4MDMxMTkxfQ.UEp-Wbvu6NNJ045Eup5dKKNvmeX0-SAjXmxZIAa8Rn4
+Content-Type: application/json
+
+{
+	"itemId":"8a561f6f-abc6-4df9-b9fb-ad397c124d0e",
+	
+}
+
+###
+GET http://localhost:3003/pizza/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODAxNzU4MywiZXhwIjoxNjU4MDIxMTgzfQ.KxcmjGrb_Ey-pcct5B8wXX-HNCyvmocOKXB-7WRkWDo
+
+###
+GET http://localhost:3003/order/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODAxNzU4MywiZXhwIjoxNjU4MDIxMTgzfQ.KxcmjGrb_Ey-pcct5B8wXX-HNCyvmocOKXB-7WRkWDo

@@ -1,0 +1,1 @@
+```function calculaPrecoTotal(quantidade) {quantidade<12 ? custo=quantidade*1.30 : custo=quantidade*1 return custo}```
