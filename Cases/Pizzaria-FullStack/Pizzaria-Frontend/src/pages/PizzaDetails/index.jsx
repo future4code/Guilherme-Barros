@@ -1,7 +1,10 @@
 import React from 'react'
+import { Header } from '../../components/Header'
 
 export const PizzaDetails = () => {
   return (
-    <div>PizzaDetails</div>
+    <div>
+      <Header/>
+      PizzaDetails</div>
   )
 }

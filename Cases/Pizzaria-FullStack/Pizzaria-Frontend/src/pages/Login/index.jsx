@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../constants'
 import useForm from '../../hooks/useForm'
 import useProtectedPage from '../../hooks/useProtectedPage'
+import { goToHomePage } from '../../routes/coordinator'
 export const Login = () => {
 	const [show, setShow] = React.useState(false)
 	const handleClick = () => setShow(!show)
@@ -18,7 +19,7 @@ export const Login = () => {
 	  api.post('/user/login',form)
 	  .then(({data})=>{
 	    localStorage.setItem("token", data.token);
-	    goToGalleryPage(navigate)})
+	    goToHomePage(navigate)})
 	  .catch((err)=>console.log(err))
       
 	cleanFields();

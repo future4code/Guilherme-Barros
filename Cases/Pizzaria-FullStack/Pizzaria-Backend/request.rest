@@ -47,13 +47,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAt
 Content-Type: application/json
 
 {
-	"itemId":"8a561f6f-abc6-4df9-b9fb-ad397c124d0e",
+	"itemId":"8a561f6f-abc6-4df9-b9fb-ad397c124d0e"
 	
 }
 
 ###
 GET http://localhost:3003/pizza/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODAxNzU4MywiZXhwIjoxNjU4MDIxMTgzfQ.KxcmjGrb_Ey-pcct5B8wXX-HNCyvmocOKXB-7WRkWDo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlYjYyYjI5LTAwNTAtNGFmYy1hMjFlLTUwNmVhZDgxMGQyNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODI2OTgyMiwiZXhwIjoxNjU4MjczNDIyfQ.LvO0jo07jwlnDCYiEOV3qmWymaAH-t_jEDQzMh_AOO4
 
 ###
 GET http://localhost:3003/order/all
