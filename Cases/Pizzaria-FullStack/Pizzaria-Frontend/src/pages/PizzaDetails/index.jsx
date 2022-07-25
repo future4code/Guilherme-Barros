@@ -4,8 +4,10 @@ import { Header } from '../../components/Header'
 import { PizzaCard } from '../../components/PizzaCard'
 import { api } from '../../constants'
 
+
 export const PizzaDetails = () => {
   const [pizza,setPizza]=useState({})
+ 
   const param=useParams()
   const getPizzaDetails=()=>{
     api.get(`/pizza/${param.id}`,{headers: { 'Authorization': localStorage.getItem('token') }})
