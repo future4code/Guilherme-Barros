@@ -19,8 +19,8 @@ export class PizzaBusiness implements PizzaRepository{
 			if (!token) {
 				throw new CustomError(401,"Por favor, passe o token no header da requisição");
 			}
-			const {name,price,imgUrl,ingredients}=input
-			if(!name || !price || !ingredients || !imgUrl){
+			const {name,price,img_url,ingredients}=input
+			if(!name || !price || !ingredients || !img_url){
 				throw new CustomError(422,"Faltam parâmetros na requisição que devem ser completados para a criação da Pizza");
 			}
 			const pizzaByName:Pizza=await this.pizzaDatabase.getByName(name)
@@ -39,7 +39,7 @@ export class PizzaBusiness implements PizzaRepository{
 				id,
 				name,
 				price,
-				imgUrl,
+				img_url,
 				ingredients
 			     }
 			     await this.pizzaDatabase.create(pizza)

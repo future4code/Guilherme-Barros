@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Image, Flex, Menu, UnorderedList,ListItem, Input,
   InputGroup,
   InputRightElement,} from '@chakra-ui/react'
 import Logo from './../../assets/logo.png'
-import { goToCartPage, goToHomePage, goToOrderPage } from '../../routes/coordinator'
+import { goToCartPage, goToHomePage, goToOrderPage, goToPizzaCreate } from '../../routes/coordinator'
 import { SearchIcon } from "@chakra-ui/icons"
 import { useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../GlobalContext'
 export const Header = () => {
   const navigate= useNavigate()
+  const { searchPizza, setSearchPizza } = useContext(GlobalContext)
+  const handlePizza = ({ target }) => {
+    setSearchPizza(target.value)
+  }
+
   return (
     <Flex
     direction={["column", "row"]}
@@ -37,13 +43,15 @@ export const Header = () => {
           children={<SearchIcon color="white" />}
         />
         <Input
-          
+          value={searchPizza}
+          onChange={handlePizza}
           type={"search"}
           variant="flushed"
-          placeholder="Procure um Pokémon..."
+          placeholder="Procure uma Pizza..."
           _placeholder={{ color: "white" }}
           mb={'1em'}
           color={"white"}
+          focusBorderColor='white'
         />
       </InputGroup>
   <Menu>
@@ -76,6 +84,20 @@ export const Header = () => {
      flexFlow={"column"}
     >
       Pedidos
+    </ListItem>
+    <ListItem
+     bg={"background.blue"}
+     _hover={{ bg: "#E3350D" }}
+     color={"white"}
+     p={[".5em", "2.7em"]}
+     cursor={"pointer"}
+     onClick={() => goToPizzaCreate(navigate)}
+     borderBottom={'5px solid #ca3614'}
+     display={"flex"}
+     alignItems={"center"}
+     flexFlow={"column"}
+    >
+      Pizza
     </ListItem>
     </Flex>
   </UnorderedList>

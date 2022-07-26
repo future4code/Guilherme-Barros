@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { GlobalStorage } from "../GlobalContext"
 import { Cart } from "../pages/Cart"
 import { Home } from "../pages/Home"
 import { Login } from "../pages/Login"
@@ -11,6 +12,7 @@ import { Signup } from "../pages/Signup"
 export const ConfigRoutes=()=>{
 	return(
 		<BrowserRouter>
+		<GlobalStorage>
 		<Routes>
 			<Route path="/" element={<Login/>}/>
 			<Route path="/signup" element={<Signup/>}/>
@@ -22,6 +24,7 @@ export const ConfigRoutes=()=>{
 			<Route path='/pizza/create' element={<PizzaCreate/>}/>
 			
 		</Routes>
+		</GlobalStorage>
 	</BrowserRouter>
 	)
 }

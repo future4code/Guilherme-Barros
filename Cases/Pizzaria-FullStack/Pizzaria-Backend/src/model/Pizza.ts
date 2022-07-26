@@ -3,7 +3,7 @@ export class Pizza{
 		private id:string,
 		private name:string,
 		private price:number,
-		private imgUrl:string,
+		private img_url:string,
 		private ingredients:string[]
 	){}
 	getId(){
@@ -17,7 +17,7 @@ export class Pizza{
 		return this.price
 	}	
 	getImgUrl(){
-		return this.imgUrl
+		return this.img_url
 	}
 	getIngredients(){
 		return this.ingredients
@@ -32,26 +32,26 @@ export class Pizza{
 	setPrice(price:number){
 		this.price=price
 	}
-	setImgUrl(imgUrl:string){
-		this.imgUrl=imgUrl
+	setImgUrl(img_url:string){
+		this.img_url=img_url
 	}
 	setIngredients(ingredients:string[]){
 		this.ingredients=ingredients
 	}
 	static toPizzaModel(pizza:pizza):Pizza{
-		return new Pizza(pizza.id,pizza.name,pizza.price,pizza.imgUrl,pizza.ingredients)
+		return new Pizza(pizza.id,pizza.name,pizza.price,pizza.img_url,pizza.ingredients)
 	}
 }
 export type pizza={
 	id:string,
 	name:string,
 	price:number,
-	imgUrl:string,
+	img_url:string,
 	ingredients:string[]
 }
 export interface PizzaInputDTO{
 	name:string,
 	price:number,
-	imgUrl:string,
+	img_url:string,
 	ingredients:string[]
 }

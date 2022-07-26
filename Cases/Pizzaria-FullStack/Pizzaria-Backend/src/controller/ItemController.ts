@@ -35,4 +35,14 @@ export class ItemController {
 			res.status(400).send({ error: error.message });
 		    }
 	}
+	async getActives(req:Request,res:Response){
+		try {
+			const auth=req.headers.authorization!
+			const itemBusiness=new ItemBusiness(pizzaDatabase,itemDatabase,idGenerator)
+			const result=await itemBusiness.getActives(auth)
+			res.status(200).send(result)
+		} catch (error:any) {
+			res.status(400).send({ error: error.message });
+		    }
+	}
 }

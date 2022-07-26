@@ -13,3 +13,9 @@ export const goToOrderPage=(navigate)=>{
 export const goToPizzaDetails=(navigate,id)=>{
 	navigate(`/pizza/${id}`)
 }
+export const goToOrderDetails=(navigate,id)=>{
+	navigate(`/order/${id}`)
+}
+export const goToPizzaCreate=(navigate,id)=>{
+	navigate('/pizza/create')
+}

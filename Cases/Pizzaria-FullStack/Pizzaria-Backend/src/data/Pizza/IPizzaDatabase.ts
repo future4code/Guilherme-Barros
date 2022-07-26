@@ -4,5 +4,5 @@ export interface IPizzaDatabase{
 	getByName(name:string):Promise<Pizza>
 	getAll():Promise<Pizza[] | []>
 	getById(id:string):Promise<Pizza>
-	getPriceByItem(pizzaId:string):Promise<number>
+	getPriceByOrder(orderId:string):Promise<number>
 }

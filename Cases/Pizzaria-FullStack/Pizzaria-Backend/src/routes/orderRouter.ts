@@ -7,4 +7,5 @@ const orderController=new OrderController()
 
 orderRoute.get('/all',orderController.getAll)
 orderRoute.get('/:id',orderController.getById)
+orderRoute.get('/details/:id',orderController.getOrderDetails)
 orderRoute.post("/create",orderController.create)

@@ -2,7 +2,6 @@ export class Order{
 	constructor(
 		private id:string,
 		private userId:string,
-		private itemId:string,
 		private total:number,
 		private createdAt: Date
 	){}
@@ -11,9 +10,6 @@ export class Order{
 	}
 	getUserId(){
 		return this.userId
-	}
-	getItemId(){
-		return this.itemId
 	}
 	
 	getTotal(){
@@ -28,9 +24,6 @@ export class Order{
 	setUserId(userId:string){
 		this.userId=userId
 	}
-	setItemId(itemId:string){
-		this.itemId=itemId
-	}
 	
 	setTotal(total:number){
 		this.total=total
@@ -39,18 +32,17 @@ export class Order{
 		this.createdAt=createdAt
 	}
 	static toOrderModel(order:order):Order{
-		return new Order(order.id,order.userId,order.itemId,order.total,order.createdAt)
+		return new Order(order.id,order.userId,order.total,order.createdAt)
 	}
 }
 export type order={
 	id:string,
 	userId:string,
-	itemId:string,
 	total:number,
 	createdAt:Date
 }
 export interface OrderInputDTO{
 
-	itemId:string
+	orderId:string
 	
 }

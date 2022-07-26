@@ -13,11 +13,11 @@ export class PizzaController{
 	async create(req:Request,res:Response){
 		try {
 			const auth=req.headers.authorization!
-			const {name,price,imgUrl,ingredients}=req.body
+			const {name,price,img_url,ingredients}=req.body
 			const input:PizzaInputDTO={
 				name,
 				price,
-				imgUrl,
+				img_url,
 				ingredients
 			}
 			const pizzaBusiness=new PizzaBusiness(pizzaDatabase,userDatabase,authenticator,idGenerator)

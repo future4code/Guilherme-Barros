@@ -7,3 +7,4 @@ const itemController= new ItemController()
 
 itemRouter.post("/create",itemController.create)
 itemRouter.delete("/delete/:itemId",itemController.delete)
+itemRouter.get("/cart",itemController.getActives)
