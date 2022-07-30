@@ -13,8 +13,13 @@ export class CreateTables extends BaseDatabase{
 );
 CREATE TABLE IF NOT EXISTS Product_Catalog(
 	id VARCHAR(255) PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Tag_Product(
+	id VARCHAR(255) PRIMARY KEY NOT NULL,
+	productId VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
-    tags VARCHAR(255) NOT NULL
+    FOREIGN KEY(productId) REFERENCES Product_Catalog(id)
 );
 
    `)
