@@ -17,7 +17,7 @@ export class ProductDatabase extends BaseDatabase implements IProductDatabase{
 			throw new Error(error.sqlMessage || error.message);
 		      }
 	}
-	async insert(itemId:string,name:string): Promise<void> {
+	async insert(itemId:number,name:string): Promise<void> {
 		try {
 			await this.getConnection()
 			.insert({
@@ -28,7 +28,7 @@ export class ProductDatabase extends BaseDatabase implements IProductDatabase{
 			throw new Error(error.sqlMessage || error.message);
 		      }
 	}
-	async searchById(id: string): Promise<any> {
+	async searchById(id: number): Promise<any> {
 		try {
 			const result=await this.getConnection()
 			.select("*")

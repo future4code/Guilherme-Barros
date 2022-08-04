@@ -2,7 +2,7 @@ import { product } from "../types/product";
 
 export class Product{
 	constructor(
-		private id:string,
+		private id:number,
 		private name:string,
 		private tags:string[]
 	){}

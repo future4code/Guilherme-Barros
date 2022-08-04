@@ -1,7 +1,6 @@
 import { product } from './../../types/product';
 import { ProductDatabase } from "../../data/Product/ProductDatabase";
 import { CustomError } from "../../error/CustomError";
-import { Authenticator } from "../../services/Authenticator";
 import { IdGenerator } from "../../services/IdGenerator";
 import { tag } from "../../types/tag";
 import { ProductRepository } from "./ProductRepository";
@@ -9,7 +8,6 @@ import { ProductRepository } from "./ProductRepository";
 export class ProductBusiness implements ProductRepository{
 	constructor(
 		private productDatabase:ProductDatabase,
-		private authenticator: Authenticator,
 		private idGenerator: IdGenerator
 	){}
 	async insert(products: product[],token:string): Promise<void> {
@@ -19,6 +17,17 @@ export class ProductBusiness implements ProductRepository{
 			}
 			if(!products){
 				throw new CustomError(400,"Envie os produtos que deseja cadastrar");
+			}
+			for (const prod of products) {
+				if(!prod.id || !prod.name || prod.tags.length==0){
+					throw new CustomError(400,"Produto inválido");
+					
+				}
+				const produto=await this.productDatabase.searchById(prod.id)
+				if(produto){
+					throw new CustomError(400,"Produto já inserido");
+					
+				}
 			}
 			for (const item of products) {
 				
@@ -38,7 +47,7 @@ export class ProductBusiness implements ProductRepository{
 			throw new Error(error.sqlMessage || error.message)
 		      }
 	}
-	async searchById(search: string,token:string): Promise<product[] | []> {
+	async searchById(search: number,token:string): Promise<product[] | []> {
 		try {
 			if (!token) {
 				throw new CustomError(400,"Por favor, passe o token no header da requisição");

@@ -1,5 +1,5 @@
 export type tag={
 	id:string,
-	productId:string,
+	productId:number,
 	name:string
 }

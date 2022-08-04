@@ -6,15 +6,15 @@ import { IUserDatabase } from "./IUserDatabase";
 export class UserDatabase extends BaseDatabase implements IUserDatabase{
 	private static TABLE_NAME ='User_Catalog'
 
-	async signup(user: user): Promise<void> {
+	async signup(user: User): Promise<void> {
 		try {
 			await this.getConnection()
 			.insert({
-				id:user.id,
-				name:user.name,
-				email:user.email,
-				password:user.password,
-				role:user.role
+				id:user.getId,
+				name:user.getName,
+				email:user.getEmail,
+				password:user.getPassword,
+				role:user.getRole
 			}).into(UserDatabase.TABLE_NAME)
 
 		} catch (error:any) {

@@ -1,5 +1,7 @@
-import { InvalidName } from "../error/CustomError";
+import { InvalidEmail, InvalidName, InvalidPassword } from "../error/CustomError";
 import { user } from "../types/user";
+
+
 
 export class User{
 	constructor(
@@ -8,7 +10,13 @@ export class User{
 	private email: string,
 	private password: string,
 	private role: UserRole
-	){}
+	){
+		if(id) this.setId(id)
+		if(name) this.setName(name)
+		if(email) this.setEmail(email);
+		if(role) this.setRole(role);
+		if(password) this.setPassword(password);
+	}
     
 	getId(){
 	    return this.id;
@@ -35,15 +43,28 @@ export class User{
 	}
     
 	setName(name: string){
-	    this.name = name;
+		if (name.length < 4) {
+			throw new InvalidName();
+			  }
+			  if (typeof name !== 'string') {
+			    throw new InvalidName()
+		    }
+		this.name = name;
 	}
     
 	setEmail(email: string){
+	if (!email.includes("@")) {
+		throw new InvalidEmail();
+	  }
+				  
 	    this.email = email;
 	}
     
 	setPassword(password: string){
-	    this.password = password;
+		if(password.length<6){
+			throw new InvalidPassword();
+		    }
+		this.password = password;
 	}
     
 	setRole(role: UserRole){
@@ -60,16 +81,10 @@ export class User{
 		  throw new Error("Invalid user role");
 	      }
 	}
-    
 	static toUserModel(user: user): User {
 	    return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
 	  }
     
-    static validateName(name:string){
-	if (typeof name !== 'string') {
-		throw new InvalidName()
-	}
-    }
     }
  
     export interface UserInputDTO{

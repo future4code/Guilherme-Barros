@@ -3,8 +3,8 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-	"name":"Guilherme Barros",
-	"email":"guilherme@gmail.com",
+	"name":"Joao",
+	"email":"joaosilva@gmail.com",
 	"password":"123456",
 	"role":"ADMIN"
 }
@@ -155,4 +155,4 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdlYWNkYjkyLWI1M2Et
 
 ###
 GET http://localhost:3003/product/search/tag?search=balada
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdlYWNkYjkyLWI1M2EtNGE2MC05YmFhLWEyNDc1NjdmYzZkZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTEyMjg3OSwiZXhwIjoxNjU5MTI2NDc5fQ.d0ibvgpYu4HN-z8eYIzRY1LJqvbVnaHmr5j9VJzxJHU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdlYWNkYjkyLWI1M2EtNGE2MC05YmFhLWEyNDc1NjdmYzZkZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTIwOTM2MiwiZXhwIjoxNjU5MjEyOTYyfQ.CBB7zLaqrfgM2KsChSw2fX4xr6f279izyYieyREAveM
