@@ -21,7 +21,7 @@ export class ProductController {
 	async searchById(req:Request,res:Response){
 		try {
 			const auth=req.headers.authorization!
-			const search=req.query.search as string
+			const search=req.query.search as unknown as number
 			const productBusiness=new ProductBusiness(productDatabase,idGenerator)
 			const result=await productBusiness.searchById(search,auth)
 			res.status(200).send(result)
