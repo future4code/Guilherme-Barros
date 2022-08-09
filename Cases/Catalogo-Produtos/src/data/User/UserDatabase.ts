@@ -10,11 +10,11 @@ export class UserDatabase extends BaseDatabase implements IUserDatabase{
 		try {
 			await this.getConnection()
 			.insert({
-				id:user.getId,
-				name:user.getName,
-				email:user.getEmail,
-				password:user.getPassword,
-				role:user.getRole
+				id:user.getId(),
+				name:user.getName(),
+				email:user.getEmail(),
+				password:user.getPassword(),
+				role:user.getRole()
 			}).into(UserDatabase.TABLE_NAME)
 
 		} catch (error:any) {
