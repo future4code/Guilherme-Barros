@@ -7,3 +7,7 @@ Content-Type: application/json
 	"lastName":"Barros",
 	"participation":30
 }
+
+###
+GET http://localhost:3003/participant/all
+

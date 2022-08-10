@@ -20,7 +20,14 @@ export class ParticipantDatabase extends BaseDatabase implements IParticipantDat
 		}
 	}
 	async getAll(): Promise<[] | Participant[]> {
-		throw new Error("Method not implemented.");
+	try{
+const result=this.getConnection()
+.select('*')
+.from(ParticipantDatabase.TABLE_NAME)
+return result
+	}catch (error:any) {
+			throw new Error(error.sqlMessage || error.message);
+		}
 	}
 
 }
