@@ -1,0 +1,9 @@
+###
+POST http://localhost:3003/participant/create
+Content-Type: application/json
+
+{
+	"name":"Guilherme",
+	"lastName":"Barros",
+	"participation":30
+}
