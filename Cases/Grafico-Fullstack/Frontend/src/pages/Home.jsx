@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '../components/Header'
-import { Text,Center,Flex } from '@chakra-ui/react'
+import { Text,Center,Flex, Spacer } from '@chakra-ui/react'
 import { TableComponent } from '../components/Table'
+import { api } from '../constants'
+import { Graphic } from '../components/Graphic'
 export const Home = () => {
+  const [participants,setParticipants]=useState([])
+
+  const getParticipants=()=>{
+    api.get("/participant/all").then(({data})=>setParticipants(data))
+    .catch((error)=>{console.log(error.message);})
+  }
+  useEffect(() => {
+    getParticipants()
+  
+  }, [])
   return (
     <div>
-      <Header/>
+      <Header getParticipant={getParticipants}/>
       <Center>
     <Flex direction='column' pt='3em'>
     <Center>
@@ -16,10 +28,17 @@ export const Home = () => {
      </Flex>
      </Center>
      <Flex
-      p='5em'
+      p='3em'
+      justifyContent={'center'}
+      gap={70}
      >
-     <TableComponent/>
+   
+     <TableComponent data={participants}/>
+    
+     <Graphic data={participants} />
+    
      </Flex>
+  
      </div>
 
   )

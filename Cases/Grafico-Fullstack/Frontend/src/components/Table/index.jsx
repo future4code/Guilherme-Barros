@@ -1,23 +1,11 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { api } from '../../constants'
+import React from 'react'
 import {TableContainer,Table,Thead,Tr,Td,Th,Tbody} from '@chakra-ui/react'
-export const TableComponent = () => {
-  const [participants,setParticipants]=useState([])
-
-  const getParticipants=()=>{
-    api.get("/participant/all").then(({data})=>setParticipants(data))
-    .catch((error)=>{console.log(error.message);})
-  }
-  useEffect(() => {
-    getParticipants()
+export const TableComponent = ({data}) => {
   
-  }, [participants])
   
   return (
     <TableContainer
     width={'30em'}
-    
     >
     <Table variant='simple'>
       
@@ -29,12 +17,12 @@ export const TableComponent = () => {
         </Tr>
       </Thead>
       <Tbody>
-       {participants.map((participant)=>{
+       {data.map((participant)=>{
         return(
-          <Tr>
+          <Tr key={participant.id}>
             <Td>{participant.name}</Td>
             <Td>{participant.lastName}</Td>
-            <Td isNumeric>{participant.participation}</Td>
+            <Td isNumeric>{participant.participation}%</Td>
           </Tr>
         )
        })}
