@@ -19,12 +19,12 @@ export class ParticipantDatabase extends BaseDatabase implements IParticipantDat
 			throw new Error(error.sqlMessage || error.message);
 		}
 	}
-	async getAll(): Promise<[] | Participant[]> {
+	async getAll(): Promise<[] | Participant[]|Participant> {
 	try{
-const result=this.getConnection()
-.select('*')
-.from(ParticipantDatabase.TABLE_NAME)
-return result
+	const result=this.getConnection()
+	.select('*')
+	.from(ParticipantDatabase.TABLE_NAME)
+	return Participant.toParticipantModel(result[0])
 	}catch (error:any) {
 			throw new Error(error.sqlMessage || error.message);
 		}

@@ -20,7 +20,7 @@ e.preventDefault()
      
     })
     .catch((error)=>console.log(error))
-    cleanFields()
+   
   }
 
   return (
