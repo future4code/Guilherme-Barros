@@ -7,20 +7,28 @@ export const Header = () => {
   const {form, onChange, cleanFields }=useForm({
     name:""
   })
-  const { searchUser, setSearchUser,setUser } = useContext(GlobalContext)
+  const { searchUser, setSearchUser,setUser,history,setHistory } = useContext(GlobalContext)
 
   
 
   const getUser=(e)=>{
 e.preventDefault()
-    api.get(`/user/${form.name}`,
-    {headers: { 'Authorization': 'token' }})
+    api.get(`/${form.name}`)
     .then(({data})=>{
       setUser(data)
-     
+     setHistory(data.login)
+
+     let historic=localStorage.getItem("searchs")
+     console.log(historic);
+     if(historic!=null && historic != []){
+      setHistory([...history,historic])
+
+      localStorage.setItem("searchs",JSON.stringify(history)) 
+     }else{ localStorage.setItem("searchs",JSON.stringify(history)) }
+    
     })
     .catch((error)=>console.log(error))
-   
+   cleanFields()
   }
 
   return (
