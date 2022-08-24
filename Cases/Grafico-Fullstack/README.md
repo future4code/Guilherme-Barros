@@ -14,6 +14,7 @@ Aplicação Fullstack criada por [Guilherme de Oliveira Barros](https://github.c
    * [Funcionalidades](#funcionalidades)
    * [Concepção do Projeto](#concepcao-do-projeto)
    * [Rodando o Projeto](#rodando-o-projeto)
+   * [Link do Surge](#surge)
    * [Documentação](#documentacao)
    * [Colaboradores](#colaboradores)
 <!--te-->
@@ -62,7 +63,7 @@ Para este projeto foram utilizadas as seguintes tecnologias:
 
 - Git
 
-  
+- Jest
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
@@ -96,6 +97,13 @@ Cada um com as seguintes características :
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
+<h2 id="surge">
+    Link do Surge
+</h2>
+
+[Grafico](https://grafico-cubo.surge.sh/)
+
+<h4 align="right"><a href="#topo">Topo</a></h4>
 
 ## <h2 id=documentacao>🔗Documentação</h2>
 
@@ -151,6 +159,14 @@ Para Rodar o projeto, siga as seguintes etapas :
 <code>
    npm run start
 </code>
+
+
+
+### Testes
+
+#### 1º | Rode os testes
+
+<code>npm run test</code>
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
