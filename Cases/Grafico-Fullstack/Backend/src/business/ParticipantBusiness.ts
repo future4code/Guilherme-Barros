@@ -22,12 +22,16 @@ export class ParticipantBusiness implements ParticipantRepository{
 			lastName,
 			participation
 		)
+		if (participation<0) {
+			throw new CustomError(401,"Participação inválida");
+			
+		}
 		this.participantDatabase.insert(participant)
 	}catch (error:any) {
 		throw new Error(error.sqlMessage || error.message);
 	}
 	}
-	async getAll(): Promise<Participant[] | []> {
+	async getAll(): Promise<Participant[] | []|Participant> {
 		try {
 			const participants=this.participantDatabase.getAll()
 			if(!participants){

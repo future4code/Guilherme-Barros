@@ -45,7 +45,7 @@ export class Participant{
 		
 		this.participation=participation
 	}
-	static toParticipantModel(participant:participant):Participant{
+	static toParticipantModel(participant:participant):Participant[] |[]|Participant{
 		return new Participant(participant.id,participant.name,participant.lastName,participant.participation)
 	}
 }
