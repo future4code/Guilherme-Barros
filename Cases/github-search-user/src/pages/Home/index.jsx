@@ -1,25 +1,24 @@
-import React, { useContext } from 'react'
-import { Header } from '../../components/Header'
-import { User } from '../../components/User';
-import { GlobalContext } from '../../GlobalContext'
+import { Box, Center, Flex } from "@chakra-ui/react";
+import React, { useContext } from "react";
+
+import { User } from "../../components/User";
+import { GlobalContext } from "../../GlobalContext";
 
 export const Home = () => {
-
-  const {
-    user
-  } = useContext(GlobalContext);
- 
-
-  // useEffect(() => {
-
-  //   localStorage.setItem("searchs", JSON.stringify(cart))
-  // }, [cart])
+  const { user } = useContext(GlobalContext);
 
   return (
-    <div>
-      <Header/>
-     <User name={user?.name} image={user?.avatar_url}/>
-      
-      </div>
-  )
-}
+    <Flex justifyContent={"center"} direction="column" bg="#0D1117" w={"100%"}>
+      <User
+        name={user?.name}
+        image={user?.avatar_url}
+        bio={user?.bio}
+        email={user?.email}
+        html_url={user?.html_url}
+        followers={user?.followers}
+        following={user?.following}
+        login={user?.login}
+      />
+    </Flex>
+  );
+};
