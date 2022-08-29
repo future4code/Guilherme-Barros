@@ -1,5 +1,6 @@
-import { Box, Center, Flex } from "@chakra-ui/react";
+import {  Flex } from "@chakra-ui/react";
 import React, { useContext } from "react";
+import { Header } from "../../components/Header";
 
 import { User } from "../../components/User";
 import { GlobalContext } from "../../GlobalContext";
@@ -9,6 +10,7 @@ export const Home = () => {
 
   return (
     <Flex justifyContent={"center"} direction="column" bg="#0D1117" w={"100%"}>
+      <Header/>
       <User
         name={user?.name}
         image={user?.avatar_url}
@@ -19,6 +21,7 @@ export const Home = () => {
         following={user?.following}
         login={user?.login}
       />
+    
     </Flex>
   );
 };

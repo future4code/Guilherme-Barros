@@ -9,7 +9,7 @@ export const Router = () => {
   return (
 	<BrowserRouter>
 	<GlobalStorage>
-	<Header/>
+	
 	<Routes>
 		<Route path="/" element={<Home/>}/>
 		<Route path='/historico' element={<History/>}/>

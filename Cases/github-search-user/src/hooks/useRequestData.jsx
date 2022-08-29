@@ -7,7 +7,7 @@ const useRequestData=(user)=>{
 	const [error,setError]=useState()
 	useEffect(()=>{
 		setIsLoading(true)
-		api.get(`/${user}`)
+		api.get(`/${user.user}`)
 		.then(response=>{
 			setData(response.data)
 			setIsLoading(false)
