@@ -1,4 +1,4 @@
-import { Button, Center, Flex, Image, Input } from "@chakra-ui/react";
+import { Button, Center, Flex, Image, Input,Box } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { api } from "../../constants";
 import { GlobalContext } from "../../GlobalContext";
@@ -38,44 +38,59 @@ export const Header = () => {
   };
 
   return (
-    <Flex bg={"#161B22"} direction={"row"} justifyContent="space-between">
+    <Flex bg={"#161B22"} direction={["column", "row"]}
+   
+    align={"center"}
+    w={["100%"]}
+    >
       <a href="https://www.github.com" target={"_blank"}>
-        <Image src={logo} m="2em" cursor={"pointer"} h="5em" />
+        <Image src={logo} m="1em" cursor={"pointer"} h="5em" />
       </a>
       {window.location.pathname==='/' ? (
+        <Center w='100%'>
          <form method="GET" onSubmit={getUser}>
+       
+            
          <Input
-           mr="2em"
+          
            placeholder="Pesquise um usuário..."
            type={"search"}
            name="name"
            value={form.name}
            onChange={onChange}
            focusBorderColor="#f0f6fc"
-           width={"15em"}
-           mt="2em"
+       width={'20em'}
+           m="1em"
            color={"#f0f6fc"}
            options={history}
          ></Input>
  
          <Button
            type={"submit"}
-           mr="30em"
+           
+           m='1em'
            bg="#OD1117"
            color="#f0f6fc"
            _hover={{ color: "#BABBBD" }}
            border="1px solid #f0f6fc"
-           mb=".5em"
+           
          >
            Buscar
          </Button>
-         <Center mr="35em" mt={"1em"}>
+        
+        
+         
            <Menu />
-         </Center>
+         
+        
        </form>
-      ):(  <div>
+       </Center>
+      ):(  <Flex direction={'column'}  align={"center"}
+    w={["100%"]}>
+      <Center w='100%'>
+        <form>
       <Input
-        mr="35em"
+        
         placeholder="Histórico de pesquisa"
         type={"search"}
         name="name"
@@ -83,16 +98,17 @@ export const Header = () => {
         onChange={handleSearchHistoric}
         focusBorderColor="#f0f6fc"
         width={"15em"}
-        mt="2em"
+        m="1em"
         color={"#f0f6fc"}
         options={history}
       ></Input>
 
      
-      <Center mr="35em" mt={"1.5em"}>
+      
         <Menu />
-      </Center>
-    </div>)}
+        </form>
+        </Center>
+    </Flex>)}
      
     </Flex>
   );

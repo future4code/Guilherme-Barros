@@ -4,6 +4,7 @@ import { GlobalContext } from "../../GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { goToHomePage } from "../../router/coordinator";
 import { Header } from "../../components/Header";
+
 export const History = () => {
   const { history, setSearchUser,searchHistoric } = useContext(GlobalContext);
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const History = () => {
   const filterHistoric=searchs?.filter((search)=> search.user.toLowerCase().includes(searchHistoric.toLowerCase()))
   return (
     <Box bg="#0D1117" h={"100vh"}>
-       <Header/>
+      <Header/>
       <Center>
        
           <Flex
@@ -29,7 +30,7 @@ export const History = () => {
           alignContent={"center"}
           border="1px solid #f0f6fc"
           borderRadius="10px"
-          w="30em"
+          w="20em"
           h={"auto"}
           mt="3em"
         >
@@ -42,7 +43,7 @@ export const History = () => {
                 border="1px solid #f0f6fc"
                 borderRadius="10px"
                 h={"3em"}
-                w="30em"
+                w="20em"
                 pl={"2em"}
                 pt="0.7em"
                 color="#f0f6fc"

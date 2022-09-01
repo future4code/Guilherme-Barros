@@ -1,7 +1,6 @@
 import {  Flex } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { Header } from "../../components/Header";
-
 import { User } from "../../components/User";
 import { GlobalContext } from "../../GlobalContext";
 
