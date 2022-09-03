@@ -2,7 +2,7 @@
 
 ## <h2 id=sobre>Sobre</h2>
 
-Front-end criado por [Guilherme de Oliveira Barros](https://github.com/FIXER3600) para o case 4: desafio Front-end Chama para o curso Web Fullstack Labenu.
+Front-end criado por [Guilherme de Oliveira Barros](https://github.com/FIXER3600) para o case 4: desafio Front-end Chama - Github username searcher para o curso Web Fullstack Labenu.
 
 
 ##  🔠Conteúdos
@@ -12,6 +12,7 @@ Front-end criado por [Guilherme de Oliveira Barros](https://github.com/FIXER3600
    * [Objetivo do Projeto](#objetivo-do-projeto)
    * [Tecnologias](#tecnologias)
    * [Funcionalidades](#funcionalidades)
+   * [Telas](#telas)
    * [Deploy no Surge](#deploy)
    * [Rodando o Projeto](#rodando-o-projeto)
    * [Colaboradores](#colaboradores)
@@ -36,7 +37,7 @@ Para este projeto eu usei as seguintes tecnologias:
 - Vite
 - React Router Dom
 - Local Storage
-- API do Github
+- API REST do Github
 - Git
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
@@ -46,7 +47,7 @@ Para este projeto eu usei as seguintes tecnologias:
 
 - Busca de Usuários do Github
 
-- Histórico de buscas ordenado por timestamp
+- Histórico de buscas ordenado por timestamp do mais recente para o mais antigo
 
 - Filtrar busca na lista de histórico
 
@@ -54,11 +55,19 @@ Para este projeto eu usei as seguintes tecnologias:
 
   
 
-
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
-<h4 align="right"><a href="#topo">Topo</a></h4>
+<h2 id='telas'>💻 Telas</h2>
 
+#### Início
+
+![Screenshot_179](C:\Users\Guilherme\Pictures\Screenshot_179.png)
+
+#### Histórico
+
+![Screenshot_178](C:\Users\Guilherme\Pictures\Screenshot_178.png)
+
+<h4 align="right"><a href="#topo">Topo</a></h4>
 
 ## <h2 id=deploy>🔗Deploy no Surge</h2>
 
